@@ -39,7 +39,8 @@ export default {
         '4xl': '2rem',
       },
       screens: {
-        xs: "475px",
+        "xs": "475px",
+        "3xl": "1750px"
       }
     }
   },

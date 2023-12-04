@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import { styles } from "../../styles";
 import { useState } from "react";
-import { logo } from "../../assets";
+import { logo, menu_close, menu_open } from "../../assets";
+import DropDown from "./DropDown";
 
 const Navbar = () => {
   const [active, setActive] = useState(" ");
+  const [toggle, setToggle] = useState(false);
 
   return (
     <nav
@@ -26,7 +28,15 @@ const Navbar = () => {
             Md. Muzahid
           </p>
         </Link>
-        <ul></ul>
+        <div>
+          <img
+            className="bg-white"
+            onClick={() => setToggle(!toggle)}
+            src={toggle ? menu_close : menu_open}
+            alt="menu"
+          />
+          <DropDown toggle={toggle} setToggle={setToggle} />
+        </div>
       </div>
     </nav>
   );

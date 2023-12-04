@@ -20,9 +20,10 @@ import {
 
 
 
-const navlinks = [
+const navLinks = [
+    { id: "home", title: "HOME" },
+    { id: "portfolio", title: "PORTFOLIO" },
     { id: "about", title: "ABOUT" },
-    { id: "work", title: "WORK" },
     { id: "contact", title: "CONTACT" }
 ];
 
@@ -49,4 +50,4 @@ const techSkills = [
 ];
 
 
-export { navlinks, services, techSkills };
+export { navLinks, services, techSkills };

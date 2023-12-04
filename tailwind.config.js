@@ -27,9 +27,9 @@ export default {
     },
     extend: {
       colors: {
-        primary: '#1fb6ff',
-        secondary: '#7e5bef',
-        tertiary: '#ff49db'
+        primary: '#11151C',
+        secondary: '#240046',
+        tertiary: '#3c096c'
       },
       spacing: {
         '8xl': '96rem',

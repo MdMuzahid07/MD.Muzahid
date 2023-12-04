@@ -18,8 +18,9 @@ import reactjs from "./tech/reactjs.png";
 import redux from "./tech/redux.png";
 import tailwindcss from "./tech/tailwind.png";
 import threejs from "./tech/threejs.svg";
-import nextjs from "./tech/nextjs.png";
+import nextjs from "./tech/NextJS.png";
 import logo from "./logo.png";
+import logoBg from "./Md_Muzahid,Web-Developer,MERN-Stack-Developer,ReactJS-Developer.png";
 
 
 export {
@@ -43,5 +44,6 @@ export {
     expressjs,
     figma,
     nextjs,
-    logo
-}
+    logo,
+    logoBg
+};

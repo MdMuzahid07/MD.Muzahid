@@ -14,7 +14,12 @@ const DropDown = ({ toggle, setToggle }) => {
             className="cursor-pointer"
             key={id}
           >
-            <a href={`#${id}`}>{title}</a>
+            <a
+              className="font-bold ease-in duration-300 hover:tracking-widest  hover:bg-clip-text hover:text-transparent hover:bg-gradient-to-r from-pink-500 to-violet-500"
+              href={`#${id}`}
+            >
+              {title}
+            </a>
           </li>
         ))}
       </ul>

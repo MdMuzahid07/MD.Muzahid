@@ -5,7 +5,7 @@ const DropDown = ({ toggle, setToggle }) => {
     <div
       className={`${
         toggle ? "flex" : "hidden"
-      } bg-primary absolute top-[70px] right-0 w-full min-h-screen z-10 text-white p-6`}
+      } bg-primary absolute top-[60px] right-0 w-full min-h-screen z-10 text-white p-6`}
     >
       <ul className="flex flex-col pt-16 xs:pt-0 items-center font-bold text-[60px] xs:text-[80px] md:text-[90px] lg:text-[100px] 3xl:text-[140px]  w-full">
         {navLinks.map(({ title, id }) => (
@@ -14,7 +14,7 @@ const DropDown = ({ toggle, setToggle }) => {
             className="cursor-pointer"
             key={id}
           >
-            {title}
+            <a href={`#${id}`}>{title}</a>
           </li>
         ))}
       </ul>

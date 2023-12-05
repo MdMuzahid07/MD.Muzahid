@@ -22,7 +22,7 @@ export default {
       // => @media (min-width: 1536px) { ... }
     },
     fontFamily: {
-      sans: ['Graphik', 'sans-serif'],
+      sans: ['Roboto', 'sans-serif'],
       serif: ['Merriweather', 'serif'],
     },
     extend: {

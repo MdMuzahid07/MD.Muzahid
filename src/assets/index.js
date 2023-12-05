@@ -23,8 +23,6 @@ import logo from "./logo.png";
 import logoBg from "./Md_Muzahid,Web-Developer,MERN-Stack-Developer,ReactJS-Developer.png";
 import menu_close from "./menu-close.svg";
 import menu_open from "./menu-open.svg";
-import monaSans_regular from "./fonts/MonaSans-Regular.otf";
-import monaSans_bold from "./fonts/MonaSans-Bold.otf";
 
 export {
     front_end,
@@ -51,6 +49,4 @@ export {
     logoBg,
     menu_close,
     menu_open,
-    monaSans_bold,
-    monaSans_regular
 };

@@ -51,7 +51,7 @@
 .menu-btn .slider .el:nth-child(2)
 {
     top: 100%;
-    background-color: blue;
+    background-color: rgb(136, 0, 255);
     color: white;
 } 
 

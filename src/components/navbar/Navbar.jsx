@@ -5,6 +5,7 @@ import { useState } from "react";
 import { logo } from "../../assets";
 import DropDown from "./DropDown";
 import { motion } from "framer-motion";
+import PerspectiveText from "./PerspectiveText";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false, true);
@@ -73,12 +74,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-const PerspectiveText = ({ label }) => {
-  return (
-    <div className="perspective-text">
-      <p>{label}</p>
-      <p>{label}</p>
-    </div>
-  );
-};

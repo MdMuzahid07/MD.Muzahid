@@ -24,9 +24,9 @@
     height: 30px;
     width: 100px;
     border-radius: 15px;
-    color:white;
     position: relative;
     overflow: hidden;
+    background-color: black;
 }
 
 .slider {
@@ -38,10 +38,14 @@
 .menu-btn .slider .el {
     height: 100%;
     width: 100%;
-    display: flex;
-    background-color: black;
-    align-items: center;
-    justify-content: center;
+}
+
+.menu-btn .slider .el p{
+    color:white;
+}
+
+.menu-btn .slider .el p:nth-child(2) {
+    color: white;
 }
 
 .menu-btn .slider .el:nth-child(2)
@@ -51,3 +55,42 @@
     color: white;
 } 
 
+
+
+.perspective-text{
+    width: 100%;
+    height: 100%;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.75s cubic-bezier(0.76,0,0.24,1);
+    transform-style: preserve-3d;
+}
+
+.menu-btn .slider .el:hover .perspective-text {
+    transform: rotateX(90deg);
+}
+
+.menu-btn .slider .el:hover .perspective-text p:nth-child(1)
+{
+    transform: translateY(-100);
+    opacity: 0;
+}
+
+.menu-btn .slider .el:hover .perspective-text p:nth-child(2)
+{
+    opacity: 2;
+}
+
+ .menu-btn .slider .el .perspective-text p{
+    transition: all 0.75s cubic-bezier(0.76, 0, 0.24, 1);
+ }
+
+ .menu-btn .slider .el .perspective-text p:nth-child(2)
+{
+    position: absolute;
+    transform: rotateX(-90deg) translateY(13px);
+    transform-origin: bottom center;
+    opacity: 0;
+}

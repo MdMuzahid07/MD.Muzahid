@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import { styles } from "../../styles";
 import { useState } from "react";
@@ -55,10 +56,10 @@ const Navbar = () => {
                 className="slider"
               >
                 <div className="el">
-                  <p>MENU</p>
+                  <PerspectiveText label="MENU" />
                 </div>
                 <div className="el">
-                  <p>CLOSE</p>
+                  <PerspectiveText label="CLOSE" />
                 </div>
               </motion.div>
             </button>
@@ -72,3 +73,12 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+const PerspectiveText = ({ label }) => {
+  return (
+    <div className="perspective-text">
+      <p>{label}</p>
+      <p>{label}</p>
+    </div>
+  );
+};

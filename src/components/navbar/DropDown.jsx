@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { navLinks } from "../../constants";
 
 const DropDown = ({ toggle, setToggle }) => {

@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import { styles } from "../../styles";
 import { useState } from "react";
-import { logo, menu_close, menu_open } from "../../assets";
+import { logo } from "../../assets";
 import DropDown from "./DropDown";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
-  // const [active, setActive] = useState(" ");
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useState(false, true);
 
   return (
     <nav
@@ -32,20 +32,37 @@ const Navbar = () => {
         </Link>
         <div>
           <div className="flex items-center justify-center gap-4 md:gap-10">
+            {/* hire me button start here  */}
             <a
               href="#contact"
               type="button"
-              className="transition ease-in-out delay-50 w-28 h-10 bg-gradient-to-r hover:-translate-y-1 duration-300 hover:scale-110 hover:shadow-lg active:scale-75 hover:shadow-red-500 from-indigo-500 via-purple-500 to-pink-500 font-bold text-white rounded-lg p-1"
+              className={`${
+                toggle ? "hidden" : "block"
+              } transition ease-in-out delay-50 w-28 h-9 bg-gradient-to-r hover:-translate-y-1 duration-300 hover:scale-110 hover:shadow-lg active:scale-75 hover:shadow-red-500 from-indigo-500 via-purple-500 to-pink-500 font-bold text-white rounded-lg p-1`}
+              onClick={() => setToggle(false)}
             >
               <div className="bg-black rounded-md w-full h-full flex items-center justify-center">
                 <p>HIRE ME</p>
               </div>
             </a>
-            <img
-              onClick={() => setToggle(!toggle)}
-              src={toggle ? menu_close : menu_open}
-              alt="menu"
-            />
+            {/* hire me button end here  */}
+
+            {/* menu toggle button start here */}
+            <button onClick={() => setToggle(!toggle)} className="menu-btn">
+              <motion.div
+                animate={{ top: toggle ? "-100%" : "0" }}
+                transition={{ duration: 0.5, ease: [0.85, 0, 0.15, 1] }}
+                className="slider"
+              >
+                <div className="el">
+                  <p>MENU</p>
+                </div>
+                <div className="el">
+                  <p>CLOSE</p>
+                </div>
+              </motion.div>
+            </button>
+            {/* menu toggle button end here */}
           </div>
           <DropDown toggle={toggle} setToggle={setToggle} />
         </div>

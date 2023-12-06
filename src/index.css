@@ -15,3 +15,39 @@
 *{
     scroll-behavior: smooth;
 }
+
+
+
+/* // menu btn styles  */
+
+.menu-btn{
+    height: 30px;
+    width: 100px;
+    border-radius: 15px;
+    color:white;
+    position: relative;
+    overflow: hidden;
+}
+
+.slider {
+    position: relative;
+    height: 100%;
+        width: 100%;
+}
+
+.menu-btn .slider .el {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    background-color: black;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-btn .slider .el:nth-child(2)
+{
+    top: 100%;
+    background-color: blue;
+    color: white;
+} 
+

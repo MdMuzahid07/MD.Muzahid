@@ -13,7 +13,7 @@ const Navbar = () => {
   return (
     <div>
       <nav
-        className={`${styles.paddingX} bg-primary ${
+        className={`${styles.paddingX} bg-black ${
           toggle ? "bg-opacity-100" : "bg-opacity-100 xs:bg-opacity-0"
         }
       w-full flex items-center py-5 fixed top-0 z-50 `}
@@ -39,9 +39,7 @@ const Navbar = () => {
               <a
                 href="#contact"
                 type="button"
-                className={`${
-                  toggle ? "xs:hidden" : "xs:block"
-                } transition ease-in-out hidden delay-50 w-28 h-9 bg-gradient-to-r hover:-translate-y-1 duration-300 hover:scale-110 hover:shadow-lg active:scale-75 hover:shadow-red-500 from-indigo-500 via-purple-500 to-pink-500 font-bold text-white rounded-lg p-1`}
+                className="transition ease-in-out hidden xs:flex delay-50 w-28 h-9 bg-gradient-to-r hover:-translate-y-1 duration-300 hover:scale-110 hover:shadow-lg active:scale-75 hover:shadow-red-500 from-indigo-500 via-purple-500 to-pink-500 font-bold text-white rounded-lg p-1"
                 onClick={() => setToggle(false)}
               >
                 <div className="bg-black rounded-md w-full h-full flex items-center justify-center">
@@ -51,7 +49,10 @@ const Navbar = () => {
               {/* hire me button end here  */}
 
               {/* menu toggle button start here */}
-              <button onClick={() => setToggle(!toggle)} className="menu-btn">
+              <button
+                onClick={() => setToggle(!toggle)}
+                className="menu-btn bg-primary xs:bg-black"
+              >
                 <motion.div
                   animate={{ top: toggle ? "-100%" : "0" }}
                   transition={{ duration: 0.5, ease: [0.85, 0, 0.15, 1] }}

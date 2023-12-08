@@ -13,10 +13,8 @@ const App = () => {
 
         <div
           id="about"
-          className="min-h-screen bg-red-500 flex items-center justify-center text-white text-[20px] font-extrabold tracking-widest"
-        >
-          <h1>ABOUT</h1>
-        </div>
+          className="min-h-screen bg-red-500 flex items-center justify-center text-white text-[20px] font-extrabold"
+        ></div>
 
         <div
           id="portfolio"

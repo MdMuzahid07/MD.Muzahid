@@ -1,5 +1,6 @@
 import { styles } from "../../styles";
 import { motion } from "framer-motion";
+import heroStyles from "./heroStyles";
 
 const Hero = () => {
   return (
@@ -11,7 +12,7 @@ const Hero = () => {
         initial={{ opacity: 0, y: "50px" }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.75, delay: 0.5, ease: [0.75, 0, 0.24, 1] }}
-        className="text-[50px] xs:text-[80px] md:text-[90px] lg:text-[100px] 3xl:text-[120px] font-bold text-left md:text-center"
+        className={heroStyles.headingBold}
       >
         HI, {`I'M`}{" "}
         <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
@@ -21,11 +22,12 @@ const Hero = () => {
       <motion.h1
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.75, delay: 1.3, ease: [0.75, 0, 0.24, 1] }}
-        className="text-[30px] xs:text-[50px] md:text-[60px] lg:text-[80px]  text-left md:text-center mt-5 xs:mt-0"
+        transition={{ duration: 0.75, delay: 1.3, ease: [0.5, 0, 0.75, 0] }}
+        className={heroStyles.headingNormal}
       >
         I DEVELOP WEB WORLD, AND REACT NATIVE{" "}
         <br className="hidden 3xl:block" /> APPLICATION
+        {/* hire me button start  */}
         <div className="text-[18px] mt-10 block xs:hidden">
           <a
             href="#contact"
@@ -37,6 +39,7 @@ const Hero = () => {
             </div>
           </a>
         </div>
+        {/* hire me button start  */}
       </motion.h1>
     </div>
   );

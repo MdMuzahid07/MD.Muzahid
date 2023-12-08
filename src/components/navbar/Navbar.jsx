@@ -24,6 +24,7 @@ const Navbar = () => {
             className="flex items-center gap-2"
             onClick={() => {
               window.scrollTo(0, 0);
+              setToggle(false);
             }}
           >
             <figure className="w-9 h-9 object-contain">

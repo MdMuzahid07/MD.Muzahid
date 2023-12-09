@@ -2,12 +2,13 @@ import { BrowserRouter } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import Hero from "./components/hero/Hero";
 import Intro from "./components/intro/Intro";
-import { useEffect, useState } from "react";
-import Preloader from "./components/preloader/Preloader";
-import { AnimatePresence } from "framer-motion";
+import { useEffect } from "react";
+// import Preloader from "./components/preloader/Preloader";
+// import { AnimatePresence } from "framer-motion";
+import Contact from "./components/contact/Contact";
 
 const App = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // setTimeout(() => {
@@ -19,9 +20,9 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className="relative z-0 bg-primary">
-        <AnimatePresence mode="wait">
+        {/* <AnimatePresence mode="wait">
           {isLoading && <Preloader setIsLoading={setIsLoading} />}
-        </AnimatePresence>
+        </AnimatePresence> */}
         <header>
           <Navbar />
           <Hero />
@@ -31,8 +32,25 @@ const App = () => {
 
         <div
           id="about"
-          className="min-h-screen bg-red-500 flex items-center justify-center text-white text-[20px] font-extrabold"
-        ></div>
+          className="min-h-screen bg-red-500  text-white text-[20px] font-extrabold"
+        >
+          <div className="grid grid-cols-12">
+            <div className="w-full col-span-8">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia
+              incidunt nostrum rem beatae eaque ad deserunt praesentium?
+              Architecto quos cupiditate pariatur placeat obcaecati, est nam
+              modi iste alias unde qui sapiente enim at, facilis vel et suscipit
+              error numquam aliquam.
+            </div>
+            <div className="w-full">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia
+              incidunt nostrum rem beatae eaque ad deserunt praesentium?
+              Architecto quos cupiditate pariatur placeat obcaecati, est nam
+              modi iste alias unde qui sapiente enim at, facilis vel et suscipit
+              error numquam aliquam.
+            </div>
+          </div>
+        </div>
 
         <div
           id="portfolio"
@@ -41,12 +59,7 @@ const App = () => {
           <h1>PORTFOLIO</h1>
         </div>
 
-        <div
-          id="contact"
-          className="min-h-screen bg-indigo-500 flex items-center justify-center text-white text-[20px] font-extrabold tracking-widest"
-        >
-          <h1>CONTACT</h1>
-        </div>
+        <Contact />
       </div>
     </BrowserRouter>
   );

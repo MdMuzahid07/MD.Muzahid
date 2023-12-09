@@ -1,1 +1,2 @@
-export const HR = () => <hr className="border border-t border-white" />;
+/* eslint-disable react/prop-types */
+export const HR = ({ style }) => <hr className={style} />;

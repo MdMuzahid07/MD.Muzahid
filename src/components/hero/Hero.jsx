@@ -52,7 +52,7 @@ const Hero = () => {
         }}
         type="button"
         href="#about"
-        className="hidden  text-white h-24 w-24 border xl:flex justify-center items-center rounded-full  absolute bottom-[10vh] right-[20vw] hover:bg-black"
+        className="hidden transition ease-in-out delay-50 text-white h-24 w-24 border xl:flex justify-center items-center rounded-full  absolute bottom-[10vh] right-[20vw] hover:bg-black"
       >
         {" "}
         <svg

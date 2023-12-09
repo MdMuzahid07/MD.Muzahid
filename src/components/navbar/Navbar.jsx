@@ -16,7 +16,7 @@ const Navbar = () => {
         className={`${styles.paddingX} bg-black ${
           toggle ? "bg-opacity-100" : "bg-opacity-100 xs:bg-opacity-0"
         }
-      w-full flex items-center py-5 fixed top-0 z-50 `}
+      w-full flex items-center py-5 fixed top-0 z-40 `}
       >
         <div className="w-full max-w-7xl mx-auto flex justify-between items-center">
           <Link

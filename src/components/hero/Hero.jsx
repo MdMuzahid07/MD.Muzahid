@@ -1,12 +1,12 @@
 import { styles } from "../../styles";
-import { motion } from "framer-motion";
 import heroStyles from "./heroStyles";
+import { motion } from "framer-motion";
 
 const Hero = () => {
   return (
     <div
       id="home"
-      className={`${styles.paddingX} bg-primary min-h-screen w-full flex-col flex items-center justify-center text-white `}
+      className={`${styles.paddingX} bg-primary min-h-screen w-full flex-col flex items-center justify-center text-white relative`}
     >
       <motion.h1
         initial={{ opacity: 0, y: "50px" }}
@@ -41,6 +41,35 @@ const Hero = () => {
         </div>
         {/* hire me button start  */}
       </motion.h1>
+
+      <motion.a
+        initial={{ opacity: 0, y: "50px" }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.75,
+          delay: 1.9,
+          ease: [0.75, 0, 0.24, 1],
+        }}
+        type="button"
+        href="#about"
+        className="hidden  text-white h-24 w-24 border xl:flex justify-center items-center rounded-full  absolute bottom-[10vh] right-[20vw] hover:bg-black"
+      >
+        {" "}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="w-6 h-6"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M19.5 4.5l-15 15m0 0h11.25m-11.25 0V8.25"
+          />
+        </svg>
+      </motion.a>
     </div>
   );
 };

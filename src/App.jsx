@@ -1,62 +1,50 @@
-import { BrowserRouter } from "react-router-dom";
-import Navbar from "./components/navbar/Navbar";
 import Hero from "./components/hero/Hero";
-import Intro from "./components/intro/Intro";
-import { useEffect, useState } from "react";
-import Preloader from "./components/preloader/Preloader";
-import { AnimatePresence } from "framer-motion";
+import { useEffect } from "react";
 import Contact from "./components/contact/Contact";
 import Footer from "./components/footer/Footer";
+import About from "./components/about/About";
+import Lenis from "@studio-freight/lenis";
 
 const App = () => {
-  const [isLoading, setIsLoading] = useState(true);
-
   useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-      document.body.style.cursor = "default";
-    }, 3000);
+    const lenis = new Lenis();
+
+    lenis.on("scroll", (e) => {
+      console.log(e);
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    window.addEventListener("scroll", lenis);
+
+    return () => {
+      window.removeEventListener("scroll", lenis);
+    };
   }, []);
 
   return (
-    <BrowserRouter>
-      <div className="relative z-0 bg-primary">
-        <AnimatePresence mode="wait">
-          {isLoading && <Preloader />}
-        </AnimatePresence>
-        <header>
-          <Navbar />
-          <Hero />
-        </header>
+    <div className="relative z-0 bg-primary">
+      <header>
+        <Hero />
+      </header>
 
-        <Intro />
+      <About />
 
-        <div
-          id="about"
-          className=" min-h-screen bg-red-500  text-white text-[20px] font-extrabold"
-        >
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia
-          incidunt nostrum rem beatae eaque ad deserunt praesentium? Architecto
-          quos cupiditate pariatur placeat obcaecati, est nam modi iste alias
-          unde qui sapiente enim at, facilis vel et suscipit error numquam
-          aliquam. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-          Quia incidunt nostrum rem beatae eaque ad deserunt praesentium?
-          Architecto quos cupiditate pariatur placeat obcaecati, est nam modi
-          iste alias unde qui sapiente enim at, facilis vel et suscipit error
-          numquam aliquam.
-        </div>
-
-        <div
-          id="portfolio"
-          className="min-h-screen bg-yellow-500 flex items-center justify-center text-white text-[20px] font-extrabold tracking-widest"
-        >
-          <h1>PORTFOLIO</h1>
-        </div>
-
-        <Contact />
-        <Footer />
+      <div
+        id="portfolio"
+        className="min-h-screen bg-yellow-500 flex items-center justify-center text-white text-[20px] font-extrabold tracking-widest"
+      >
+        <h1>PORTFOLIO</h1>
       </div>
-    </BrowserRouter>
+
+      <Contact />
+      <Footer />
+    </div>
   );
 };
 

@@ -34,7 +34,7 @@ const Form = () => {
           <HR style="bg-black border-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-[1px] my-7" />
 
           <div className="flex gap-8 md:gap-10 w-full">
-            <h1 className="text-[18px] md:text-[25px] opacity-50">01.</h1>
+            <h1 className="text-[18px] md:text-[25px] opacity-50">02.</h1>
             <div>
               <label
                 className="w-full text-[20px] md:text-[25px] lg:text-[32px] opacity-70"
@@ -54,13 +54,13 @@ const Form = () => {
           <HR style="bg-black border-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-[1px] my-7" />
 
           <div className="flex gap-8 md:gap-10 w-full">
-            <h1 className="text-[18px] md:text-[25px] opacity-50">01.</h1>
+            <h1 className="text-[18px] md:text-[25px] opacity-50">03.</h1>
             <div>
               <label
                 className="w-full text-[20px] md:text-[25px] lg:text-[32px] opacity-70"
                 htmlFor="organization"
               >
-                Do you have any Organization?, if had what is the name?
+                Do you have any Organization?, if yes what is the name?
               </label>
               <input
                 className="w-full focus:outline-none bg-primary placeholder:text-slate-700 font-bold text-[18px] md:text-[25px] h-16 "
@@ -74,7 +74,7 @@ const Form = () => {
           <HR style="bg-black border-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-[1px] my-7" />
 
           <div className="flex gap-8 md:gap-10 w-full">
-            <h1 className="text-[18px] md:text-[25px] opacity-50">01.</h1>
+            <h1 className="text-[18px] md:text-[25px] opacity-50">04.</h1>
             <div>
               <label
                 className="w-full text-[20px] md:text-[25px] lg:text-[32px] opacity-70"
@@ -94,7 +94,7 @@ const Form = () => {
           <HR style="bg-black border-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-[1px] my-7" />
 
           <div className="flex gap-8 md:gap-10 w-full">
-            <h1 className="text-[18px] md:text-[25px] opacity-50">01.</h1>
+            <h1 className="text-[18px] md:text-[25px] opacity-50">05.</h1>
             <div>
               <label
                 className="w-full text-[20px] md:text-[25px] lg:text-[32px] opacity-70"
@@ -116,7 +116,7 @@ const Form = () => {
           <button
             type="button"
             href="#about"
-            className="hidden transition ease-in-out delay-50 text-white h-28 w-28 border xl:flex justify-center items-center rounded-full  absolute -bottom-14 right-10 sm:right-16 md:right-32 bg-primary hover:bg-black"
+            className=" transition ease-in-out delay-50 text-white h-28 w-28 border justify-center items-center rounded-full  absolute -bottom-14 right-10 sm:right-16 md:right-32 bg-primary hover:bg-black"
           >
             SEND
           </button>

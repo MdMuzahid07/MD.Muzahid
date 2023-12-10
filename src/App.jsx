@@ -2,27 +2,27 @@ import { BrowserRouter } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import Hero from "./components/hero/Hero";
 import Intro from "./components/intro/Intro";
-import { useEffect } from "react";
-// import Preloader from "./components/preloader/Preloader";
-// import { AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
+import Preloader from "./components/preloader/Preloader";
+import { AnimatePresence } from "framer-motion";
 import Contact from "./components/contact/Contact";
 
 const App = () => {
-  // const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // setTimeout(() => {
-    //   setIsLoading(false);
-    document.body.style.cursor = "default";
-    // }, 3000);
+    setTimeout(() => {
+      //   setIsLoading(false);
+      document.body.style.cursor = "default";
+    }, 3000);
   }, []);
 
   return (
     <BrowserRouter>
       <div className="relative z-0 bg-primary">
-        {/* <AnimatePresence mode="wait">
+        <AnimatePresence mode="wait">
           {isLoading && <Preloader setIsLoading={setIsLoading} />}
-        </AnimatePresence> */}
+        </AnimatePresence>
         <header>
           <Navbar />
           <Hero />

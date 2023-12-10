@@ -1,7 +1,15 @@
+import MagneticEffect from "../../utils/MagneticEffect";
+import MyLocalTime from "../../utils/MyLocalTime";
+
+const styles = {
+  liHeader: "text-[25px] md:text-[32px] font-bold opacity-70 mb-5",
+  li: "text-[18px] md:text-[25px] mb-5 font-bold hover:bg-clip-text hover:text-transparent hover:bg-gradient-to-r hover:from-pink-500 hover:to-violet-500 transition ease-in-out delay-100",
+};
+
 const Aside = () => {
   return (
-    <aside className="col-span-12 md:col-span-4 lg:col-span-3 w-full relative">
-      <span className="text-white absolute -mt-24">
+    <aside className=" col-span-12 md:col-span-4 lg:col-span-3 text-white w-full relative">
+      <span className=" absolute -mt-24">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -17,21 +25,35 @@ const Aside = () => {
           />
         </svg>
       </span>
-      <div className="text-white">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente
-          repudiandae omnis dolore commodi quas nobis nisi, et reprehenderit
-          quod cum, totam veritatis! Nesciunt, possimus autem. Accusantium,
-          sapiente est velit asperiores fugit dolore voluptatum aliquam minima,
-          voluptate qui omnis. Molestias ratione libero, in et harum obcaecati
-          praesentium sapiente, earum eos beatae ducimus nobis sunt perferendis
-          dolore a, repellat itaque porro asperiores! Praesentium, tenetur?
-          Eius, harum labore libero id, earum officia unde veniam deserunt
-          possimus similique alias magni aut sint corporis illo cum! Corporis,
-          voluptatem architecto eos sunt sequi nesciunt facere odit accusantium
-          impedit commodi, sint unde temporibus quod ipsam minus dolores.
-        </p>
-      </div>
+      <ul className="w-full ">
+        <li className={styles.liHeader}>Lets Connect</li>
+        <li>
+          <MagneticEffect>
+            <a className={styles.li} href="mailto:mdmuzahid.dev@gmail.com">
+              mdmuzahid.dev@gmail.com
+            </a>
+          </MagneticEffect>
+        </li>
+      </ul>
+      <ul className="w-full mt-[50px] md:mt-[70px]">
+        <li className={styles.liHeader}>Social</li>
+        <li className={styles.li}>
+          <a href="">Github</a>
+        </li>
+        <li className={styles.li}>
+          <a href="">LinkedIn</a>
+        </li>
+        <li className={styles.li}>
+          <a href="">Twitter</a>
+        </li>
+        <li className={styles.li}>
+          <a href="">Reddit</a>
+        </li>
+        <li className="mt-[50px] opacity-70">My Local Time </li>
+        <li>
+          <h1 className={styles.li}>{MyLocalTime()}</h1>
+        </li>
+      </ul>
     </aside>
   );
 };

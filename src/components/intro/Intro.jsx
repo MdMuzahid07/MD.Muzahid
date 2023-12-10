@@ -1,5 +1,5 @@
 const Intro = () => {
-  return <div>Intro</div>;
+  return <div className="bg-red-500 text-white">Intro</div>;
 };
 
 export default Intro;

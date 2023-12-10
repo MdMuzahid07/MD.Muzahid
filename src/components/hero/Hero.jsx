@@ -6,7 +6,7 @@ const Hero = () => {
   return (
     <div
       id="home"
-      className={`${styles.paddingX} bg-primary min-h-screen w-full flex-col flex items-center justify-center text-white relative`}
+      className={`${styles.paddingX} heroBG bg-primary min-h-screen w-full flex-col flex items-center justify-center text-white relative`}
     >
       <motion.h1
         initial={{ opacity: 0, y: "50px" }}

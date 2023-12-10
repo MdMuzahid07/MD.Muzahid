@@ -33,7 +33,7 @@ const App = () => {
 
         <div
           id="about"
-          className="min-h-screen bg-red-500  text-white text-[20px] font-extrabold"
+          className=" min-h-screen bg-red-500  text-white text-[20px] font-extrabold"
         >
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia
           incidunt nostrum rem beatae eaque ad deserunt praesentium? Architecto

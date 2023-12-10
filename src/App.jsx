@@ -6,13 +6,14 @@ import { useEffect, useState } from "react";
 import Preloader from "./components/preloader/Preloader";
 import { AnimatePresence } from "framer-motion";
 import Contact from "./components/contact/Contact";
+import Footer from "./components/footer/Footer";
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
-      //   setIsLoading(false);
+      setIsLoading(false);
       document.body.style.cursor = "default";
     }, 3000);
   }, []);
@@ -21,7 +22,7 @@ const App = () => {
     <BrowserRouter>
       <div className="relative z-0 bg-primary">
         <AnimatePresence mode="wait">
-          {isLoading && <Preloader setIsLoading={setIsLoading} />}
+          {isLoading && <Preloader />}
         </AnimatePresence>
         <header>
           <Navbar />
@@ -34,22 +35,15 @@ const App = () => {
           id="about"
           className="min-h-screen bg-red-500  text-white text-[20px] font-extrabold"
         >
-          <div className="grid grid-cols-12">
-            <div className="w-full col-span-8">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia
-              incidunt nostrum rem beatae eaque ad deserunt praesentium?
-              Architecto quos cupiditate pariatur placeat obcaecati, est nam
-              modi iste alias unde qui sapiente enim at, facilis vel et suscipit
-              error numquam aliquam.
-            </div>
-            <div className="w-full">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia
-              incidunt nostrum rem beatae eaque ad deserunt praesentium?
-              Architecto quos cupiditate pariatur placeat obcaecati, est nam
-              modi iste alias unde qui sapiente enim at, facilis vel et suscipit
-              error numquam aliquam.
-            </div>
-          </div>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia
+          incidunt nostrum rem beatae eaque ad deserunt praesentium? Architecto
+          quos cupiditate pariatur placeat obcaecati, est nam modi iste alias
+          unde qui sapiente enim at, facilis vel et suscipit error numquam
+          aliquam. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          Quia incidunt nostrum rem beatae eaque ad deserunt praesentium?
+          Architecto quos cupiditate pariatur placeat obcaecati, est nam modi
+          iste alias unde qui sapiente enim at, facilis vel et suscipit error
+          numquam aliquam.
         </div>
 
         <div
@@ -60,6 +54,7 @@ const App = () => {
         </div>
 
         <Contact />
+        <Footer />
       </div>
     </BrowserRouter>
   );

@@ -10,7 +10,7 @@ const slideUp = {
   },
 };
 
-const Preloader = ({ setIsLoading }) => {
+const Preloader = () => {
   return (
     <motion.div
       variants={slideUp}
@@ -20,12 +20,12 @@ const Preloader = ({ setIsLoading }) => {
       className="w-full min-h-screen flex-col fixed top-0 left-0 z-50 bg-primary flex justify-center items-center"
     >
       <h1 className="text-white text-[40px]">Preloader</h1>
-      <button
+      {/* <button
         className="w-44 h-14 mt-4 text-[20px] font-bold rounded-full border text-white flex justify-center items-center"
         onClick={() => setIsLoading(false)}
       >
         START
-      </button>
+      </button> */}
     </motion.div>
   );
 };

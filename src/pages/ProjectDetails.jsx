@@ -66,7 +66,7 @@ const ProjectDetails = () => {
           </div>
           {/* header end */}
 
-          <section className="mb-32">
+          <section className="mb-32 w-full">
             <figure className="w-full h-auto">
               <img
                 className="w-full h-full object-cover object-center"

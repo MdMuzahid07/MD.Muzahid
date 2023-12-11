@@ -17,12 +17,10 @@ const routes = createBrowserRouter([
       {
         path: "/projects",
         element: <Portfolio />,
-        children: [
-          {
-            path: "/projects/:projectId",
-            element: <ProjectDetails />,
-          },
-        ],
+      },
+      {
+        path: "/projectDetails",
+        element: <ProjectDetails />,
       },
     ],
   },

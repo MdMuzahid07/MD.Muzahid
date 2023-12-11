@@ -12,7 +12,11 @@ const ProjectCard = () => {
             <h1 className="text-[30px] md:text-[text-50px] lg:text-[80px] font-bold">
               PROJECT NAME
             </h1>
-            <Link to="/" type="button" className="flex gap-4 text-[40px]">
+            <Link
+              to="/projectDetails"
+              type="button"
+              className="flex gap-4 text-[40px]"
+            >
               Learn more{" "}
               <svg
                 xmlns="http://www.w3.org/2000/svg"

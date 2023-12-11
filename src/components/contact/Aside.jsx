@@ -3,7 +3,7 @@ import MyLocalTime from "../../utils/MyLocalTime";
 
 const styles = {
   liHeader: "text-[25px] md:text-[32px] font-bold opacity-70 mb-5",
-  li: "text-[18px] md:text-[25px] mb-5 font-bold hover:bg-clip-text hover:text-transparent hover:bg-gradient-to-r hover:from-pink-500 hover:to-violet-500 transition ease-in-out delay-100",
+  li: "text-[18px] 2xl:text-[25px] mb-5 font-bold hover:bg-clip-text hover:text-transparent hover:bg-gradient-to-r hover:from-pink-500 hover:to-violet-500 transition ease-in-out delay-100",
 };
 
 const Aside = () => {

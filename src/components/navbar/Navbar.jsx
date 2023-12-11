@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { styles } from "../../styles";
 import { useState } from "react";
 import { logo } from "../../assets";
@@ -9,6 +9,7 @@ import PerspectiveText from "./PerspectiveText";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false, true);
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -41,7 +42,10 @@ const Navbar = () => {
                 href="#contact"
                 type="button"
                 className="transition ease-in-out hidden xs:flex delay-50 w-28 h-9 bg-gradient-to-r hover:-translate-y-1 duration-300 hover:scale-110 hover:shadow-lg active:scale-75 hover:shadow-red-500 from-indigo-500 via-purple-500 to-pink-500 font-bold text-white rounded-lg p-1"
-                onClick={() => setToggle(false)}
+                onClick={() => {
+                  navigate("/");
+                  setToggle(false);
+                }}
               >
                 <div className="bg-black rounded-md w-full h-full flex items-center justify-center">
                   <p>HIRE ME</p>

@@ -11,7 +11,7 @@ const Main = () => {
     setTimeout(() => {
       setIsLoading(false);
       document.body.style.cursor = "default";
-    }, 3000);
+    }, 1000);
   }, []);
   return (
     <>

@@ -4,6 +4,7 @@ import Contact from "./components/contact/Contact";
 import Footer from "./components/footer/Footer";
 import About from "./components/about/About";
 import Lenis from "@studio-freight/lenis";
+import PortfolioSection from "./components/portfolio/PortfolioSection";
 
 const App = () => {
   useEffect(() => {
@@ -28,23 +29,18 @@ const App = () => {
   }, []);
 
   return (
-    <div className="relative z-0 bg-primary">
+    <main className="relative z-0 bg-primary">
       <header>
         <Hero />
       </header>
 
       <About />
 
-      <div
-        id="portfolio"
-        className="min-h-screen bg-yellow-500 flex items-center justify-center text-white text-[20px] font-extrabold tracking-widest"
-      >
-        <h1>PORTFOLIO</h1>
-      </div>
+      <PortfolioSection />
 
       <Contact />
       <Footer />
-    </div>
+    </main>
   );
 };
 

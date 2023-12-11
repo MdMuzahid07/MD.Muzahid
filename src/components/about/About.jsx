@@ -4,7 +4,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className={`${styles.paddingX}bg-primary min-h-screen w-full`}
+      className={`${styles.paddingX} bg-red-500 min-h-screen w-full`}
     >
       <div className="max-w-7xl mx-auto text-white">
         <p>
@@ -14,7 +14,6 @@ const About = () => {
           Molestiae delectus, quibusdam voluptatibus adipisci possimus at
           deserunt vero ullam maiores voluptatum hic, culpa sunt maxime, quidem
           cumque? Impedit, iste quod accusamus magni, earum quo atque libero
-         
         </p>
       </div>
     </section>

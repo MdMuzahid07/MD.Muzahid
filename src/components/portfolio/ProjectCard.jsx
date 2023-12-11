@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { HR } from "../common/HR";
 
 const ProjectCard = () => {
@@ -11,7 +12,7 @@ const ProjectCard = () => {
             <h1 className="text-[30px] md:text-[text-50px] lg:text-[80px] font-bold">
               PROJECT NAME
             </h1>
-            <button className="flex gap-4 text-[40px]">
+            <Link to="/" type="button" className="flex gap-4 text-[40px]">
               Learn more{" "}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -27,7 +28,7 @@ const ProjectCard = () => {
                   d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
                 />
               </svg>
-            </button>
+            </Link>
             <div className="flex gap-4 mt-20 text-[18px]">
               <h1>Core :</h1>
               <ul>

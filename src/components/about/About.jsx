@@ -62,7 +62,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className={`${styles.paddingX} ${styles.paddingY} bg-primary min-h-screen w-full  `}
+      className={`${styles.paddingX} ${styles.paddingY} bg-primary min-h-screen w-full`}
     >
       <div className="max-w-7xl mx-auto text-white">
         <h1 className="text-[30px] xs:text-[50px] md:text-[60px] lg:text-[70px] font-extrabold">

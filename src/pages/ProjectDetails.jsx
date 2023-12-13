@@ -1,6 +1,20 @@
+import { useEffect, useRef } from "react";
 import Footer from "../components/footer/Footer";
+import { motion, useAnimation, useInView } from "framer-motion";
 
 const ProjectDetails = () => {
+  const ref = useRef();
+  const controls = useAnimation();
+  const isInView = useInView(ref);
+
+  useEffect(() => {
+    if (isInView) {
+      controls.start("visible");
+    } else {
+      controls.start("hidden");
+    }
+  }, [controls, isInView]);
+
   const usedTechs = [
     { label: "ReactJS", href: "", color: "", id: "143" },
     { label: "NextJS", href: "", color: "", id: "14253" },
@@ -25,26 +39,59 @@ const ProjectDetails = () => {
       >
         <div className={`max-w-screen-2xl mx-auto text-white`}>
           {/* header start  */}
-          <h1 className={styles.headingTextBold}>PROJECT NAME PROJECT NAME</h1>
-          <div className="flex justify-between items-center flex-wrap gap-24 mt-16 mb-28">
-            <ul className="flex items-center text-[18px] gap-5 flex-wrap">
-              <li>
-                <h1>Technologies :</h1>
-              </li>
-              {usedTechs.map(({ label, href, id }) => {
-                return (
-                  <li key={id}>
-                    <a href={href}>{label}</a>
-                  </li>
-                );
-              })}
-            </ul>
+          <motion.h1
+            ref={ref}
+            initial="hidden"
+            animate={controls}
+            variants={{
+              hidden: { opacity: 0, y: "50px" },
+              visible: { opacity: 1, y: 0 },
+            }}
+            transition={{
+              duration: 0.75,
+              delay: 0.5,
+              ease: [0.75, 0, 0.24, 1],
+            }}
+            className={styles.headingTextBold}
+          >
+            PROJECT NAME PROJECT NAME
+          </motion.h1>
+          <div className="flex justify-between items-start flex-wrap gap-24 mt-16 mb-28">
+            <div>
+              <ul className="flex items-center text-[18px] gap-5 flex-wrap">
+                <li>
+                  <h1>Technologies :</h1>
+                </li>
+                {usedTechs.map(({ label, href, id }) => {
+                  return (
+                    <li key={id}>
+                      <a href={href}>{label}</a>
+                    </li>
+                  );
+                })}
+              </ul>
+              <div className="flex items-center flex-wrap gap-6 mt-5">
+                <h1 className="text-[18px]">Source Code :</h1>
+                <a
+                  className="w-44 hover:bg-black text-[18px] h-10 border rounded-full flex items-center justify-center"
+                  href=""
+                >
+                  Front-end
+                </a>
+                <a
+                  className="w-44 hover:bg-black text-[18px] h-10 border rounded-full flex items-center justify-center"
+                  href=""
+                >
+                  Server
+                </a>
+              </div>
+            </div>
             <ul className="flex items-center flex-wrap gap-4 md:gap-14">
               <li className="w-56 flex items-center cursor-pointer justify-center text-[20px] font-bold rounded-full h-10 border border-white relative hover:bg-black">
                 Live Project{" "}
                 <span className="absolute -right-5 -top-10">
                   <svg
-                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns="https://i.ibb.co/f0NnPLD/Electro-Shop-Home-Page.png"
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
@@ -70,7 +117,7 @@ const ProjectDetails = () => {
             <figure className="w-full h-auto">
               <img
                 className="w-full h-full object-cover object-center"
-                src="https://img.freepik.com/free-photo/galaxy-night-landscape_23-2148895320.jpg?w=1380&t=st=1702298001~exp=1702298601~hmac=afce122841b878d3d9971378a61cb1fe641297351ebd30f33422bfe81578177e"
+                src="https://i.ibb.co/0jf0RsN/weather-App-Landing-Page.png"
                 alt=""
               />
             </figure>
@@ -90,7 +137,7 @@ const ProjectDetails = () => {
                   <figure className="w-full h-auto">
                     <img
                       className="w-full h-full object-cover object-center"
-                      src="https://img.freepik.com/free-photo/galaxy-night-landscape_23-2148895320.jpg?w=1380&t=st=1702298001~exp=1702298601~hmac=afce122841b878d3d9971378a61cb1fe641297351ebd30f33422bfe81578177e"
+                      src="https://i.ibb.co/0jf0RsN/weather-App-Landing-Page.png"
                       alt=""
                     />
                   </figure>
@@ -113,7 +160,7 @@ const ProjectDetails = () => {
                   <figure className="w-full h-auto">
                     <img
                       className="w-full h-full object-cover object-center"
-                      src="https://img.freepik.com/free-photo/galaxy-night-landscape_23-2148895320.jpg?w=1380&t=st=1702298001~exp=1702298601~hmac=afce122841b878d3d9971378a61cb1fe641297351ebd30f33422bfe81578177e"
+                      src="https://i.ibb.co/0jf0RsN/weather-App-Landing-Page.png"
                       alt=""
                     />
                   </figure>
@@ -136,7 +183,7 @@ const ProjectDetails = () => {
                   <figure className="w-full h-auto">
                     <img
                       className="w-full h-full object-cover object-center"
-                      src="https://img.freepik.com/free-photo/galaxy-night-landscape_23-2148895320.jpg?w=1380&t=st=1702298001~exp=1702298601~hmac=afce122841b878d3d9971378a61cb1fe641297351ebd30f33422bfe81578177e"
+                      src="https://i.ibb.co/0jf0RsN/weather-App-Landing-Page.png"
                       alt=""
                     />
                   </figure>

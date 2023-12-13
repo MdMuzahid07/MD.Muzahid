@@ -1,9 +1,19 @@
+import { useEffect } from "react";
 import { HR } from "../components/common/HR";
 import Footer from "../components/footer/Footer";
 import ProjectCard from "../components/portfolio/ProjectCard";
 import { styles } from "../styles";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchProjectsData } from "../features/projects/projectSlice";
 
 const Portfolio = () => {
+  const projects = useSelector((state) => state.projects.projects);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchProjectsData());
+  }, [dispatch]);
+
   return (
     <>
       <section
@@ -12,14 +22,9 @@ const Portfolio = () => {
       >
         <div className={`${styles.paddingX}  text-white  relative`}>
           <HR style="bg-black border-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-[1px] mb-20" />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
+          {projects?.map((project) => (
+            <ProjectCard key={project._id} project={project} />
+          ))}
         </div>
       </section>
       <hr />

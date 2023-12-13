@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import { HR } from "../common/HR";
 
-const ProjectCard = () => {
+const ProjectCard = ({ project }) => {
   return (
     <div className="bg-primary">
       <div className="max-w-7xl mx-auto">
@@ -10,7 +11,7 @@ const ProjectCard = () => {
           <div>
             <h1>01.</h1>
             <h1 className="text-[30px] md:text-[text-50px] lg:text-[80px] font-bold">
-              PROJECT NAME
+              {project?.appName}
             </h1>
             <Link
               to="/projectDetails"
@@ -45,8 +46,8 @@ const ProjectCard = () => {
           {/* heading end */}
           <div>
             <img
-              className="w-full h-full  md:w-[400px] md:h-[400px] xl:w-[500px] xl:h-[500px]"
-              src="https://img.freepik.com/free-vector/astronomical-observatory-telescopes-cartoon_1441-3176.jpg?t=st=1702276693~exp=1702277293~hmac=9bb3fb0821712658be22288c12309e4545819cac4c669f41d868d41f40ab305f"
+              className="w-full h-full object-cover object-center  md:w-[400px] md:h-[400px] xl:w-[500px] xl:h-[500px]"
+              src={project?.img}
               alt=""
             />
           </div>

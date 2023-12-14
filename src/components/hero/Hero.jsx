@@ -1,17 +1,35 @@
+import { useEffect, useRef } from "react";
 import { styles } from "../../styles";
 import heroStyles from "./heroStyles";
-import { motion } from "framer-motion";
+import { motion, useAnimation, useInView } from "framer-motion";
 
 const Hero = () => {
+  const ref = useRef();
+  const controls = useAnimation();
+  const isInView = useInView(ref);
+
+  useEffect(() => {
+    if (isInView) {
+      controls.start("visible");
+    } else {
+      controls.start("hidden");
+    }
+  }, [controls, isInView]);
+
   return (
     <div
       id="home"
       className={`${styles.paddingX} heroBG bg-primary min-h-screen w-full flex-col flex items-center justify-center text-white relative`}
     >
       <motion.h1
-        initial={{ opacity: 0, y: "50px" }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.75, delay: 0.5, ease: [0.75, 0, 0.24, 1] }}
+        ref={ref}
+        initial="hidden"
+        animate={controls}
+        variants={{
+          hidden: { opacity: 0, y: "50px" },
+          visible: { opacity: 1, y: 0 },
+        }}
+        transition={{ duration: 0.75, delay: 0.7, ease: [0.75, 0, 0.24, 1] }}
         className={heroStyles.headingBold}
       >
         HI, {`I'M`}{" "}
@@ -20,8 +38,13 @@ const Hero = () => {
         </span>
       </motion.h1>
       <motion.h1
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        ref={ref}
+        initial="hidden"
+        animate={controls}
+        variants={{
+          hidden: { opacity: 0 },
+          visible: { opacity: 1 },
+        }}
         transition={{ duration: 0.75, delay: 1.3, ease: [0.5, 0, 0.75, 0] }}
         className={heroStyles.headingNormal}
       >
@@ -43,16 +66,20 @@ const Hero = () => {
       </motion.h1>
 
       <motion.a
-        initial={{ opacity: 0, y: "50px" }}
-        animate={{ opacity: 1, y: 0 }}
+        ref={ref}
+        initial="hidden"
+        animate={controls}
+        variants={{
+          hidden: { opacity: 0, y: "50px" },
+          visible: { opacity: 1, y: 0 },
+        }}
         transition={{
           duration: 0.75,
-          delay: 1.9,
-          ease: [0.75, 0, 0.24, 1],
+          delay: 1.7,
         }}
         type="button"
         href="#about"
-        className="hidden transition ease-in-out delay-50 text-white h-24 w-24 border xl:flex justify-center items-center rounded-full  absolute bottom-[10vh] right-[20vw] hover:bg-black"
+        className="hidden text-white h-24 w-24 border xl:flex justify-center items-center rounded-full  absolute bottom-[10vh] right-[20vw] hover:bg-black"
       >
         {" "}
         <svg

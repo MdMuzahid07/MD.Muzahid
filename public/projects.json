@@ -1,0 +1,131 @@
+[
+    {
+        "_id": "kino8%(*&T",
+        "name": "Kino",
+        "coreTech": [
+            "ReactJS",
+            "ExpressJS",
+            "MongoDB"
+        ],
+        "usedTechnologies": [
+            "ReactJS",
+            "NodeJS",
+            "ExpressJS",
+            "MongoDB",
+            "Mongoose",
+            "React hot toast",
+            "React hooks form",
+            "React firebase hooks",
+            "firebase",
+            "React Swiper"
+        ],
+        "ThumbnailImg": "https://i.ibb.co/0jf0RsN/weather-App-Landing-Page.png",
+        "feature_1": {
+            "heading": "this is a awesome application",
+            "detail": "s simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
+            "image": "https://i.ibb.co/0jf0RsN/weather-App-Landing-Page.png"
+        },
+        "feature_2": {
+            "heading": "this is a awesome application",
+            "detail": "s simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
+            "image": "https://i.ibb.co/0jf0RsN/weather-App-Landing-Page.png"
+        },
+        "feature_3": {
+            "heading": "this is a awesome application",
+            "detail": "s simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
+            "image": "https://i.ibb.co/0jf0RsN/weather-App-Landing-Page.png"
+        },
+        "projectYear":2023,
+        "live_url":"mdmuzahid.dev",
+        "source":{
+            "server":"github.com/mdmuzahid07",
+            "client":"github.com/mdmuzahid07"
+        }
+    },
+     {
+        "_id": "twitte%(*&T",
+        "name": "Kino",
+        "coreTech": [
+            "ReactJS",
+            "ExpressJS",
+            "MongoDB"
+        ],
+        "usedTechnologies": [
+            "ReactJS",
+            "NodeJS",
+            "ExpressJS",
+            "MongoDB",
+            "Mongoose",
+            "React hot toast",
+            "React hooks form",
+            "React firebase hooks",
+            "firebase",
+            "React Swiper"
+        ],
+        "ThumbnailImg": "https://i.ibb.co/0jf0RsN/weather-App-Landing-Page.png",
+        "feature_1": {
+            "heading": "this is a awesome application",
+            "detail": "s simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
+            "image": "https://i.ibb.co/0jf0RsN/weather-App-Landing-Page.png"
+        },
+        "feature_2": {
+            "heading": "this is a awesome application",
+            "detail": "s simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
+            "image": "https://i.ibb.co/0jf0RsN/weather-App-Landing-Page.png"
+        },
+        "feature_3": {
+            "heading": "this is a awesome application",
+            "detail": "s simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
+            "image": "https://i.ibb.co/0jf0RsN/weather-App-Landing-Page.png"
+        },
+        "projectYear":2023,
+        "live_url":"mdmuzahid.dev",
+        "source":{
+            "server":"github.com/mdmuzahid07",
+            "client":"github.com/mdmuzahid07"
+        }
+    },
+     {
+        "_id": "electro8%(*&T",
+        "name": "Kino",
+        "coreTech": [
+            "ReactJS",
+            "ExpressJS",
+            "MongoDB"
+        ],
+        "usedTechnologies": [
+            "ReactJS",
+            "NodeJS",
+            "ExpressJS",
+            "MongoDB",
+            "Mongoose",
+            "React hot toast",
+            "React hooks form",
+            "React firebase hooks",
+            "firebase",
+            "React Swiper"
+        ],
+        "ThumbnailImg": "https://i.ibb.co/0jf0RsN/weather-App-Landing-Page.png",
+        "feature_1": {
+            "heading": "this is a awesome application",
+            "detail": "s simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
+            "image": "https://i.ibb.co/0jf0RsN/weather-App-Landing-Page.png"
+        },
+        "feature_2": {
+            "heading": "this is a awesome application",
+            "detail": "s simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
+            "image": "https://i.ibb.co/0jf0RsN/weather-App-Landing-Page.png"
+        },
+        "feature_3": {
+            "heading": "this is a awesome application",
+            "detail": "s simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
+            "image": "https://i.ibb.co/0jf0RsN/weather-App-Landing-Page.png"
+        },
+        "projectYear":2023,
+        "live_url":"mdmuzahid.dev",
+        "source":{
+            "server":"github.com/mdmuzahid07",
+            "client":"github.com/mdmuzahid07"
+        }
+    }
+]

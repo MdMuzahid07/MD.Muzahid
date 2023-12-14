@@ -1,11 +1,13 @@
 import { useEffect, useRef } from "react";
 import Footer from "../components/footer/Footer";
 import { motion, useAnimation, useInView } from "framer-motion";
+import { useParams } from "react-router-dom";
 
 const ProjectDetails = () => {
   const ref = useRef();
   const controls = useAnimation();
   const isInView = useInView(ref);
+  const { projectId } = useParams();
 
   useEffect(() => {
     if (isInView) {
@@ -14,6 +16,10 @@ const ProjectDetails = () => {
       controls.start("hidden");
     }
   }, [controls, isInView]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const usedTechs = [
     { label: "ReactJS", href: "", color: "", id: "143" },

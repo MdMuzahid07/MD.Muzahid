@@ -1,8 +1,14 @@
 /* eslint-disable react/prop-types */
-import { Link } from "react-router-dom";
 import { HR } from "../common/HR";
+import { useNavigate } from "react-router-dom";
 
 const ProjectCard = ({ project }) => {
+  const navigate = useNavigate();
+
+  const handleClick = (id) => {
+    navigate(`/projectDetails/${id}`);
+  };
+
   return (
     <div className="bg-primary">
       <div className="max-w-7xl mx-auto">
@@ -13,8 +19,8 @@ const ProjectCard = ({ project }) => {
             <h1 className="text-[30px] md:text-[text-50px] lg:text-[80px] font-bold">
               {project?.appName}
             </h1>
-            <Link
-              to="/projectDetails"
+            <button
+              onClick={() => handleClick(project?._id)}
               type="button"
               className="flex gap-4 text-[40px]"
             >
@@ -33,7 +39,7 @@ const ProjectCard = ({ project }) => {
                   d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
                 />
               </svg>
-            </Link>
+            </button>
             <div className="flex gap-4 mt-20 text-[18px]">
               <h1>Core :</h1>
               <ul>

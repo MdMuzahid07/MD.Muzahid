@@ -29,7 +29,7 @@ const Hero = () => {
           hidden: { opacity: 0, y: "50px" },
           visible: { opacity: 1, y: 0 },
         }}
-        transition={{ duration: 0.75, delay: 0.7, ease: [0.75, 0, 0.24, 1] }}
+        transition={{ duration: 0.75, delay: 0.5, ease: [0.75, 0, 0.24, 1] }}
         className={heroStyles.headingBold}
       >
         HI, {`I'M`}{" "}
@@ -45,7 +45,7 @@ const Hero = () => {
           hidden: { opacity: 0 },
           visible: { opacity: 1 },
         }}
-        transition={{ duration: 0.75, delay: 1.3, ease: [0.5, 0, 0.75, 0] }}
+        transition={{ duration: 0.75, delay: 0.9, ease: [0.5, 0, 0.75, 0] }}
         className={heroStyles.headingNormal}
       >
         I DEVELOP WEB WORLD, AND REACT NATIVE{" "}

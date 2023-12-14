@@ -5,14 +5,19 @@ import ProjectCard from "../components/portfolio/ProjectCard";
 import { styles } from "../styles";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProjectsData } from "../features/projects/projectSlice";
+import Preloader from "../components/preloader/Preloader";
 
 const Portfolio = () => {
-  const projects = useSelector((state) => state.projects.projects);
+  const { projects, isLoading } = useSelector((state) => state.projects);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchProjectsData());
   }, [dispatch]);
+
+  if (isLoading) {
+    return <Preloader />;
+  }
 
   return (
     <>

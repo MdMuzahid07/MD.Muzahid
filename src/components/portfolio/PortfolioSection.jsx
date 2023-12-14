@@ -2,15 +2,24 @@ import { Link } from "react-router-dom";
 import { styles } from "../../styles";
 import { HR } from "../common/HR";
 import ProjectCard from "./ProjectCard";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { fetchProjectsData } from "../../features/projects/projectSlice";
 
 const PortfolioSection = () => {
+  const { projects } = useSelector((state) => state.projects);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchProjectsData());
+  }, [dispatch]);
+
   return (
     <section id="portfolio" className="w-full  min-h-screen bg-primary">
       <div className={`${styles.paddingX}  text-white  relative`}>
         <HR style="bg-black border-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-[1px] mb-20" />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
+        {projects?.slice(0, 3)?.map((project) => (
+          <ProjectCard project={project} key={project?._id} />
+        ))}
 
         <Link
           to="/projects"

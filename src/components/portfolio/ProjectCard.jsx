@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { HR } from "../common/HR";
 import { useNavigate } from "react-router-dom";
+import Tilt from "react-parallax-tilt";
 
 const ProjectCard = ({ project, index }) => {
   const navigate = useNavigate();
@@ -51,11 +52,13 @@ const ProjectCard = ({ project, index }) => {
           </div>
           {/* heading end */}
           <div>
-            <img
-              className="w-full h-full object-cover object-center  md:w-[400px] md:h-[400px] xl:w-[700px] xl:h-[500px]"
-              src={project?.img}
-              alt=""
-            />
+            <Tilt tiltAngleXInitial={20} tiltAngleYInitial={20}>
+              <img
+                className="w-full h-full transition ease-in-out delay-100 object-cover  object-center  sm:w-[600px] md:h-[400px] xl:w-[800px] xl:h-[500px] brightness-50 hover:brightness-100"
+                src={project?.img}
+                alt=""
+              />
+            </Tilt>
           </div>
         </div>
       </div>

@@ -19,7 +19,7 @@ const Navbar = () => {
         }
       w-full flex items-center py-5 fixed top-0 z-40 `}
       >
-        <div className="w-full max-w-7xl mx-auto flex justify-between items-center">
+        <div className="w-full max-w-screen-2xl mx-auto flex justify-between items-center">
           <Link
             path="/"
             className="flex items-center gap-2"

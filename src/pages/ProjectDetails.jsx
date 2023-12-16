@@ -1,11 +1,13 @@
 import { useEffect, useRef } from "react";
 import Footer from "../components/footer/Footer";
 import { motion, useAnimation, useInView } from "framer-motion";
+import { useParams } from "react-router-dom";
 
 const ProjectDetails = () => {
   const ref = useRef();
   const controls = useAnimation();
   const isInView = useInView(ref);
+  const { projectId } = useParams();
 
   useEffect(() => {
     if (isInView) {
@@ -14,6 +16,10 @@ const ProjectDetails = () => {
       controls.start("hidden");
     }
   }, [controls, isInView]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [projectId]);
 
   const usedTechs = [
     { label: "ReactJS", href: "", color: "", id: "143" },
@@ -33,8 +39,8 @@ const ProjectDetails = () => {
   };
 
   return (
-    <div>
-      <div
+    <>
+      <section
         className={`sm:px-16 px-6 md:py-24  sm:py-16 py-24 min-h-screen bg-primary w-full`}
       >
         <div className={`max-w-screen-2xl mx-auto text-white`}>
@@ -192,10 +198,38 @@ const ProjectDetails = () => {
             </div>
           </section>
         </div>
-      </div>
+        <div className={`h-[70vh] w-full`}>
+          <div className="max-w-screen-2xl mx-auto w-full h-full bg-[url('https://i.ibb.co/0jf0RsN/weather-App-Landing-Page.png')] object-cover object-center ">
+            <div className="w-full h-full sm:p-16 p-6 flex justify-center flex-col items-center bg-primary opacity-75">
+              <h1 className={`${styles.headingTextBold} text-white`}>
+                PROJECT NAME
+              </h1>
+              <button className="w-56 mt-20 flex items-center cursor-pointer justify-center text-[20px] md:text-[25px] font-bold rounded-xl h-16 border border-white relative text-white">
+                Next Project{" "}
+                <span className="absolute -right-5 -top-10">
+                  <svg
+                    xmlns="https://i.ibb.co/f0NnPLD/Electro-Shop-Home-Page.png"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
+                    />
+                  </svg>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
       <hr />
       <Footer />
-    </div>
+    </>
   );
 };
 

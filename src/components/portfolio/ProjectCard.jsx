@@ -1,20 +1,27 @@
 /* eslint-disable react/prop-types */
-import { Link } from "react-router-dom";
 import { HR } from "../common/HR";
+import { useNavigate } from "react-router-dom";
+import Tilt from "react-parallax-tilt";
 
-const ProjectCard = ({ project }) => {
+const ProjectCard = ({ project, index }) => {
+  const navigate = useNavigate();
+
+  const handleClick = (id) => {
+    navigate(`/projectDetails/${id}`);
+  };
+
   return (
     <div className="bg-primary">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-screen-2xl mx-auto">
         <div className="flex flex-col gap-10 md:gap-0 md:flex-row md:justify-between">
           {/* heading start  */}
           <div>
-            <h1>01.</h1>
+            <h1>{`${index < 9 ? 0 : " "}${index + 1}.`}</h1>
             <h1 className="text-[30px] md:text-[text-50px] lg:text-[80px] font-bold">
               {project?.appName}
             </h1>
-            <Link
-              to="/projectDetails"
+            <button
+              onClick={() => handleClick(project?._id)}
               type="button"
               className="flex gap-4 text-[40px]"
             >
@@ -33,7 +40,7 @@ const ProjectCard = ({ project }) => {
                   d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
                 />
               </svg>
-            </Link>
+            </button>
             <div className="flex gap-4 mt-20 text-[18px]">
               <h1>Core :</h1>
               <ul>
@@ -45,11 +52,13 @@ const ProjectCard = ({ project }) => {
           </div>
           {/* heading end */}
           <div>
-            <img
-              className="w-full h-full object-cover object-center  md:w-[400px] md:h-[400px] xl:w-[500px] xl:h-[500px]"
-              src={project?.img}
-              alt=""
-            />
+            <Tilt tiltAngleXInitial={20} tiltAngleYInitial={20}>
+              <img
+                className="w-full h-full transition ease-in-out delay-100 object-cover  object-center  sm:w-[600px] md:h-[400px] xl:w-[800px] xl:h-[500px] brightness-50 hover:brightness-100"
+                src={project?.img}
+                alt=""
+              />
+            </Tilt>
           </div>
         </div>
       </div>

@@ -15,6 +15,10 @@ const Portfolio = () => {
     dispatch(fetchProjectsData());
   }, [dispatch]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [projects]);
+
   if (isLoading) {
     return <Preloader />;
   }

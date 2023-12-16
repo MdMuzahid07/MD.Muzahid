@@ -11,7 +11,7 @@ const ProjectCard = ({ project, index }) => {
 
   return (
     <div className="bg-primary">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-screen-2xl mx-auto">
         <div className="flex flex-col gap-10 md:gap-0 md:flex-row md:justify-between">
           {/* heading start  */}
           <div>
@@ -52,7 +52,7 @@ const ProjectCard = ({ project, index }) => {
           {/* heading end */}
           <div>
             <img
-              className="w-full h-full object-cover object-center  md:w-[400px] md:h-[400px] xl:w-[500px] xl:h-[500px]"
+              className="w-full h-full object-cover object-center  md:w-[400px] md:h-[400px] xl:w-[700px] xl:h-[500px]"
               src={project?.img}
               alt=""
             />

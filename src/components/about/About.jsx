@@ -64,7 +64,7 @@ const About = () => {
       id="about"
       className={`${styles.paddingX} ${styles.paddingY} bg-primary min-h-screen w-full`}
     >
-      <div className="max-w-7xl mx-auto text-white">
+      <div className="max-w-screen-2xl mx-auto text-white">
         <h1 className="text-[30px] xs:text-[50px] md:text-[60px] lg:text-[70px] font-extrabold">
           {textWords.map(({ text, id, style }) => (
             <span key={id} className={style}>

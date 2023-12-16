@@ -5,7 +5,7 @@ const Footer = () => {
 
   return (
     <footer className={`${styles.paddingX} bg-primary`}>
-      <div className="max-w-7xl mx-auto text-white py-5">
+      <div className="max-w-screen-2xl mx-auto text-white py-5">
         <p>Copyright &#169; {year} - All right reserved by Md.Muzahid</p>
       </div>
     </footer>

@@ -2,7 +2,7 @@
 import { HR } from "../common/HR";
 import { useNavigate } from "react-router-dom";
 
-const ProjectCard = ({ project }) => {
+const ProjectCard = ({ project, index }) => {
   const navigate = useNavigate();
 
   const handleClick = (id) => {
@@ -15,7 +15,7 @@ const ProjectCard = ({ project }) => {
         <div className="flex flex-col gap-10 md:gap-0 md:flex-row md:justify-between">
           {/* heading start  */}
           <div>
-            <h1>01.</h1>
+            <h1>{`${index < 9 ? 0 : " "}${index + 1}.`}</h1>
             <h1 className="text-[30px] md:text-[text-50px] lg:text-[80px] font-bold">
               {project?.appName}
             </h1>

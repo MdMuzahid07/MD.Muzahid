@@ -2,8 +2,8 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
-  const [active, setActive] = useState("");
+const Sidebar = ({ isSidebarOpen }) => {
+  const [active, setActive] = useState("/dashboard/home");
   const location = useLocation();
   const pathname = location.pathname;
 

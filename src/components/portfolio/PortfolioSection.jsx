@@ -17,8 +17,8 @@ const PortfolioSection = () => {
     <section id="portfolio" className="w-full  min-h-screen bg-primary">
       <div className={`${styles.paddingX}  text-white  relative`}>
         <HR style="bg-black border-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-[1px] mb-20" />
-        {projects?.slice(0, 3)?.map((project) => (
-          <ProjectCard project={project} key={project?._id} />
+        {projects?.slice(0, 3)?.map((project, index) => (
+          <ProjectCard project={project} key={project?._id} index={index} />
         ))}
 
         <Link

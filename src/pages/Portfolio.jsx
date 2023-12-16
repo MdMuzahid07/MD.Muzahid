@@ -27,8 +27,8 @@ const Portfolio = () => {
       >
         <div className={`${styles.paddingX}  text-white  relative`}>
           <HR style="bg-black border-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-[1px] mb-20" />
-          {projects?.map((project) => (
-            <ProjectCard key={project._id} project={project} />
+          {projects?.map((project, index) => (
+            <ProjectCard key={project._id} project={project} index={index} />
           ))}
         </div>
       </section>

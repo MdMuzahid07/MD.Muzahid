@@ -5,7 +5,7 @@ import { styles } from "../../styles";
 import Header from "./Header";
 
 const Dashboard = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   useEffect(() => {
     document.body.style.cursor = "default";
   }, []);

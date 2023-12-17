@@ -16,6 +16,7 @@ const addProjectStyles = {
 
 const DashboardAddProject = () => {
   const [coreTechs, setCoreTechs] = useState([]);
+  const [allUsedTechs, setAllUsedTechs] = useState([]);
 
   const options = [
     { label: "Select", value: "Select" },
@@ -26,17 +27,26 @@ const DashboardAddProject = () => {
     { label: "TailwindCSS", value: "TailwindCSS" },
   ];
 
-  const handleOnChange = (event) => {
+  const handleOnChangeCoreTechs = (event) => {
     const techs = [...coreTechs, event.target.value];
     setCoreTechs(techs);
   };
 
+  const handleOnChangeAllUsedTechs = (event) => {
+    const techs = [...allUsedTechs, event.target.value];
+    setAllUsedTechs(techs);
+  };
+
+  const handleForm = (e) => {
+    e.preventDefault();
+  };
+
   return (
-    <>
+    <div className="relative">
       <h1 className={`${addProjectStyles.headingText} mt-14`}>
         Upload Project
       </h1>
-      <form action="" className="mt-20 mb-[50vh]">
+      <form onSubmit={handleForm} className="mt-20 mb-[50vh] relative">
         <div className="mb-5">
           <label className={addProjectStyles.labelText} htmlFor="projectName">
             Project Name
@@ -257,7 +267,7 @@ const DashboardAddProject = () => {
           <h1 className={`${addProjectStyles.headingText} mt-14`}>
             Technologies
           </h1>
-          <div className="mt-5 flex items-center flex-row md:flex-cols gap-10">
+          <div className="mt-5 grid lg:grid-cols-2  gap-10">
             <div className="w-full">
               <label htmlFor="" className={addProjectStyles.labelText}>
                 Core
@@ -275,19 +285,61 @@ const DashboardAddProject = () => {
               <MultiSelectDropdown
                 styles={addProjectStyles.inputStyle}
                 options={options}
-                handleOnChange={handleOnChange}
+                handleOnChange={handleOnChangeCoreTechs}
               />
             </div>
             <div className="w-full">
               <label htmlFor="" className={addProjectStyles.labelText}>
                 All Used
               </label>
-              <MultiSelectDropdown styles={addProjectStyles.inputStyle} />
+              <div className={`flex flex-wrap items-center gap-4`}>
+                {allUsedTechs?.map((tech, index) => (
+                  <p
+                    className="w-20 h-7 text-[14px] flex items-center justify-center rounded-full bg-slate-100 mb-3"
+                    key={index}
+                  >
+                    {tech}{" "}
+                  </p>
+                ))}
+              </div>
+              <MultiSelectDropdown
+                styles={addProjectStyles.inputStyle}
+                options={options}
+                handleOnChange={handleOnChangeAllUsedTechs}
+              />
             </div>
           </div>
         </div>
+
+        <div className="absolute -bottom-[30vh] right-[10vw]">
+          <button
+            type="submit"
+            className="relative w-28 h-28 flex justify-center items-center border rounded-full hover:bg-black hover:text-white transition delay-200 ease-in text-[18px] active:text-[25px]"
+          >
+            Add
+            <span className="absolute -right-10 -top-10">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M19.5 4.5l-15 15m0 0h11.25m-11.25 0V8.25"
+                />
+              </svg>
+            </span>
+          </button>
+        </div>
       </form>
-    </>
+      {/* <div className="fixed right-[10vw] bottom-[10vh] w-72 text-[25px] h-16 bg-primary text-white border flex items-center p-4">
+        toast component
+      </div> */}
+    </div>
   );
 };
 

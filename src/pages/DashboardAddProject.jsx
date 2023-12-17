@@ -1,42 +1,229 @@
+const addProjectStyles = {
+  headingText:
+    "text-[18px] xs:text-[25px] md:text-[40px] lg:text-[60px] font-bold",
+  clipText:
+    "bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500",
+  labelText: "text-[18px] xs:text-[25px] md:text-[40px]",
+  inputStyle:
+    "w-full h-14 px-7 border placeholder:text-[18px] focus:outline-none bg-slate-50",
+};
+
 const DashboardAddProject = () => {
   return (
-    <div className="">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo delectus
-        tempora asperiores hic voluptatem, soluta ut laudantium excepturi
-        molestiae similique corporis veritatis error. Voluptatem odio impedit
-        totam doloribus corrupti odit tempora incidunt! Ipsum repellendus libero
-        rem nihil eaque, doloribus vel unde corporis assumenda, nisi
-        necessitatibus accusantium. Doloribus, placeat eius officiis nesciunt et
-        pariatur impedit veritatis modi earum illum eos enim facilis aliquid sit
-        voluptates itaque ducimus dolores quaerat? Et sint illum ab ipsum
-        recusandae nulla inventore beatae eos sed nihil consequatur fugit
-        numquam a voluptatem itaque sit dolores voluptas nemo, minus cum atque
-        praesentium quae. Ea cum asperiores quo, nostrum iusto quae soluta,
-        distinctio molestias quibusdam beatae odit provident, nam praesentium
-        ipsa repellat unde aliquid. Possimus labore eligendi debitis est!
-        Dolorem eum rem modi illum neque corporis obcaecati saepe et temporibus
-        impedit exercitationem facilis hic magni ratione unde repudiandae,
-        asperiores perspiciatis dicta accusantium numquam commodi nihil nam.
-        Provident ducimus porro quidem nam eius qui sapiente accusantium
-        cupiditate minus illum officiis quae amet laboriosam, nulla voluptates
-        animi enim dolore est optio quibusdam? Voluptate eum ipsam dolorum
-        fugit, praesentium suscipit incidunt officiis nemo ut soluta? Doloremque
-        consectetur iusto veritatis mollitia quis soluta placeat dicta odio
-        dolores et possimus aut autem, vero repellat dolorum nihil illo harum
-        corrupti voluptatem unde ducimus doloribus cupiditate. Excepturi ab
-        iusto illum cum facilis. Perferendis nulla, quisquam adipisci hic
-        dolores praesentium quibusdam harum accusamus unde minus totam
-        consectetur dolor voluptates tenetur saepe incidunt eos quas. Rerum,
-        nobis quam deserunt tenetur temporibus dolor atque incidunt doloribus
-        quas laboriosam. Possimus, aliquid neque? Quos nostrum corrupti ab fugit
-        nisi similique libero esse vitae perspiciatis aperiam. Nulla sed
-        necessitatibus neque laudantium esse voluptas inventore porro quos, ex
-        architecto rerum sit vitae perferendis cupiditate et provident impedit
-        non deserunt itaque consequatur. Natus voluptas incidunt ea dolores
-        eius, assumenda enim illum in ducimus asperiores!
-      </p>
-    </div>
+    <>
+      <h1 className={`${addProjectStyles.headingText} mt-14`}>
+        Upload Project
+      </h1>
+      <form action="" className="mt-20">
+        <div className="mb-5">
+          <label className={addProjectStyles.labelText} htmlFor="projectName">
+            Project Name
+          </label>
+          <input
+            className={addProjectStyles.inputStyle}
+            type="text"
+            placeholder="Add Project Name"
+            id="projectName"
+          />
+        </div>
+
+        <div className="mb-5">
+          <label
+            className={addProjectStyles.labelText}
+            htmlFor="projectThumbnail"
+          >
+            Project Thumbnail
+          </label>
+          <div className={`${addProjectStyles.inputStyle}`}>
+            <input
+              type="file"
+              placeholder="Select Project Thumbnail"
+              id="projectThumbnail"
+            />
+          </div>
+        </div>
+
+        <div className="mb-5">
+          <label className={addProjectStyles.labelText} htmlFor="liveUrl">
+            Project Live Url
+          </label>
+          <input
+            className={`${addProjectStyles.inputStyle}`}
+            type="text"
+            placeholder="Add project live url"
+            id="liveUrl"
+          />
+        </div>
+
+        <div className="mb-5">
+          <label className={addProjectStyles.labelText} htmlFor="projectYear">
+            Project Year
+          </label>
+          <input
+            className={`${addProjectStyles.inputStyle}`}
+            type="number"
+            placeholder="Project Year"
+            id="projectYear"
+          />
+        </div>
+
+        <div className="mb-5">
+          <h1 className={`${addProjectStyles.headingText} mt-14`}>
+            Source Code
+          </h1>
+          <div className="grid lg:grid-cols-2 gap-5">
+            <div>
+              <label className={addProjectStyles.labelText} htmlFor="clientUrl">
+                Client Github URL
+              </label>
+              <input
+                className={`${addProjectStyles.inputStyle}`}
+                type="text"
+                placeholder="Client Github URL"
+                id="clientUrl"
+              />
+            </div>
+            <div>
+              <label className={addProjectStyles.labelText} htmlFor="serverUrl">
+                Server Github URL
+              </label>
+              <input
+                className={`${addProjectStyles.inputStyle}`}
+                type="text"
+                placeholder="Client Server URL"
+                id="serverUrl"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="mb-5">
+          <h1 className={`${addProjectStyles.headingText} mt-14`}>
+            Write features with Thumbnail
+          </h1>
+
+          <div className="mt-5 mb-3 w-28 h-7 rounded-full flex items-center justify-center border">
+            <span>Feature_1</span>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-10">
+            <div>
+              <label className={addProjectStyles.labelText} htmlFor="f1">
+                Heading
+              </label>
+              <input
+                className={`${addProjectStyles.inputStyle}`}
+                type="text"
+                placeholder="Feature heading"
+                id="f1"
+              />
+            </div>
+            <div>
+              <label className={addProjectStyles.labelText} htmlFor="f2">
+                Details
+              </label>
+              <input
+                className={`${addProjectStyles.inputStyle}`}
+                type="text"
+                placeholder="Feature Details"
+                id="f2"
+              />
+            </div>
+
+            <div>
+              <label className={addProjectStyles.labelText} htmlFor="f3">
+                Feature Thumbnail
+              </label>
+              <div className={`${addProjectStyles.inputStyle}`}>
+                <input type="file" placeholder="Feature Thumbnail" id="f3" />
+              </div>
+            </div>
+          </div>
+
+          <hr className="my-10" />
+
+          <div className="mt-5">
+            <div className="mt-5 mb-3 w-28 h-7 rounded-full flex items-center justify-center border">
+              <span>Feature_2</span>
+            </div>
+            <div className="grid lg:grid-cols-2 gap-10">
+              <div>
+                <label className={addProjectStyles.labelText} htmlFor="f1">
+                  Heading
+                </label>
+                <input
+                  className={`${addProjectStyles.inputStyle}`}
+                  type="text"
+                  placeholder="Feature heading"
+                  id="f1"
+                />
+              </div>
+              <div>
+                <label className={addProjectStyles.labelText} htmlFor="f2">
+                  Details
+                </label>
+                <input
+                  className={`${addProjectStyles.inputStyle}`}
+                  type="text"
+                  placeholder="Feature Details"
+                  id="f2"
+                />
+              </div>
+
+              <div>
+                <label className={addProjectStyles.labelText} htmlFor="f3">
+                  Feature Thumbnail
+                </label>
+                <div className={`${addProjectStyles.inputStyle}`}>
+                  <input type="file" placeholder="Feature Thumbnail" id="f3" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <hr className="my-10" />
+
+          <div className="mt-5">
+            <div className="mt-5 mb-3 w-28 h-7 rounded-full flex items-center justify-center border">
+              <span>Feature_3</span>
+            </div>
+            <div className="grid lg:grid-cols-2 gap-10">
+              <div>
+                <label className={addProjectStyles.labelText} htmlFor="f1">
+                  Heading
+                </label>
+                <input
+                  className={`${addProjectStyles.inputStyle}`}
+                  type="text"
+                  placeholder="Feature heading"
+                  id="f1"
+                />
+              </div>
+              <div>
+                <label className={addProjectStyles.labelText} htmlFor="f2">
+                  Details
+                </label>
+                <input
+                  className={`${addProjectStyles.inputStyle}`}
+                  type="text"
+                  placeholder="Feature Details"
+                  id="f2"
+                />
+              </div>
+
+              <div>
+                <label className={addProjectStyles.labelText} htmlFor="f3">
+                  Feature Thumbnail
+                </label>
+                <div className={`${addProjectStyles.inputStyle}`}>
+                  <input type="file" placeholder="Feature Thumbnail" id="f3" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </>
   );
 };
 

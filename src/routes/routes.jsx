@@ -6,6 +6,7 @@ import App from "../App";
 import Dashboard from "../layout/Dashboard/Dashboard";
 import DashboardHome from "../pages/DashboardHome";
 import DashboardAddProject from "../pages/DashboardAddProject";
+import GoogleSignIn from "../components/common/GoogleSignIn";
 
 const routes = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const routes = createBrowserRouter([
         element: <DashboardAddProject />,
       },
     ],
+  },
+  {
+    path: "/login",
+    element: <GoogleSignIn />,
   },
 ]);
 

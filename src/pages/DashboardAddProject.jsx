@@ -5,7 +5,10 @@ const addProjectStyles = {
     "bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500",
   labelText: "text-[18px] xs:text-[25px] md:text-[40px]",
   inputStyle:
-    "w-full h-14 px-7 border placeholder:text-[18px] focus:outline-none bg-slate-50",
+    "w-full py-5 px-7 border placeholder:text-[18px] focus:outline-none bg-slate-50",
+  fileInput: `file:mr-4 file:py-0 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold
+      file:bg-violet-50 file:text-primary 
+      file:bg-slate-50`,
 };
 
 const DashboardAddProject = () => {
@@ -34,13 +37,12 @@ const DashboardAddProject = () => {
           >
             Project Thumbnail
           </label>
-          <div className={`${addProjectStyles.inputStyle}`}>
-            <input
-              type="file"
-              placeholder="Select Project Thumbnail"
-              id="projectThumbnail"
-            />
-          </div>
+          <input
+            className={` ${addProjectStyles.inputStyle} ${addProjectStyles.fileInput}`}
+            type="file"
+            placeholder="Select Project Thumbnail"
+            id="projectThumbnail"
+          />
         </div>
 
         <div className="mb-5">
@@ -134,9 +136,12 @@ const DashboardAddProject = () => {
               <label className={addProjectStyles.labelText} htmlFor="f3">
                 Feature Thumbnail
               </label>
-              <div className={`${addProjectStyles.inputStyle}`}>
-                <input type="file" placeholder="Feature Thumbnail" id="f3" />
-              </div>
+              <input
+                className={`${addProjectStyles.inputStyle} ${addProjectStyles.fileInput}`}
+                type="file"
+                placeholder="Feature Thumbnail"
+                id="f3"
+              />
             </div>
           </div>
 
@@ -174,9 +179,12 @@ const DashboardAddProject = () => {
                 <label className={addProjectStyles.labelText} htmlFor="f3">
                   Feature Thumbnail
                 </label>
-                <div className={`${addProjectStyles.inputStyle}`}>
-                  <input type="file" placeholder="Feature Thumbnail" id="f3" />
-                </div>
+                <input
+                  className={`${addProjectStyles.inputStyle} ${addProjectStyles.fileInput}`}
+                  type="file"
+                  placeholder="Feature Thumbnail"
+                  id="f3"
+                />
               </div>
             </div>
           </div>
@@ -215,9 +223,12 @@ const DashboardAddProject = () => {
                 <label className={addProjectStyles.labelText} htmlFor="f3">
                   Feature Thumbnail
                 </label>
-                <div className={`${addProjectStyles.inputStyle}`}>
-                  <input type="file" placeholder="Feature Thumbnail" id="f3" />
-                </div>
+                <input
+                  className={`${addProjectStyles.inputStyle} ${addProjectStyles.fileInput}`}
+                  type="file"
+                  placeholder="Feature Thumbnail"
+                  id="f3"
+                />
               </div>
             </div>
           </div>

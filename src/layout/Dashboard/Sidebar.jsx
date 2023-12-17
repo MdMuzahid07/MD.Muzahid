@@ -13,7 +13,7 @@ const Sidebar = ({ isSidebarOpen }) => {
         isSidebarOpen ? "flex" : "hidden"
       } col-span-12 sm:col-span-3 lg:col-span-2 text-[18px] sm:text-[25px] md:text-[40px] font-bold bg-primary p-7 text-white min-h-screen w-full`}
     >
-      <ul>
+      <ul className="fixed top-10">
         <li>
           <Link
             to="home"

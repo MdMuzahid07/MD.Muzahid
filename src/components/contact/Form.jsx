@@ -55,6 +55,7 @@ const Form = () => {
                 name="name"
                 placeholder="Elon@mask"
                 id="name"
+                required
               />
             </div>
           </div>
@@ -76,6 +77,7 @@ const Form = () => {
                 name="email"
                 placeholder="Elon@mask@gmail.com"
                 id="email"
+                required
               />
             </div>
           </div>
@@ -97,6 +99,7 @@ const Form = () => {
                 name="organization"
                 placeholder="SpaceX City Mars"
                 id="organization"
+                required
               />
             </div>
           </div>
@@ -118,6 +121,7 @@ const Form = () => {
                 name="service"
                 placeholder="Web Development, Backend Development, MERN-Stack"
                 id="services"
+                required
               />
             </div>
           </div>
@@ -141,6 +145,7 @@ const Form = () => {
                 type="text"
                 placeholder="Hello Muzahid, I need a Business Website..."
                 id="message"
+                required
               />
             </div>
           </div>

@@ -13,6 +13,7 @@ const Main = () => {
       document.body.style.cursor = "default";
     }, 1000);
   }, []);
+
   return (
     <>
       <AnimatePresence mode="wait">

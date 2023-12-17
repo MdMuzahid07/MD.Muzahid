@@ -1,3 +1,6 @@
+import { useState } from "react";
+import MultiSelectDropdown from "../components/common/MultiSelectDropdown";
+
 const addProjectStyles = {
   headingText:
     "text-[18px] xs:text-[25px] md:text-[40px] lg:text-[60px] font-bold",
@@ -12,12 +15,28 @@ const addProjectStyles = {
 };
 
 const DashboardAddProject = () => {
+  const [coreTechs, setCoreTechs] = useState([]);
+
+  const options = [
+    { label: "Select", value: "Select" },
+    { label: "ReactJS", value: "ReactJS" },
+    { label: "NextJS", value: "NextJS" },
+    { label: "MongoDB", value: "MongoDB" },
+    { label: "ExpressJS", value: "ExpressJS" },
+    { label: "TailwindCSS", value: "TailwindCSS" },
+  ];
+
+  const handleOnChange = (event) => {
+    const techs = [...coreTechs, event.target.value];
+    setCoreTechs(techs);
+  };
+
   return (
     <>
       <h1 className={`${addProjectStyles.headingText} mt-14`}>
         Upload Project
       </h1>
-      <form action="" className="mt-20">
+      <form action="" className="mt-20 mb-[50vh]">
         <div className="mb-5">
           <label className={addProjectStyles.labelText} htmlFor="projectName">
             Project Name
@@ -230,6 +249,40 @@ const DashboardAddProject = () => {
                   id="f3"
                 />
               </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h1 className={`${addProjectStyles.headingText} mt-14`}>
+            Technologies
+          </h1>
+          <div className="mt-5 flex items-center flex-row md:flex-cols gap-10">
+            <div className="w-full">
+              <label htmlFor="" className={addProjectStyles.labelText}>
+                Core
+              </label>
+              <div className={`flex flex-wrap items-center gap-4`}>
+                {coreTechs?.map((tech, index) => (
+                  <p
+                    className="w-20 h-7 text-[14px] flex items-center justify-center rounded-full bg-slate-100 mb-3"
+                    key={index}
+                  >
+                    {tech}{" "}
+                  </p>
+                ))}
+              </div>
+              <MultiSelectDropdown
+                styles={addProjectStyles.inputStyle}
+                options={options}
+                handleOnChange={handleOnChange}
+              />
+            </div>
+            <div className="w-full">
+              <label htmlFor="" className={addProjectStyles.labelText}>
+                All Used
+              </label>
+              <MultiSelectDropdown styles={addProjectStyles.inputStyle} />
             </div>
           </div>
         </div>

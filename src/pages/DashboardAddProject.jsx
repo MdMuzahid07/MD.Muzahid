@@ -1,5 +1,6 @@
 import { useState } from "react";
 import MultiSelectDropdown from "../components/common/MultiSelectDropdown";
+import toast from "react-hot-toast";
 
 const addProjectStyles = {
   headingText:
@@ -14,18 +15,67 @@ const addProjectStyles = {
       file:bg-slate-50`,
 };
 
+const options = [
+  { label: "Select", value: "Select" },
+  { label: "ReactJS", value: "ReactJS" },
+  { label: "NextJS", value: "NextJS" },
+  { label: "MongoDB", value: "MongoDB" },
+  { label: "ExpressJS", value: "ExpressJS" },
+  { label: "TailwindCSS", value: "TailwindCSS" },
+];
+
 const DashboardAddProject = () => {
   const [coreTechs, setCoreTechs] = useState([]);
   const [allUsedTechs, setAllUsedTechs] = useState([]);
+  const [mainThum, setMainThum] = useState("");
+  const [f_1_Thum, setF_1_Thum] = useState("");
+  const [f_2_Thum, setF_2_Thum] = useState("");
+  const [f_3_Thum, setF_3_Thum] = useState("");
 
-  const options = [
-    { label: "Select", value: "Select" },
-    { label: "ReactJS", value: "ReactJS" },
-    { label: "NextJS", value: "NextJS" },
-    { label: "MongoDB", value: "MongoDB" },
-    { label: "ExpressJS", value: "ExpressJS" },
-    { label: "TailwindCSS", value: "TailwindCSS" },
-  ];
+  const handleForm = (e) => {
+    e.preventDefault();
+
+    const projectData = {
+      name: e.target.projectName.value,
+      coreTechs: coreTechs,
+      allUsedTechs: allUsedTechs,
+      thumbnailImg: mainThum,
+      feature_1: {
+        heading: e.target.f1_heading.value,
+        detail: e.target.f1_details.value,
+        image: f_1_Thum,
+      },
+      feature_2: {
+        heading: e.target.f2_heading.value,
+        detail: e.target.f2_heading.value,
+        image: f_2_Thum,
+      },
+      feature_3: {
+        heading: e.target.f3_heading.value,
+        detail: e.target.f3_heading.value,
+        image: f_3_Thum,
+      },
+      projectYear: e.target.projectYear.value,
+      live_url: e.target.liveUrl.value,
+      source: {
+        server: e.target.serverUrl.value,
+        client: e.target.clientUrl.value,
+      },
+    };
+
+    console.log(projectData, "project data");
+
+    toast.success("working", {
+      id: "project added",
+      style: {
+        borderRadius: "0px",
+        background: "#0C0C0C",
+        color: "#fff",
+        fontSize: "30px",
+        padding: "10px 20px",
+      },
+    });
+  };
 
   const handleOnChangeCoreTechs = (event) => {
     const techs = [...coreTechs, event.target.value];
@@ -37,12 +87,8 @@ const DashboardAddProject = () => {
     setAllUsedTechs(techs);
   };
 
-  const handleForm = (e) => {
-    e.preventDefault();
-  };
-
   return (
-    <div className="relative">
+    <>
       <h1 className={`${addProjectStyles.headingText} mt-14`}>
         Upload Project
       </h1>
@@ -54,8 +100,10 @@ const DashboardAddProject = () => {
           <input
             className={addProjectStyles.inputStyle}
             type="text"
+            name="projectName"
             placeholder="Add Project Name"
             id="projectName"
+            required
           />
         </div>
 
@@ -67,10 +115,12 @@ const DashboardAddProject = () => {
             Project Thumbnail
           </label>
           <input
+            onChange={(e) => setMainThum(e.target.value)}
             className={` ${addProjectStyles.inputStyle} ${addProjectStyles.fileInput}`}
             type="file"
             placeholder="Select Project Thumbnail"
             id="projectThumbnail"
+            required
           />
         </div>
 
@@ -83,6 +133,8 @@ const DashboardAddProject = () => {
             type="text"
             placeholder="Add project live url"
             id="liveUrl"
+            name="liveUrl"
+            required
           />
         </div>
 
@@ -95,6 +147,8 @@ const DashboardAddProject = () => {
             type="number"
             placeholder="Project Year"
             id="projectYear"
+            name="projectYear"
+            required
           />
         </div>
 
@@ -112,6 +166,8 @@ const DashboardAddProject = () => {
                 type="text"
                 placeholder="Client Github URL"
                 id="clientUrl"
+                name="clientUrl"
+                required
               />
             </div>
             <div>
@@ -123,6 +179,8 @@ const DashboardAddProject = () => {
                 type="text"
                 placeholder="Client Server URL"
                 id="serverUrl"
+                name="serverUrl"
+                required
               />
             </div>
           </div>
@@ -147,6 +205,8 @@ const DashboardAddProject = () => {
                 type="text"
                 placeholder="Feature heading"
                 id="f1"
+                name="f1_heading"
+                required
               />
             </div>
             <div>
@@ -158,6 +218,8 @@ const DashboardAddProject = () => {
                 type="text"
                 placeholder="Feature Details"
                 id="f2"
+                name="f1_details"
+                required
               />
             </div>
 
@@ -166,10 +228,12 @@ const DashboardAddProject = () => {
                 Feature Thumbnail
               </label>
               <input
+                onChange={(e) => setF_1_Thum(e.target.value)}
                 className={`${addProjectStyles.inputStyle} ${addProjectStyles.fileInput}`}
                 type="file"
                 placeholder="Feature Thumbnail"
                 id="f3"
+                required
               />
             </div>
           </div>
@@ -182,37 +246,43 @@ const DashboardAddProject = () => {
             </div>
             <div className="grid lg:grid-cols-2 gap-10">
               <div>
-                <label className={addProjectStyles.labelText} htmlFor="f1">
+                <label className={addProjectStyles.labelText} htmlFor="f4">
                   Heading
                 </label>
                 <input
                   className={`${addProjectStyles.inputStyle}`}
                   type="text"
                   placeholder="Feature heading"
-                  id="f1"
+                  id="f4"
+                  name="f2_heading"
+                  required
                 />
               </div>
               <div>
-                <label className={addProjectStyles.labelText} htmlFor="f2">
+                <label className={addProjectStyles.labelText} htmlFor="f5">
                   Details
                 </label>
                 <input
                   className={`${addProjectStyles.inputStyle}`}
                   type="text"
                   placeholder="Feature Details"
-                  id="f2"
+                  id="f5"
+                  name="f2_details"
+                  required
                 />
               </div>
 
               <div>
-                <label className={addProjectStyles.labelText} htmlFor="f3">
+                <label className={addProjectStyles.labelText} htmlFor="f6">
                   Feature Thumbnail
                 </label>
                 <input
+                  onChange={(e) => setF_2_Thum(e.target.value)}
                   className={`${addProjectStyles.inputStyle} ${addProjectStyles.fileInput}`}
                   type="file"
                   placeholder="Feature Thumbnail"
-                  id="f3"
+                  id="f6"
+                  required
                 />
               </div>
             </div>
@@ -226,37 +296,43 @@ const DashboardAddProject = () => {
             </div>
             <div className="grid lg:grid-cols-2 gap-10">
               <div>
-                <label className={addProjectStyles.labelText} htmlFor="f1">
+                <label className={addProjectStyles.labelText} htmlFor="f7">
                   Heading
                 </label>
                 <input
                   className={`${addProjectStyles.inputStyle}`}
                   type="text"
                   placeholder="Feature heading"
-                  id="f1"
+                  id="f7"
+                  name="f3_heading"
+                  required
                 />
               </div>
               <div>
-                <label className={addProjectStyles.labelText} htmlFor="f2">
+                <label className={addProjectStyles.labelText} htmlFor="f8">
                   Details
                 </label>
                 <input
                   className={`${addProjectStyles.inputStyle}`}
                   type="text"
                   placeholder="Feature Details"
-                  id="f2"
+                  id="f8"
+                  name="f3_details"
+                  required
                 />
               </div>
 
               <div>
-                <label className={addProjectStyles.labelText} htmlFor="f3">
+                <label className={addProjectStyles.labelText} htmlFor="f9">
                   Feature Thumbnail
                 </label>
                 <input
+                  onChange={(e) => setF_3_Thum(e.target.value)}
                   className={`${addProjectStyles.inputStyle} ${addProjectStyles.fileInput}`}
                   type="file"
                   placeholder="Feature Thumbnail"
-                  id="f3"
+                  id="f9"
+                  required
                 />
               </div>
             </div>
@@ -275,7 +351,7 @@ const DashboardAddProject = () => {
               <div className={`flex flex-wrap items-center gap-4`}>
                 {coreTechs?.map((tech, index) => (
                   <p
-                    className="w-20 h-7 text-[14px] flex items-center justify-center rounded-full bg-slate-100 mb-3"
+                    className="w-20 h-7 text-[12px] flex items-center justify-center rounded-full bg-slate-100 mb-3"
                     key={index}
                   >
                     {tech}{" "}
@@ -336,10 +412,7 @@ const DashboardAddProject = () => {
           </button>
         </div>
       </form>
-      {/* <div className="fixed right-[10vw] bottom-[10vh] w-72 text-[25px] h-16 bg-primary text-white border flex items-center p-4">
-        toast component
-      </div> */}
-    </div>
+    </>
   );
 };
 

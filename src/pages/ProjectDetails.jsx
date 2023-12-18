@@ -1,13 +1,35 @@
 import { useEffect, useRef } from "react";
 import Footer from "../components/footer/Footer";
 import { motion, useAnimation, useInView } from "framer-motion";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProjectsData } from "../features/projects/projectSlice";
+
+const styles = {
+  headingTextBold:
+    "text-[30px] xs:text-[50px] md:text-[70px] lg:text-[90] xl:text-[100px] 3xl:text-[120px] font-bold",
+  headingText:
+    "text-[20px] xs:text-[30px] md:text-[40px] lg:text-[50px] 3xl:text-[60px] font-bold",
+};
 
 const ProjectDetails = () => {
   const ref = useRef();
   const controls = useAnimation();
   const isInView = useInView(ref);
   const { projectId } = useParams();
+  const dispatch = useDispatch();
+  const projects = useSelector((state) => state.projects.projects);
+  const project = projects?.find((project) => project._id === projectId);
+
+  const nextProject = projects
+    ?.filter((project) => project._id !== projectId)
+    .slice(0, 1);
+
+  // console.log(nextProject[0]?._id, "next project id");
+
+  useEffect(() => {
+    dispatch(fetchProjectsData());
+  }, [dispatch]);
 
   useEffect(() => {
     if (isInView) {
@@ -20,23 +42,6 @@ const ProjectDetails = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [projectId]);
-
-  const usedTechs = [
-    { label: "ReactJS", href: "", color: "", id: "143" },
-    { label: "NextJS", href: "", color: "", id: "14253" },
-    { label: "ExpressJS", href: "", color: "", id: "1453" },
-    { label: "NodeJS", href: "", color: "", id: "142553" },
-    { label: "MongoDB", href: "", color: "", id: "16553" },
-    { label: "Mongoose", href: "", color: "", id: "17453" },
-    { label: "Tailwind CSS", href: "", color: "", id: "14143" },
-  ];
-
-  const styles = {
-    headingTextBold:
-      "text-[30px] xs:text-[50px] md:text-[70px] lg:text-[90] xl:text-[100px] 3xl:text-[120px] font-bold",
-    headingText:
-      "text-[20px] xs:text-[30px] md:text-[40px] lg:text-[50px] 3xl:text-[60px] font-bold",
-  };
 
   return (
     <>
@@ -60,7 +65,7 @@ const ProjectDetails = () => {
             }}
             className={styles.headingTextBold}
           >
-            PROJECT NAME PROJECT NAME
+            {project?.name}
           </motion.h1>
           <div className="flex justify-between items-start flex-wrap gap-24 mt-16 mb-28">
             <div>
@@ -68,32 +73,37 @@ const ProjectDetails = () => {
                 <li>
                   <h1>Technologies :</h1>
                 </li>
-                {usedTechs.map(({ label, href, id }) => {
-                  return (
-                    <li key={id}>
-                      <a href={href}>{label}</a>
-                    </li>
-                  );
+                {project?.usedTechnologies?.map((tech, index) => {
+                  return <li key={tech + (index * 2) / 10}>{tech}</li>;
                 })}
               </ul>
               <div className="flex items-center flex-wrap gap-6 mt-5">
                 <h1 className="text-[18px]">Source Code :</h1>
                 <a
+                  href={project?.source?.client}
+                  target="_blank"
+                  rel="noreferrer"
                   className="w-44 hover:bg-black text-[18px] h-10 border rounded-full flex items-center justify-center"
-                  href=""
                 >
                   Front-end
                 </a>
                 <a
+                  href={project?.source?.server}
+                  target="_blank"
+                  rel="noreferrer"
                   className="w-44 hover:bg-black text-[18px] h-10 border rounded-full flex items-center justify-center"
-                  href=""
                 >
                   Server
                 </a>
               </div>
             </div>
             <ul className="flex items-center flex-wrap gap-4 md:gap-14">
-              <li className="w-56 flex items-center cursor-pointer justify-center text-[20px] font-bold rounded-full h-10 border border-white relative hover:bg-black">
+              <a
+                href={project?.live_url}
+                target="_blank"
+                rel="noreferrer"
+                className="w-56 flex items-center cursor-pointer justify-center text-[20px] font-bold rounded-full h-10 border border-white relative hover:bg-black"
+              >
                 Live Project{" "}
                 <span className="absolute -right-5 -top-10">
                   <svg
@@ -111,9 +121,10 @@ const ProjectDetails = () => {
                     />
                   </svg>
                 </span>
-              </li>
+              </a>
               <li className="text-[20px]">
-                Year <span className="text-[22px]"> 2023</span>
+                Year{" "}
+                <span className="text-[22px]"> {project?.projectYear}</span>
               </li>
             </ul>
           </div>
@@ -123,28 +134,25 @@ const ProjectDetails = () => {
             <figure className="w-full h-auto">
               <img
                 className="w-full h-full object-cover object-center"
-                src="https://i.ibb.co/0jf0RsN/weather-App-Landing-Page.png"
+                src={project?.thumbnailImg}
                 alt=""
               />
             </figure>
 
             <div className="mt-32">
               <div>
-                <h1 className={styles.headingText}>Clean and Modern Design:</h1>
-                <p className="text-[20px]">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Accusamus rerum impedit itaque dolores unde quo sequi earum
-                  velit in officiis ab quos minus, delectus tenetur numquam,
-                  voluptate enim sit repellendus!
-                </p>
+                <h1 className={styles.headingText}>
+                  {project?.feature_1?.heading}:
+                </h1>
+                <p className="text-[20px]">{project?.feature_1?.detail}</p>
               </div>
               <div className=" flex justify-end">
                 <div className="max-w-7xl mt-10 md:mt-24">
                   <figure className="w-full h-auto">
                     <img
                       className="w-full h-full object-cover object-center"
-                      src="https://i.ibb.co/0jf0RsN/weather-App-Landing-Page.png"
-                      alt=""
+                      src={project?.feature_1?.image}
+                      alt="project_screenshot"
                     />
                   </figure>
                 </div>
@@ -153,21 +161,18 @@ const ProjectDetails = () => {
 
             <div className="mt-32">
               <div>
-                <h1 className={styles.headingText}>Clean and Modern Design:</h1>
-                <p className="text-[20px]">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Accusamus rerum impedit itaque dolores unde quo sequi earum
-                  velit in officiis ab quos minus, delectus tenetur numquam,
-                  voluptate enim sit repellendus!
-                </p>
+                <h1 className={styles.headingText}>
+                  {project?.feature_2?.heading}:
+                </h1>
+                <p className="text-[20px]">{project?.feature_2?.detail}</p>
               </div>
               <div className="">
                 <div className="max-w-7xl mt-10 md:mt-24">
                   <figure className="w-full h-auto">
                     <img
                       className="w-full h-full object-cover object-center"
-                      src="https://i.ibb.co/0jf0RsN/weather-App-Landing-Page.png"
-                      alt=""
+                      src={project?.feature_2?.image}
+                      alt="project_screenshot"
                     />
                   </figure>
                 </div>
@@ -176,21 +181,18 @@ const ProjectDetails = () => {
 
             <div className="mt-32">
               <div>
-                <h1 className={styles.headingText}>Clean and Modern Design:</h1>
-                <p className="text-[20px]">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Accusamus rerum impedit itaque dolores unde quo sequi earum
-                  velit in officiis ab quos minus, delectus tenetur numquam,
-                  voluptate enim sit repellendus!
-                </p>
+                <h1 className={styles.headingText}>
+                  {project?.feature_3?.heading}:
+                </h1>
+                <p className="text-[20px]">{project?.feature_3?.detail}</p>
               </div>
               <div className="flex justify-end">
                 <div className="max-w-7xl mt-10 md:mt-24">
                   <figure className="w-full h-auto">
                     <img
                       className="w-full h-full object-cover object-center"
-                      src="https://i.ibb.co/0jf0RsN/weather-App-Landing-Page.png"
-                      alt=""
+                      src={project?.feature_3?.image}
+                      alt="project_screenshot"
                     />
                   </figure>
                 </div>
@@ -198,13 +200,17 @@ const ProjectDetails = () => {
             </div>
           </section>
         </div>
+
         <div className={`h-[70vh] w-full`}>
           <div className="max-w-screen-2xl mx-auto w-full h-full bg-[url('https://i.ibb.co/0jf0RsN/weather-App-Landing-Page.png')] object-cover object-center ">
             <div className="w-full h-full sm:p-16 p-6 flex justify-center flex-col items-center bg-primary opacity-75">
               <h1 className={`${styles.headingTextBold} text-white`}>
                 PROJECT NAME
               </h1>
-              <button className="w-56 mt-20 flex items-center cursor-pointer justify-center text-[20px] md:text-[25px] font-bold rounded-xl h-16 border border-white relative text-white">
+              <Link
+                to={`/projectDetails/${nextProject[0]?._id}`}
+                className="w-56 mt-20 flex items-center cursor-pointer justify-center text-[20px] md:text-[25px] font-bold rounded-xl h-16 border border-white relative text-white"
+              >
                 Next Project{" "}
                 <span className="absolute -right-5 -top-10">
                   <svg
@@ -222,7 +228,7 @@ const ProjectDetails = () => {
                     />
                   </svg>
                 </span>
-              </button>
+              </Link>
             </div>
           </div>
         </div>

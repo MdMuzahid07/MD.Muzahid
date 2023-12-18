@@ -40,14 +40,41 @@ const DashboardAddProject = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (isLoading) {
-      toast.loading("Posting...");
+    if (isLoading && !postSuccess) {
+      toast.loading("Posting...", {
+        id: "project added",
+        style: {
+          borderRadius: "0px",
+          background: "#0C0C0C",
+          color: "#fff",
+          fontSize: "30px",
+          padding: "10px 20px",
+        },
+      });
     }
     if (!isLoading && postSuccess) {
-      toast.success("Success");
+      toast.success("Success", {
+        id: "project added",
+        style: {
+          borderRadius: "0px",
+          background: "#0C0C0C",
+          color: "#fff",
+          fontSize: "30px",
+          padding: "10px 20px",
+        },
+      });
     }
     if (!postSuccess && isError) {
-      toast.error(error.message);
+      toast.error(error, {
+        id: "project added",
+        style: {
+          borderRadius: "0px",
+          background: "#0C0C0C",
+          color: "#fff",
+          fontSize: "30px",
+          padding: "10px 20px",
+        },
+      });
     }
   }, [isLoading, isError, postSuccess, error]);
 
@@ -82,17 +109,6 @@ const DashboardAddProject = () => {
       },
     };
     dispatch(postProjectData(projectData));
-
-    toast.success("working", {
-      id: "project added",
-      style: {
-        borderRadius: "0px",
-        background: "#0C0C0C",
-        color: "#fff",
-        fontSize: "30px",
-        padding: "10px 20px",
-      },
-    });
   };
 
   const handleOnChangeCoreTechs = (event) => {

@@ -30,11 +30,13 @@ const GoogleSignIn = () => {
   }
 
   if (!loading && !error && user) {
-    console.log(user);
+    window.alert("Welcome", user.user.displayName);
   }
 
   if ((!loading && error && !user) || SignOutError) {
-    console.log((error, "error") || (SignOutError, "sing out error"));
+    console.log(
+      (error.message, "error") || (SignOutError.message, "sing out error")
+    );
   }
 
   return (

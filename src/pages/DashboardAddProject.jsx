@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MultiSelectDropdown from "../components/common/MultiSelectDropdown";
 import toast from "react-hot-toast";
+import { useSelector, useDispatch } from "react-redux";
+import { postProjectData } from "../features/projects/projectSlice";
 
 const addProjectStyles = {
   headingText:
@@ -32,13 +34,30 @@ const DashboardAddProject = () => {
   const [f_2_Thum, setF_2_Thum] = useState("");
   const [f_3_Thum, setF_3_Thum] = useState("");
 
+  const { isLoading, postSuccess, isError, error } = useSelector(
+    (state) => state.projects
+  );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (isLoading) {
+      toast.loading("Posting...");
+    }
+    if (!isLoading && postSuccess) {
+      toast.success("Success");
+    }
+    if (!postSuccess && isError) {
+      toast.error(error.message);
+    }
+  }, [isLoading, isError, postSuccess, error]);
+
   const handleForm = (e) => {
     e.preventDefault();
 
     const projectData = {
       name: e.target.projectName.value,
       coreTechs: coreTechs,
-      allUsedTechs: allUsedTechs,
+      usedTechnologies: allUsedTechs,
       thumbnailImg: mainThum,
       feature_1: {
         heading: e.target.f1_heading.value,
@@ -62,8 +81,7 @@ const DashboardAddProject = () => {
         client: e.target.clientUrl.value,
       },
     };
-
-    console.log(projectData, "project data");
+    dispatch(postProjectData(projectData));
 
     toast.success("working", {
       id: "project added",

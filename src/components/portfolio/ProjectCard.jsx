@@ -6,6 +6,8 @@ import Tilt from "react-parallax-tilt";
 const ProjectCard = ({ project, index }) => {
   const navigate = useNavigate();
 
+  console.log(project);
+
   const handleClick = (id) => {
     navigate(`/projectDetails/${id}`);
   };

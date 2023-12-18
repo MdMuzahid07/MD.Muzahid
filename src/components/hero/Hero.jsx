@@ -4,17 +4,39 @@ import heroStyles from "./heroStyles";
 import { motion, useAnimation, useInView } from "framer-motion";
 
 const Hero = () => {
-  const ref = useRef();
-  const controls = useAnimation();
-  const isInView = useInView(ref);
+  const ref1 = useRef();
+  const ref2 = useRef();
+  const ref3 = useRef();
+  const controls1 = useAnimation();
+  const controls2 = useAnimation();
+  const controls3 = useAnimation();
+  const isInView1 = useInView(ref1);
+  const isInView2 = useInView(ref2);
+  const isInView3 = useInView(ref3);
 
   useEffect(() => {
-    if (isInView) {
-      controls.start("visible");
+    if (isInView1) {
+      controls1.start("visible");
     } else {
-      controls.start("hidden");
+      controls1.start("hidden");
     }
-  }, [controls, isInView]);
+  }, [controls1, isInView1]);
+
+  useEffect(() => {
+    if (isInView2) {
+      controls2.start("visible");
+    } else {
+      controls2.start("hidden");
+    }
+  }, [controls2, isInView2]);
+
+  useEffect(() => {
+    if (isInView3) {
+      controls3.start("visible");
+    } else {
+      controls3.start("hidden");
+    }
+  }, [controls3, isInView3]);
 
   return (
     <div
@@ -22,9 +44,9 @@ const Hero = () => {
       className={`${styles.paddingX} heroBG bg-primary min-h-screen w-full flex-col flex items-center justify-center text-white relative`}
     >
       <motion.h1
-        ref={ref}
+        ref={ref1}
         initial="hidden"
-        animate={controls}
+        animate={controls1}
         variants={{
           hidden: { opacity: 0, y: "50px" },
           visible: { opacity: 1, y: 0 },
@@ -38,9 +60,9 @@ const Hero = () => {
         </span>
       </motion.h1>
       <motion.h1
-        ref={ref}
+        ref={ref2}
         initial="hidden"
-        animate={controls}
+        animate={controls2}
         variants={{
           hidden: { opacity: 0 },
           visible: { opacity: 1 },
@@ -66,9 +88,9 @@ const Hero = () => {
       </motion.h1>
 
       <motion.a
-        ref={ref}
+        ref={ref3}
         initial="hidden"
-        animate={controls}
+        animate={controls3}
         variants={{
           hidden: { opacity: 0, y: "50px" },
           visible: { opacity: 1, y: 0 },

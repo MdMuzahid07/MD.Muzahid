@@ -2,6 +2,7 @@
 import { HR } from "../common/HR";
 import { useNavigate } from "react-router-dom";
 import Tilt from "react-parallax-tilt";
+import { imageLoadingShadow } from "../../assets";
 
 const ProjectCard = ({ project, index }) => {
   const navigate = useNavigate();
@@ -55,7 +56,11 @@ const ProjectCard = ({ project, index }) => {
             <Tilt tiltAngleXInitial={20} tiltAngleYInitial={20}>
               <img
                 className="w-full h-full transition ease-in-out delay-100 object-cover  object-center  sm:w-[600px] md:h-[400px] xl:w-[800px] xl:h-[500px] brightness-50 hover:brightness-100"
-                src={project?.thumbnailImg}
+                src={
+                  project?.thumbnailImg
+                    ? project?.thumbnailImg
+                    : imageLoadingShadow
+                }
                 alt=""
               />
             </Tilt>

@@ -30,7 +30,12 @@ const GoogleSignIn = () => {
   }
 
   if (!loading && !error && user) {
-    window.alert("Welcome", user.user.displayName);
+    if (
+      user?.user?.email === "mdmuzahid.dev@gmail.com" &&
+      user?.user?.displayName === "Md Muzahid"
+    ) {
+      window.alert("Welcome", user.user.displayName);
+    }
   }
 
   if ((!loading && error && !user) || SignOutError) {

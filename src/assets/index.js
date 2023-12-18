@@ -24,8 +24,10 @@ import logoBg from "./Md_Muzahid,Web-Developer,MERN-Stack-Developer,ReactJS-Deve
 import menu_close from "./menu-close.svg";
 import menu_open from "./menu-open.svg";
 import moonLand from "./moon-land.png";
+import imageLoadingShadow from "./MdMuzahid_img_loading_shadow.png";
 
 export {
+    imageLoadingShadow,
     moonLand,
     front_end,
     server,

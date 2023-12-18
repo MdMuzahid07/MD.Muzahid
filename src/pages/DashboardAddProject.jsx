@@ -3,6 +3,7 @@ import MultiSelectDropdown from "../components/common/MultiSelectDropdown";
 import toast from "react-hot-toast";
 import { useSelector, useDispatch } from "react-redux";
 import { postProjectData } from "../features/projects/projectSlice";
+import useImgBBUpload from "../hooks/useImgBBUpload";
 
 const addProjectStyles = {
   headingText:
@@ -29,10 +30,14 @@ const options = [
 const DashboardAddProject = () => {
   const [coreTechs, setCoreTechs] = useState([]);
   const [allUsedTechs, setAllUsedTechs] = useState([]);
-  const [mainThum, setMainThum] = useState("");
-  const [f_1_Thum, setF_1_Thum] = useState("");
-  const [f_2_Thum, setF_2_Thum] = useState("");
-  const [f_3_Thum, setF_3_Thum] = useState("");
+  // const [mainThum, setMainThum] = useState("");
+  // const [f_1_Thum, setF_1_Thum] = useState("");
+  // const [f_2_Thum, setF_2_Thum] = useState("");
+  // const [f_3_Thum, setF_3_Thum] = useState("");
+  const { getEvent, img } = useImgBBUpload();
+  const { getEvent: f_1, img: f_1_img } = useImgBBUpload();
+  const { getEvent: f_2, img: f_2_img } = useImgBBUpload();
+  const { getEvent: f_3, img: f_3_img } = useImgBBUpload();
 
   const { isLoading, postSuccess, isError, error } = useSelector(
     (state) => state.projects
@@ -85,21 +90,21 @@ const DashboardAddProject = () => {
       name: e.target.projectName.value,
       coreTechs: coreTechs,
       usedTechnologies: allUsedTechs,
-      thumbnailImg: mainThum,
+      thumbnailImg: img,
       feature_1: {
         heading: e.target.f1_heading.value,
         detail: e.target.f1_details.value,
-        image: f_1_Thum,
+        image: f_1_img,
       },
       feature_2: {
         heading: e.target.f2_heading.value,
         detail: e.target.f2_heading.value,
-        image: f_2_Thum,
+        image: f_2_img,
       },
       feature_3: {
         heading: e.target.f3_heading.value,
         detail: e.target.f3_heading.value,
-        image: f_3_Thum,
+        image: f_3_img,
       },
       projectYear: e.target.projectYear.value,
       live_url: e.target.liveUrl.value,
@@ -149,7 +154,7 @@ const DashboardAddProject = () => {
             Project Thumbnail
           </label>
           <input
-            onChange={(e) => setMainThum(e.target.value)}
+            onChange={getEvent}
             className={` ${addProjectStyles.inputStyle} ${addProjectStyles.fileInput}`}
             type="file"
             placeholder="Select Project Thumbnail"
@@ -262,7 +267,7 @@ const DashboardAddProject = () => {
                 Feature Thumbnail
               </label>
               <input
-                onChange={(e) => setF_1_Thum(e.target.value)}
+                onChange={f_1}
                 className={`${addProjectStyles.inputStyle} ${addProjectStyles.fileInput}`}
                 type="file"
                 placeholder="Feature Thumbnail"
@@ -311,7 +316,7 @@ const DashboardAddProject = () => {
                   Feature Thumbnail
                 </label>
                 <input
-                  onChange={(e) => setF_2_Thum(e.target.value)}
+                  onChange={f_2}
                   className={`${addProjectStyles.inputStyle} ${addProjectStyles.fileInput}`}
                   type="file"
                   placeholder="Feature Thumbnail"
@@ -361,7 +366,7 @@ const DashboardAddProject = () => {
                   Feature Thumbnail
                 </label>
                 <input
-                  onChange={(e) => setF_3_Thum(e.target.value)}
+                  onChange={f_3}
                   className={`${addProjectStyles.inputStyle} ${addProjectStyles.fileInput}`}
                   type="file"
                   placeholder="Feature Thumbnail"

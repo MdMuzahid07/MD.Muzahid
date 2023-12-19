@@ -1,3 +1,4 @@
+import { socialLinks } from "../../constants";
 import MagneticEffect from "../../utils/MagneticEffect";
 import MyLocalTime from "../../utils/MyLocalTime";
 
@@ -37,18 +38,13 @@ const Aside = () => {
       </ul>
       <ul className="w-full mt-[50px] md:mt-[70px]">
         <li className={styles.liHeader}>Social</li>
-        <li className={styles.li}>
-          <a href="">Github</a>
-        </li>
-        <li className={styles.li}>
-          <a href="">LinkedIn</a>
-        </li>
-        <li className={styles.li}>
-          <a href="">Twitter</a>
-        </li>
-        <li className={styles.li}>
-          <a href="">Reddit</a>
-        </li>
+        {socialLinks?.map(({ label, href, _id }) => (
+          <li key={_id} className={styles.li}>
+            <a href={href} target="_blank" rel="noreferrer">
+              {label}
+            </a>
+          </li>
+        ))}
         <li className="mt-[50px] opacity-70">My Local Time </li>
         <li>
           <h1 className={styles.li}>{MyLocalTime()}</h1>

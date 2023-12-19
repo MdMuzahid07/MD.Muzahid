@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { useSelector, useDispatch } from "react-redux";
 import { postProjectData } from "../features/projects/projectSlice";
 import useImgBBUpload from "../hooks/useImgBBUpload";
+import { options } from "../constants";
 
 const addProjectStyles = {
   headingText:
@@ -18,22 +19,9 @@ const addProjectStyles = {
       file:bg-slate-50`,
 };
 
-const options = [
-  { label: "Select", value: "Select" },
-  { label: "ReactJS", value: "ReactJS" },
-  { label: "NextJS", value: "NextJS" },
-  { label: "MongoDB", value: "MongoDB" },
-  { label: "ExpressJS", value: "ExpressJS" },
-  { label: "TailwindCSS", value: "TailwindCSS" },
-];
-
 const DashboardAddProject = () => {
   const [coreTechs, setCoreTechs] = useState([]);
   const [allUsedTechs, setAllUsedTechs] = useState([]);
-  // const [mainThum, setMainThum] = useState("");
-  // const [f_1_Thum, setF_1_Thum] = useState("");
-  // const [f_2_Thum, setF_2_Thum] = useState("");
-  // const [f_3_Thum, setF_3_Thum] = useState("");
   const { getEvent, img } = useImgBBUpload();
   const { getEvent: f_1, img: f_1_img } = useImgBBUpload();
   const { getEvent: f_2, img: f_2_img } = useImgBBUpload();
@@ -98,12 +86,12 @@ const DashboardAddProject = () => {
       },
       feature_2: {
         heading: e.target.f2_heading.value,
-        detail: e.target.f2_heading.value,
+        detail: e.target.f2_details.value,
         image: f_2_img,
       },
       feature_3: {
         heading: e.target.f3_heading.value,
-        detail: e.target.f3_heading.value,
+        detail: e.target.f3_details.value,
         image: f_3_img,
       },
       projectYear: e.target.projectYear.value,
@@ -390,7 +378,7 @@ const DashboardAddProject = () => {
               <div className={`flex flex-wrap items-center gap-4`}>
                 {coreTechs?.map((tech, index) => (
                   <p
-                    className="w-20 h-7 text-[12px] flex items-center justify-center rounded-full bg-slate-100 mb-3"
+                    className="h-7 px-3 text-[12px] flex items-center justify-center rounded-full bg-slate-100 mb-3"
                     key={index}
                   >
                     {tech}{" "}
@@ -410,7 +398,7 @@ const DashboardAddProject = () => {
               <div className={`flex flex-wrap items-center gap-4`}>
                 {allUsedTechs?.map((tech, index) => (
                   <p
-                    className="w-20 h-7 text-[14px] flex items-center justify-center rounded-full bg-slate-100 mb-3"
+                    className="h-7 px-3 text-[14px] flex items-center justify-center rounded-full bg-slate-100 mb-3"
                     key={index}
                   >
                     {tech}{" "}

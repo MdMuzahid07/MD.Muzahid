@@ -36,7 +36,7 @@ const Form = () => {
       <form
         ref={form}
         onSubmit={handleContactForm}
-        className="col-span-12 md:col-span-8 lg:col-span-9 w-full text-white "
+        className="col-span-12 md:col-span-8 lg:col-span-9 w-full text-white"
       >
         <HR style="bg-black border-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-[1px] mb-7" />
         <div className="relative">

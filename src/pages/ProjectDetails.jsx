@@ -102,7 +102,7 @@ const ProjectDetails = () => {
           >
             {project?.name}
           </motion.h1>
-          <div className="flex justify-between items-start flex-wrap gap-24 mt-16 mb-28">
+          <div className="flex justify-between items-start flex-wrap lg:flex-nowrap gap-24 mt-16 mb-28">
             <div>
               <ul className="flex items-center text-[18px] gap-5 flex-wrap">
                 <li>
@@ -286,7 +286,11 @@ const ProjectDetails = () => {
           <div
             style={{
               backgroundImage: `url(
-              ${nextProject[0]?.thumbnailImg}
+              ${
+                nextProject[0]?.thumbnailImg
+                  ? nextProject[0]?.thumbnailImg
+                  : imageLoadingShadow
+              }
             )`,
               backgroundSize: "cover",
               backgroundPosition: "center",

@@ -24,8 +24,10 @@ import logoBg from "./Md_Muzahid,Web-Developer,MERN-Stack-Developer,ReactJS-Deve
 import menu_close from "./menu-close.svg";
 import menu_open from "./menu-open.svg";
 import imageLoadingShadow from "./MdMuzahid_img_loading_shadow.png";
+import MdMuzahid from "./MdMuzahid.png";
 
 export {
+    MdMuzahid,
     imageLoadingShadow,
     front_end,
     server,

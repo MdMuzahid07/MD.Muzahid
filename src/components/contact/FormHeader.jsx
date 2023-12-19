@@ -1,3 +1,4 @@
+import { MdMuzahid } from "../../assets";
 import MagneticEffect from "../../utils/MagneticEffect";
 
 const FormHeader = () => {
@@ -31,7 +32,7 @@ const FormHeader = () => {
         <figure className=" w-[50px] h-[50px] md:w-[100px] md:h-[100px] lg:w-[130px] lg:h-[130px]">
           <img
             className="w-full h-full object-cover object-center rounded-full"
-            src="https://img.freepik.com/free-photo/green-sprouts-dark-soil-against-blurred-background-symbolizing-concept-growth-potential_90220-1462.jpg?t=st=1702125875~exp=1702129475~hmac=d61ddb3cab8894c005238de188f387d4a304fcfc36759c903024b71ab3bbfc9d&w=900"
+            src={MdMuzahid}
             alt=""
           />
         </figure>{" "}

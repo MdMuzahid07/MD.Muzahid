@@ -56,6 +56,7 @@ const options = [
     { label: "Redux-RTK-Query", value: "Redux-RTK-Query" },
     { label: "Axios", value: "Axios" },
     { label: "React-router-dom", value: "React-router-dom" },
+    { label: "React-firebase-hooks", value: "React-firebase-hooks" },
     { label: "JWT(JSON Web Token)", value: "JWT(JSON Web Token)" },
     { label: "React-hooks-form", value: "React-hooks-form" },
     { label: "React-Toastify", value: "React-Toastify" },

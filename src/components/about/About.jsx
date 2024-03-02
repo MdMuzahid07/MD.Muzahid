@@ -1,4 +1,5 @@
 import { styles } from "../../styles";
+import ShadowFont from "../common/ShadowFont";
 
 const textWords = [
   { text: "I", id: "ui1h43", style: "" },
@@ -65,6 +66,7 @@ const About = () => {
       className={`${styles.paddingX} ${styles.paddingY} bg-primary min-h-screen w-full`}
     >
       <div className="max-w-screen-2xl mx-auto text-white">
+        <ShadowFont>About Me</ShadowFont>
         <h1 className="text-[30px] xs:text-[50px] md:text-[60px] lg:text-[70px] font-extrabold">
           {textWords.map(({ text, id, style }) => (
             <span key={id} className={style}>

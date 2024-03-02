@@ -9,6 +9,8 @@ const GoogleSignIn = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
   const [signOut, SignOutLoading, SignOutError] = useSignOut(auth);
 
+  console.log(user);
+
   useEffect(() => {
     if (!loading && !error && user) {
       if (

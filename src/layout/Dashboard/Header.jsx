@@ -8,7 +8,7 @@ const Header = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const navigate = useNavigate();
   const [signOut, SignOutLoading, SignOutError] = useSignOut(auth);
 
-  const handleOnclick = () => {
+  const handleLogout = () => {
     signOut();
     setTimeout(navigate("/"), 3000);
   };
@@ -29,7 +29,7 @@ const Header = ({ isSidebarOpen, setIsSidebarOpen }) => {
       >
         {isSidebarOpen ? "Close" : "Open"}
       </button>
-      <button onClick={handleOnclick}>Logout</button>
+      <button onClick={handleLogout}>Logout</button>
     </header>
   );
 };

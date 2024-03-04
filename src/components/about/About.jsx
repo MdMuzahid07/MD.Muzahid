@@ -1,3 +1,4 @@
+import { MdMuzahid } from "../../assets";
 import { styles } from "../../styles";
 import ShadowFont from "../common/ShadowFont";
 
@@ -59,22 +60,48 @@ const textWords = [
   { text: "Native.", id: "uiw143", style: "" },
 ];
 
+const aboutStyles = {
+  btn: "px-4 py-1.5 text-xs md:text-md lg:text-xl bg-black rounded-full font-bold border px-4 py-1.5 text-xs md:text-md lg:text-xl bg-black rounded-md md:rounded-xl font-bold border",
+};
+
 const About = () => {
   return (
     <section
       id="about"
       className={`${styles.paddingX} ${styles.paddingY} bg-primary min-h-screen w-full`}
     >
-      <div className="max-w-screen-2xl mx-auto text-white">
+      <section className="max-w-screen-2xl mx-auto text-white">
         <ShadowFont>About Me</ShadowFont>
-        <h1 className="text-[30px] xs:text-[50px] md:text-[60px] lg:text-[70px] font-extrabold">
-          {textWords.map(({ text, id, style }) => (
-            <span key={id} className={style}>
-              {text}{" "}
-            </span>
-          ))}
-        </h1>
-      </div>
+        <div className="flex flex-col sm:flex-row max-md:items-center gap-4 lg:gap-10 mt-10 md:mt-10">
+          <figure className="max-w-[200px] min-w-[200px] max-h-[200px]">
+            <img
+              className="w-full h-full object-cover object-center rounded-full opacity-50"
+              src={MdMuzahid}
+              alt=""
+            />
+          </figure>
+          <div className="mt-5 md:mt-0">
+            <h1 className="text-[14px] md:text-[20px] lg:text-[35px] xl:text-[45px] font-extrabold">
+              {textWords.map(({ text, id, style }) => (
+                <span key={id} className={style}>
+                  {text}{" "}
+                </span>
+              ))}
+            </h1>
+            <div className="flex items-center gap-4 mt-4">
+              <a
+                href="mailto:mdmuzahid.dev@gmail.com"
+                className={aboutStyles.btn}
+              >
+                Email
+              </a>
+              <a href="https://drive.google.com/u/1/uc?id=12EpiQnRgBc3_HTRQZB5pbQa7dpHSgmRQ&export=download">
+                <button className={aboutStyles.btn}>Download Resume</button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
     </section>
   );
 };

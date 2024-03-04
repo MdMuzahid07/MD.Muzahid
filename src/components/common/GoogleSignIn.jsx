@@ -1,43 +1,13 @@
-import { useNavigate } from "react-router-dom";
 import { useSignInWithGoogle, useSignOut } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
-import { useEffect } from "react";
 import Preloader from "../preloader/Preloader";
 
 const GoogleSignIn = () => {
-  const navigate = useNavigate();
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-  const [signOut, SignOutLoading, SignOutError] = useSignOut(auth);
-
-  console.log(user);
-
-  useEffect(() => {
-    if (!loading && !error && user) {
-      if (
-        user?.user?.email === "mdmuzahid.dev@gmail.com" &&
-        user?.user?.displayName === "Md Muzahid"
-      ) {
-        navigate("/dashboard/home");
-      } else {
-        signOut();
-        window.alert(
-          "This button serves to authenticate the owner for Dashboard access. And you are not qualified as the legitimate owner of this website, you are automatically logged out."
-        );
-      }
-    }
-  }, [user, error, loading, navigate, signOut]);
+  const [SignOutLoading, SignOutError] = useSignOut(auth);
 
   if ((loading && !error && !user) || SignOutLoading) {
     return <Preloader />;
-  }
-
-  if (!loading && !error && user) {
-    if (
-      user?.user?.email === "mdmuzahid.dev@gmail.com" &&
-      user?.user?.displayName === "Md Muzahid"
-    ) {
-      window.alert("Welcome", user.user.displayName);
-    }
   }
 
   if ((!loading && error && !user) || SignOutError) {

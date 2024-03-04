@@ -1,24 +1,33 @@
 import {
-    css,
-    expressjs,
+    bootStrap5,
+    css3,
+    expressJS,
+    figma,
     front_end,
-    html,
-    javascript,
+    git,
+    gitHub,
+    html5,
+    javaScript,
+    jwt,
     mern_stack,
-    mongodb,
-    mongoose,
-    nextjs,
-    nodejs,
+    mongoDB,
+    mongooseODM,
+    mui,
+    nextJS,
+    nodeJS,
+    npm,
+    postgreSQL,
+    postman,
+    reactJS,
+    reactRouterDom,
     react_native,
-    reactjs,
     redux,
     server,
-    tailwindcss,
-    typescript
+    styledComponents,
+    tailwindCSS,
+    typeScript,
+    yarn,
 } from "../assets";
-
-
-
 
 const navLinks = [
     { id: "home", title: "HOME" },
@@ -93,5 +102,130 @@ const socialLinks = [
     },
 ];
 
+const skills = [
+    {
+        name: "HTML5",
+        icon: html5,
+        id: "lkasdfoi87a5augf"
+    },
+    {
+        name: "CSS3",
+        icon: css3,
+        id: "lkaoi87a5augf"
+    },
+    {
+        name: "JavaScript",
+        icon: javaScript,
+        id: "lkasdfoi87aaugf"
+    },
+    {
+        name: "ReactJS",
+        icon: reactJS,
+        id: "lkasdi87a5augf"
+    },
+    {
+        name: "ReactRouterDom",
+        icon: reactRouterDom,
+        id: "lkasdfo87a5augf"
+    },
+    {
+        name: "Redux",
+        icon: redux,
+        id: "lka7a5augf"
+    }
+    ,
+    {
+        name: "TypeScript",
+        icon: typeScript,
+        id: "lkasdfoi8gf"
+    }
+    ,
+    {
+        name: "MongoDB",
+        icon: mongoDB,
+        id: "lkasdf5augf"
+    },
+    {
+        name: "ExpressJS",
+        icon: expressJS,
+        id: "lkasdfoi87ugf"
+    },
+    {
+        name: "NodeJS",
+        icon: nodeJS,
+        id: "sdfoi87a5augf"
+    },
+    {
+        name: "MongooseODM",
+        icon: mongooseODM,
+        id: "lkdfoi87a5augf"
+    },
+    {
+        name: "TailwindCSS",
+        icon: tailwindCSS,
+        id: "lkasdugf"
+    },
+    {
+        name: "BootStrap5",
+        icon: bootStrap5,
+        id: "lkasdi87"
+    },
+    {
+        name: "StyledComponents",
+        icon: styledComponents,
+        id: "loi85augf"
+    },
+    {
+        name: "Git",
+        icon: git,
+        id: "lkasdfoi7a5f"
+    },
+    {
+        name: "GitHub",
+        icon: gitHub,
+        id: "lkasdfa5augf"
+    },
+    {
+        name: "JWT",
+        icon: jwt,
+        id: "lkasf"
+    },
+    {
+        name: "NPM",
+        icon: npm,
+        id: "lkas254a5augf"
+    },
+    {
+        name: "Postman",
+        icon: postman,
+        id: "lkasdfafg7a5augf"
+    },
+    {
+        name: "Yarn",
+        icon: yarn,
+        id: "lka87a5"
+    },
+    {
+        name: "NextJS",
+        icon: nextJS,
+        id: "lkasdff"
+    },
+    {
+        name: "MUI",
+        icon: mui,
+        id: "lkasdfugf"
+    },
+    {
+        name: "PostgreSQL",
+        icon: postgreSQL,
+        id: "lkas5augf"
+    },
+    {
+        name: "Figma",
+        icon: figma,
+        id: "lka25sgaugf"
+    }
+];
 
-export { navLinks, services, options, socialLinks };
+
+export { navLinks, services, options, socialLinks, skills };

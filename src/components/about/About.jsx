@@ -1,13 +1,13 @@
 import { MdMuzahid } from "../../assets";
 import { styles } from "../../styles";
 import ShadowFont from "../common/ShadowFont";
+import { skills } from "../../constants/index";
 
 const textWords = [
   { text: "I", id: "ui1h43", style: "" },
   { text: "help", id: "u243", style: "" },
   { text: "brands", id: "uiad143", style: "" },
   { text: "shine", id: "uiad43", style: "" },
-  { text: "in", id: "uij143", style: "" },
   { text: "in", id: "uim143", style: "" },
   { text: "digital", id: "usi143", style: "" },
   { text: "age.", id: "ui14ty3", style: "" },
@@ -81,24 +81,40 @@ const About = () => {
             />
           </figure>
           <div className="mt-5 md:mt-0">
-            <h1 className="text-[14px] md:text-[20px] lg:text-[35px] xl:text-[45px] font-extrabold">
-              {textWords.map(({ text, id, style }) => (
-                <span key={id} className={style}>
-                  {text}{" "}
-                </span>
-              ))}
-            </h1>
-            <div className="flex items-center gap-4 mt-4">
-              <a
-                href="mailto:mdmuzahid.dev@gmail.com"
-                className={aboutStyles.btn}
-              >
-                Email
-              </a>
-              <a href="https://drive.google.com/u/1/uc?id=12EpiQnRgBc3_HTRQZB5pbQa7dpHSgmRQ&export=download">
-                <button className={aboutStyles.btn}>Download Resume</button>
-              </a>
-            </div>
+            <section>
+              <h1 className="text-[14px] md:text-[20px] lg:text-[35px] xl:text-[45px] font-extrabold">
+                {textWords.map(({ text, id, style }) => (
+                  <span key={id} className={style}>
+                    {text}{" "}
+                  </span>
+                ))}
+              </h1>
+              <div className="flex items-center gap-4 mt-4">
+                <a
+                  href="mailto:mdmuzahid.dev@gmail.com"
+                  className={aboutStyles.btn}
+                >
+                  Email
+                </a>
+                <a href="https://drive.google.com/u/1/uc?id=12EpiQnRgBc3_HTRQZB5pbQa7dpHSgmRQ&export=download">
+                  <button className={aboutStyles.btn}>Download Resume</button>
+                </a>
+              </div>
+            </section>
+
+            <section className="mt-7 sm:mt-10 lg:mt-14">
+              <p className="text-slate-500">Skills</p>
+              <div className="flex flex-wrap items-center gap-3 mt-3">
+                {skills?.map(({ name, icon, id }) => (
+                  <div
+                    key={id}
+                    className="w-8 h-8 opacity-75 hover:opacity-100 hover:shadow-white hover:rotate-[360deg] transition-transform duration-400 rounded-full bg-white p-1 overflow-hidden hover:scale-[1.1]"
+                  >
+                    <img className="w-8" src={icon} alt={name} />
+                  </div>
+                ))}
+              </div>
+            </section>
           </div>
         </div>
       </section>

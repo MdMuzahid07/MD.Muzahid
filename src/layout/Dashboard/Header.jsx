@@ -1,35 +1,34 @@
-import { useNavigate } from "react-router-dom";
-import { useSignOut } from "react-firebase-hooks/auth";
-import Preloader from "../../components/preloader/Preloader";
 import auth from "../../firebase.init";
+import { signOut } from "firebase/auth";
 
 /* eslint-disable react/prop-types */
 const Header = ({ isSidebarOpen, setIsSidebarOpen }) => {
-  const navigate = useNavigate();
-  const [signOut, SignOutLoading, SignOutError] = useSignOut(auth);
-
-  const handleLogout = () => {
-    signOut();
-    setTimeout(navigate("/"), 3000);
+  const handleLogout = async () => {
+    await signOut(auth)
+      .then((res) => {
+        console.log("success", res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
-
-  if (SignOutLoading && !SignOutError) {
-    return <Preloader />;
-  }
-
-  if (!SignOutLoading && SignOutError) {
-    SignOutError, "sing out error";
-  }
 
   return (
     <header className="w-full h-20 bg-white sticky top-0 left-0 text-primary border-b px-7 flex justify-between items-center z-20">
       <button
-        className="text-[18px]"
+        className={`${
+          !isSidebarOpen ? "bg-slate-100" : "bg-red-500 text-white"
+        } px-4 py-1 rounded-full border tracking-wider`}
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
       >
-        {isSidebarOpen ? "Close" : "Open"}
+        {isSidebarOpen ? "Close" : "Open"} Sidebar
       </button>
-      <button onClick={handleLogout}>Logout</button>
+      <button
+        className="bg-slate-100 px-4 py-1 rounded-full border tracking-wider"
+        onClick={handleLogout}
+      >
+        Logout
+      </button>
     </header>
   );
 };

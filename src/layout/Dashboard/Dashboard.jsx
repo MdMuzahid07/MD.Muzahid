@@ -38,7 +38,28 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-      <Toaster position="bottom-right" reverseOrder={false} />
+      <Toaster
+        position="bottom-right"
+        reverseOrder={false}
+        toastOptions={{
+          // Define default options
+          className: "",
+          duration: 7000,
+          style: {
+            background: "#363636",
+            color: "#fff",
+          },
+
+          // // Default options for specific types
+          // success: {
+          //   duration: 3000,
+          //   theme: {
+          //     primary: "green",
+          //     secondary: "black",
+          //   },
+          // },
+        }}
+      />
     </>
   );
 };

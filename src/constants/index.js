@@ -215,11 +215,11 @@ const skills = [
         icon: mui,
         id: "lkasdfugf"
     },
-    {
-        name: "PostgreSQL",
-        icon: postgreSQL,
-        id: "lkas5augf"
-    },
+    // {
+    //     name: "PostgreSQL",
+    //     icon: postgreSQL,
+    //     id: "lkas5augf"
+    // },
     {
         name: "Figma",
         icon: figma,

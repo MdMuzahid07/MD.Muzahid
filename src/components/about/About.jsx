@@ -94,14 +94,13 @@ const About = () => {
                   href="mailto:mdmuzahid.dev@gmail.com"
                   className={aboutStyles.btn}
                 >
-                  Email
+                  Email Me
                 </a>
                 <a href="https://drive.google.com/u/1/uc?id=12EpiQnRgBc3_HTRQZB5pbQa7dpHSgmRQ&export=download">
                   <button className={aboutStyles.btn}>Download Resume</button>
                 </a>
               </div>
             </section>
-
             <section className="mt-7 sm:mt-10 lg:mt-14">
               <p className="text-slate-500">Skills</p>
               <div className="flex flex-wrap items-center gap-3 mt-3">

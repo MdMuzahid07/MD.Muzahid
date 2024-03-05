@@ -1,14 +1,18 @@
 import { useContext } from "react";
 import { AuthContext } from "../../context/provider/AuthProvider";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 /* eslint-disable react/prop-types */
 const Header = ({ isSidebarOpen, setIsSidebarOpen }) => {
+  const navigate = useNavigate();
   const { user, logOut } = useContext(AuthContext);
 
   const handleLogout = () => {
     logOut()
-      .then((res) => {
-        console.log("success", res);
+      .then(() => {
+        toast.success("Log ut success");
+        navigate("/");
       })
       .catch((error) => {
         console.log(error);

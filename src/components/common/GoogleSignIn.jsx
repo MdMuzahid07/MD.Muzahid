@@ -1,16 +1,28 @@
 import { useContext } from "react";
 import { AuthContext } from "../../context/provider/AuthProvider";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const GoogleSignIn = () => {
-  const { googleSignIn } = useContext(AuthContext);
+  const { googleSignIn, logOut } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleSignIn = () => {
     googleSignIn()
       .then((res) => {
-        console.log(res);
+        if (
+          res?.user &&
+          res?.user?.displayName === "Md Muzahid" &&
+          res?.user?.email === "mdmuzahid.dev@gmail.com"
+        ) {
+          navigate("/dashboard/home");
+        } else {
+          toast.error("Please Enter Admin Email");
+          logOut();
+        }
       })
       .catch((error) => {
-        console.log(error);
+        toast.error(error.message);
       });
   };
   return (

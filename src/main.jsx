@@ -6,6 +6,7 @@ import routes from "./routes/routes.jsx";
 import { Provider } from "react-redux";
 import store from "./app/store.js";
 import AuthProvider from "./context/provider/AuthProvider.jsx";
+import { Toaster } from "react-hot-toast";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -14,5 +15,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <RouterProvider router={routes} />
       </AuthProvider>
     </Provider>
+    <Toaster position="bottom-right" reverseOrder={false} />
   </React.StrictMode>
 );

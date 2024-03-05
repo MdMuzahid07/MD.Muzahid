@@ -3,7 +3,6 @@ import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import { styles } from "../../styles";
 import Header from "./Header";
-import { Toaster } from "react-hot-toast";
 
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -38,28 +37,6 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-      <Toaster
-        position="bottom-right"
-        reverseOrder={false}
-        toastOptions={{
-          // Define default options
-          className: "",
-          duration: 7000,
-          style: {
-            background: "#363636",
-            color: "#fff",
-          },
-
-          // // Default options for specific types
-          // success: {
-          //   duration: 3000,
-          //   theme: {
-          //     primary: "green",
-          //     secondary: "black",
-          //   },
-          // },
-        }}
-      />
     </>
   );
 };

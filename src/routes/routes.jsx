@@ -7,6 +7,7 @@ import Dashboard from "../layout/Dashboard/Dashboard";
 import DashboardHome from "../pages/DashboardHome";
 import DashboardAddProject from "../pages/DashboardAddProject";
 import GoogleSignIn from "../components/common/GoogleSignIn";
+import PrivateRoute from "../auth/PrivateRoute";
 
 const routes = createBrowserRouter([
   {
@@ -29,7 +30,11 @@ const routes = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard />,
+    element: (
+      <PrivateRoute>
+        <Dashboard />
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "home",

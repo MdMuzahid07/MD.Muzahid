@@ -2,6 +2,7 @@
 import { HR } from "../common/HR";
 import { useNavigate } from "react-router-dom";
 import Tilt from "react-parallax-tilt";
+import { imageLoadingShadow } from "../../assets";
 
 const ProjectCard = ({ project, index }) => {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ const ProjectCard = ({ project, index }) => {
           <div>
             <h1>{`${index < 9 ? 0 : " "}${index + 1}.`}</h1>
             <h1 className="text-[30px] md:text-[text-50px] lg:text-[80px] font-bold">
-              {project?.appName}
+              {project?.name}
             </h1>
             <button
               onClick={() => handleClick(project?._id)}
@@ -44,9 +45,9 @@ const ProjectCard = ({ project, index }) => {
             <div className="flex gap-4 mt-20 text-[18px]">
               <h1>Core :</h1>
               <ul>
-                <li>ReactJS</li>
-                <li>NextJS</li>
-                <li>ExpressJS</li>
+                {project?.coreTechs?.map((tech, index) => (
+                  <li key={tech + index}>{tech}</li>
+                ))}
               </ul>
             </div>
           </div>
@@ -55,7 +56,11 @@ const ProjectCard = ({ project, index }) => {
             <Tilt tiltAngleXInitial={20} tiltAngleYInitial={20}>
               <img
                 className="w-full h-full transition ease-in-out delay-100 object-cover  object-center  sm:w-[600px] md:h-[400px] xl:w-[800px] xl:h-[500px] brightness-50 hover:brightness-100"
-                src={project?.img}
+                src={
+                  project?.thumbnailImg
+                    ? project?.thumbnailImg
+                    : imageLoadingShadow
+                }
                 alt=""
               />
             </Tilt>

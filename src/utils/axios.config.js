@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-    baseURL: "https://myportfolio-pwa-server-version2.vercel.app/"
+    baseURL: "https://md-muzahid-server.vercel.app/"
 });
 
 export default instance;

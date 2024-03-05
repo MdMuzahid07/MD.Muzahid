@@ -5,4 +5,12 @@ const fetchProjects = async () => {
     return data.data.data;
 };
 
-export default fetchProjects;
+
+
+const addProject = async (projectData) => {
+    await axios.post("/api/v1/projects", projectData);
+}
+
+export { fetchProjects, addProject };
+
+

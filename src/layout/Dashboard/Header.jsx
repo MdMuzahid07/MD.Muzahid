@@ -1,10 +1,12 @@
-import auth from "../../firebase.init";
-import { signOut } from "firebase/auth";
+import { useContext } from "react";
+import { AuthContext } from "../../context/provider/AuthProvider";
 
 /* eslint-disable react/prop-types */
 const Header = ({ isSidebarOpen, setIsSidebarOpen }) => {
-  const handleLogout = async () => {
-    await signOut(auth)
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    logOut()
       .then((res) => {
         console.log("success", res);
       })
@@ -23,6 +25,11 @@ const Header = ({ isSidebarOpen, setIsSidebarOpen }) => {
       >
         {isSidebarOpen ? "Close" : "Open"} Sidebar
       </button>
+      {user && (
+        <p className="bg-slate-100 px-4 py-1 rounded-full border tracking-wider">
+          Hello: {user?.email}
+        </p>
+      )}
       <button
         className="bg-slate-100 px-4 py-1 rounded-full border tracking-wider"
         onClick={handleLogout}

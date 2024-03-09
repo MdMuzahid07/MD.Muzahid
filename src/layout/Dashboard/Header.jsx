@@ -30,7 +30,7 @@ const Header = ({ isSidebarOpen, setIsSidebarOpen }) => {
         {isSidebarOpen ? "Close" : "Open"} Sidebar
       </button>
       {user && (
-        <p className="bg-slate-100 px-4 py-1 rounded-full border tracking-wider">
+        <p className="bg-slate-100 hidden md:block px-4 py-1 rounded-full border tracking-wider">
           Hello: {user?.email}
         </p>
       )}

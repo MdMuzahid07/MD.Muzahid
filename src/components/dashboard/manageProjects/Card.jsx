@@ -3,7 +3,7 @@ import Toggle from "../../ui/Toggle";
 
 const Card = () => {
   return (
-    <div className="w-full h-44 p-4 bg-white border relative">
+    <div className="w-full h-44 p-4 bg-white border relative hover:drop-shadow">
       <header className="flex items-center justify-between">
         <h1 className="text-3xl">Project Name</h1>
         <DropDown />

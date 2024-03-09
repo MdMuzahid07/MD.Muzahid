@@ -1,23 +1,11 @@
 import { useEffect, useState } from "react";
-import MultiSelectDropdown from "../components/common/MultiSelectDropdown";
 import toast from "react-hot-toast";
 import { useSelector, useDispatch } from "react-redux";
-import { postProjectData } from "../features/projects/projectSlice";
-import useImgBBUpload from "../hooks/useImgBBUpload";
-import { options } from "../constants";
-
-const addProjectStyles = {
-  headingText:
-    "text-[18px] xs:text-[25px] md:text-[40px] lg:text-[60px] font-bold",
-  clipText:
-    "bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500",
-  labelText: "text-[18px] xs:text-[25px] md:text-[40px]",
-  inputStyle:
-    "w-full py-5 px-7 border placeholder:text-[18px] focus:outline-none bg-slate-50",
-  fileInput: `file:mr-4 file:py-0 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold
-      file:bg-violet-50 file:text-primary 
-      file:bg-slate-50`,
-};
+import MultiSelectDropdown from "../../components/common/MultiSelectDropdown";
+import { postProjectData } from "../../features/projects/projectSlice";
+import useImgBBUpload from "../../hooks/useImgBBUpload";
+import { options } from "../../constants";
+import { addProjectStyles } from "../../styles";
 
 const DashboardAddProject = () => {
   const [coreTechs, setCoreTechs] = useState([]);

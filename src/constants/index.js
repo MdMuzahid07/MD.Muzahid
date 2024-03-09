@@ -16,7 +16,7 @@ import {
     nextJS,
     nodeJS,
     npm,
-    postgreSQL,
+    // postgreSQL,
     postman,
     reactJS,
     reactRouterDom,

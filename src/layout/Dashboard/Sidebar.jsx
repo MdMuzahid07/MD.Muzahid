@@ -44,6 +44,21 @@ const Sidebar = ({ isSidebarOpen }) => {
             Project Upload
           </Link>
         </li>
+        <li>
+          <Link
+            onClick={() => {
+              setActive("/dashboard/manageProjects");
+            }}
+            to="manageProjects"
+            className={
+              pathname && active === "/dashboard/manageProjects"
+                ? "bg-clip-text text-transparent  bg-gradient-to-r from-pink-500 to-violet-500"
+                : "text-white"
+            }
+          >
+            Manage Projects
+          </Link>
+        </li>
       </ul>
     </div>
   );

@@ -4,10 +4,11 @@ import ProjectDetails from "../pages/ProjectDetails";
 import Main from "../layout/Main/Main";
 import App from "../App";
 import Dashboard from "../layout/Dashboard/Dashboard";
-import DashboardHome from "../pages/DashboardHome";
-import DashboardAddProject from "../pages/DashboardAddProject";
 import GoogleSignIn from "../components/common/GoogleSignIn";
 import PrivateRoute from "../auth/PrivateRoute";
+import DashboardHome from "../pages/dashboard/DashboardHome";
+import DashboardAddProject from "../pages/dashboard/DashboardAddProject";
+import ManageProjects from "../pages/dashboard/ManageProjects";
 
 const routes = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const routes = createBrowserRouter([
       {
         path: "addProject",
         element: <DashboardAddProject />,
+      },
+      {
+        path: "manageProjects",
+        element: <ManageProjects />,
       },
     ],
   },

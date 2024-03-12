@@ -4,7 +4,7 @@ import { addProjectStyles } from "../../styles";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { fetchProjectsData } from "../../features/projects/projectSlice";
-import Preloader from "../../components/preloader/Preloader";
+import Spinner from "../../components/preloader/Spinner";
 
 const ManageProjects = () => {
   const { projects, isLoading } = useSelector((state) => state.projects);
@@ -19,7 +19,7 @@ const ManageProjects = () => {
   }, [projects]);
 
   if (isLoading) {
-    return <Preloader />;
+    return <Spinner />;
   }
 
   return (

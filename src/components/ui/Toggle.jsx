@@ -9,7 +9,7 @@ const Toggle = () => {
       <Switch
         checked={enabled}
         onChange={setEnabled}
-        className={`${enabled ? "bg-green-500" : "bg-slate-200"}
+        className={`${enabled ? "bg-green-500" : "bg-red-500"}
           relative inline-flex h-[20px] w-[56px] shrink-0 cursor-pointer border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white/75 border`}
       >
         <span

@@ -1,14 +1,33 @@
 import { Link } from "react-router-dom";
 import Card from "../../components/dashboard/manageProjects/Card";
 import { addProjectStyles } from "../../styles";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { fetchProjectsData } from "../../features/projects/projectSlice";
+import Preloader from "../../components/preloader/Preloader";
 
 const ManageProjects = () => {
+  const { projects, isLoading } = useSelector((state) => state.projects);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchProjectsData());
+  }, [dispatch]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [projects]);
+
+  if (isLoading) {
+    return <Preloader />;
+  }
+
   return (
     <main className="mb-32">
       <h1 className={`${addProjectStyles.headingText} mt-14`}>
         Manage Projects
       </h1>
-      <header className="md:bg-slate-50 md:px-7 py-4 w-full gap-5 flex justify-center md:justify-between  items-center md:border mt-14">
+      <header className="w-full gap-5 flex justify-center md:justify-between  items-center  mt-14">
         <div className="flex relative">
           <input
             className="px-4 py-3 w-[300px] md:w-[400px] lg:w-[700px] focus:outline-none border"
@@ -16,7 +35,7 @@ const ManageProjects = () => {
             placeholder="Search By Name"
             id="Search"
           />
-          <button className="absolute top-0 right-0 px-4 py-3 bg-primary text-white">
+          <button className="absolute top-0 right-0 bottom-0 px-4 py-3 bg-primary text-white">
             Enter
           </button>
         </div>
@@ -27,9 +46,9 @@ const ManageProjects = () => {
           Add New
         </Link>
       </header>
-      <section className="mt-10 md:bg-slate-50 md:border md:p-7 grid lg:grid-cols-2 gap-4">
-        {[1, 2, 3, 4, 5, 6, 7]?.map((index) => {
-          return <Card key={index} />;
+      <section className="mt-10 grid lg:grid-cols-2 gap-4 bg-slate-100 p-5">
+        {projects?.map((project) => {
+          return <Card key={project?._id} project={project} />;
         })}
       </section>
     </main>

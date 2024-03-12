@@ -10,6 +10,7 @@ import DashboardHome from "../pages/dashboard/DashboardHome";
 import DashboardAddProject from "../pages/dashboard/DashboardAddProject";
 import ManageProjects from "../pages/dashboard/ManageProjects";
 import UpdateProject from "../pages/dashboard/UpdateProject";
+import Settings from "../pages/dashboard/Settings";
 
 const routes = createBrowserRouter([
   {
@@ -53,6 +54,10 @@ const routes = createBrowserRouter([
       {
         path: "updateProject",
         element: <UpdateProject />,
+      },
+      {
+        path: "settings",
+        element: <Settings />,
       },
     ],
   },

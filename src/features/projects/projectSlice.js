@@ -20,7 +20,6 @@ export const postProjectData = createAsyncThunk("projects/postProject", async (p
 });
 
 
-
 const projectSlice = createSlice({
     initialState,
     name: "projects",

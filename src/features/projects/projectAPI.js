@@ -6,10 +6,10 @@ const fetchProjects = async () => {
 };
 
 
-
 const addProject = async (projectData) => {
     await axios.post("/api/v1/projects", projectData);
 }
+
 
 export { fetchProjects, addProject };
 

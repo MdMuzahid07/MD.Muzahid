@@ -21,9 +21,9 @@ const Card = ({ project }) => {
       }}
       className="w-full h-44 border relative hover:drop-shadow"
     >
-      <div className="w-full h-44 bg-black bg-opacity-25 p-4">
+      <div className="w-full h-44 bg-black bg-opacity-50 p-4">
         <header className="flex items-center justify-between">
-          <h1 className="text-3xl">{project?.name}</h1>
+          <h1 className="text-3xl text-white">{project?.name}</h1>
         </header>
         <section>
           <div className="flex items-center gap-3 my-3">
@@ -35,17 +35,17 @@ const Card = ({ project }) => {
             </p>
           </div>
           <label htmlFor="" className="flex items-center gap-2">
-            <span className="text-xs">Active</span>
+            <span className="text-xs text-white">Active</span>
             <Toggle />
           </label>
         </section>
 
-        <div className="absolute -bottom-1 left-0 w-full">
+        <div className="mt-4">
           <div className="flex justify-between items-center ">
-            <p className="w-24 h-8 bg-white border flex justify-center items-center tracking-wider font-bold text-xl">
-              MERN
+            <p className="w-44 h-8 bg-white border flex justify-center items-center tracking-wider font-bold text-xl">
+              MERN-STACK
             </p>
-            <div className="flex items-center gap-3 mr-2 mb-3">
+            <div className="flex items-center gap-3 mr-2">
               <Link
                 className="w-6 h-6 border bg-white hover:bg-indigo-500 hover:text-white flex items-center justify-center rounded-full"
                 to="/dashboard/updateProject"

@@ -9,6 +9,7 @@ import PrivateRoute from "../auth/PrivateRoute";
 import DashboardHome from "../pages/dashboard/DashboardHome";
 import DashboardAddProject from "../pages/dashboard/DashboardAddProject";
 import ManageProjects from "../pages/dashboard/ManageProjects";
+import UpdateProject from "../pages/dashboard/UpdateProject";
 
 const routes = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ const routes = createBrowserRouter([
       {
         path: "manageProjects",
         element: <ManageProjects />,
+      },
+      {
+        path: "updateProject",
+        element: <UpdateProject />,
       },
     ],
   },

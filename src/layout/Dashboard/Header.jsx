@@ -11,7 +11,7 @@ const Header = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const handleLogout = () => {
     logOut()
       .then(() => {
-        toast.success("Log ut success");
+        toast.success("Log out success");
         navigate("/");
       })
       .catch((error) => {

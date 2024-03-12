@@ -1,7 +1,9 @@
+/* eslint-disable react/prop-types */
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
+import { Link } from "react-router-dom";
 
-const DropDown = () => {
+const DropDown = ({ links, styles }) => {
   return (
     <>
       <Menu as="div">
@@ -32,10 +34,21 @@ const DropDown = () => {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 bg-white shadow-lg ring-1 ring-black/5 focus:outline-none z-20 min-h-32">
-            {[1, 2, 3]?.map((index) => (
-              <div key={index} className="px-3 py-2 cursor-pointer">
-                <Menu.Item>{() => <button>Update</button>}</Menu.Item>
+          <Menu.Items
+            className={`${styles} absolute right-0 mt-2 w-32 origin-top-right divide-y divide-gray-100 bg-white shadow-lg  focus:outline-none z-20 min-h-32`}
+          >
+            {links?.map(({ name, icon, link, id }) => (
+              <div
+                key={id}
+                className="px-3 py-2 cursor-pointer hover:bg-slate-100"
+              >
+                <Menu.Item>
+                  {() => (
+                    <Link to={link} className="flex items-center gap-3 ">
+                      {icon} <span className="text-xs">{name}</span>
+                    </Link>
+                  )}
+                </Menu.Item>
               </div>
             ))}
           </Menu.Items>

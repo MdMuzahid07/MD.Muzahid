@@ -60,7 +60,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                 : "text-white"
             }
           >
-            Project Upload
+            Add Project
           </Link>
         </li>
         <li>

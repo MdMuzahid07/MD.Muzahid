@@ -6,7 +6,7 @@ import useImgBBUpload from "../../hooks/useImgBBUpload";
 import { addProjectStyles } from "../../styles";
 import AddProductForm from "../../components/ui/dashboard/AddProductForm";
 
-const DashboardAddProject = () => {
+const UpdateProject = () => {
   const [coreTechs, setCoreTechs] = useState([]);
   const [allUsedTechs, setAllUsedTechs] = useState([]);
   const { getEvent, img } = useImgBBUpload();
@@ -103,7 +103,9 @@ const DashboardAddProject = () => {
 
   return (
     <>
-      <h1 className={`${addProjectStyles.headingText} mt-14`}>Add Project</h1>
+      <h1 className={`${addProjectStyles.headingText} mt-14`}>
+        Update Project
+      </h1>
       <AddProductForm
         handleForm={handleForm}
         handleOnChangeCoreTechs={handleOnChangeCoreTechs}
@@ -119,4 +121,4 @@ const DashboardAddProject = () => {
   );
 };
 
-export default DashboardAddProject;
+export default UpdateProject;

@@ -2,16 +2,26 @@
 import { Link } from "react-router-dom";
 import Toggle from "../../ui/Toggle";
 import toast from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteAProject } from "../../../features/projects/projectSlice";
+import Spinner from "../../preloader/Spinner";
 
 const Card = ({ project }) => {
-  const handleDelete = () => {
+  const { deleteSuccess, isLoading } = useSelector((state) => state.projects);
+  const dispatch = useDispatch();
+
+  const handleDelete = (id) => {
     const confirm = window.confirm("Are you sure?");
     if (confirm) {
-      toast.error("Project Deleted Successfully, not functional", {
-        id: "0989g",
-      });
+      dispatch(deleteAProject(id));
     }
   };
+  if (isLoading) {
+    return <Spinner />;
+  }
+  if (deleteSuccess) {
+    toast.success("Deleted Successfully", { id: "projectDeleted" });
+  }
 
   return (
     <div

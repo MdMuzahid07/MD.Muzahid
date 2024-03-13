@@ -10,7 +10,10 @@ const addProject = async (projectData) => {
     await axios.post("/api/v1/projects", projectData);
 }
 
+const deleteProjectById = async (id) => {
+    await axios.delete(`/api/v1/projects/${id}`);
+}
 
-export { fetchProjects, addProject };
+export { fetchProjects, addProject, deleteProjectById };
 
 

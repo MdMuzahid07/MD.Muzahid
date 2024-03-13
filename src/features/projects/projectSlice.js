@@ -1,10 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { addProject, fetchProjects } from "./projectAPI";
+import { addProject, deleteProjectById, fetchProjects } from "./projectAPI";
 
 const initialState = {
     projects: [],
     isLoading: false,
     postSuccess: false,
+    deleteSuccess: false,
     isError: false,
     error: ""
 };
@@ -18,6 +19,11 @@ export const postProjectData = createAsyncThunk("projects/postProject", async (p
     const product = addProject(projectData);
     return product;
 });
+
+export const deleteAProject = createAsyncThunk("projects/deleteProjectById", async (id) => {
+    const response = deleteProjectById(id);
+    return response;
+})
 
 
 const projectSlice = createSlice({
@@ -52,6 +58,20 @@ const projectSlice = createSlice({
                 state.isError = true,
                 state.postSuccess = false,
                 state.error = action.error.message
+        });
+        builder.addCase(deleteAProject.pending, (state) => {
+            state.deleteSuccess = false,
+                state.isError = false
+            state.isLoading = true
+        });
+        builder.addCase(deleteAProject.fulfilled, (state) => {
+            state.deleteSuccess = true,
+                state.isLoading = false,
+                state.isError = false
+        });
+        builder.addCase(deleteAProject.rejected, (state, action) => {
+            state.deleteSuccess = false,
+                state.isError = action.error.message
         });
     }
 });

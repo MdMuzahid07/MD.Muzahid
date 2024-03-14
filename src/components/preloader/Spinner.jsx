@@ -3,7 +3,11 @@ import { reactJS } from "../../assets";
 const Spinner = () => {
   return (
     <div className="h-[50vh] w-full flex justify-center items-center">
-      <img className="w-10 h-10 animate-spin" src={reactJS} alt="" />
+      <img
+        className="w-10 h-10 animate-spin rounded-full"
+        src={reactJS}
+        alt=""
+      />
     </div>
   );
 };

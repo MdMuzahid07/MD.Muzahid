@@ -12,22 +12,22 @@ const initialState = {
 };
 
 export const fetchProjectsData = createAsyncThunk("projects/getProjects", async () => {
-    const projects = fetchProjects();
+    const projects = await fetchProjects();
     return projects;
 });
 
 export const postProjectData = createAsyncThunk("projects/postProject", async (projectData) => {
-    const product = addProject(projectData);
+    const product = await addProject(projectData);
     return product;
 });
 
 export const deleteAProject = createAsyncThunk("projects/deleteProjectById", async (id) => {
-    const response = deleteProjectById(id);
+    const response = await deleteProjectById(id);
     return response;
 });
 
 export const updateAProject = createAsyncThunk("projects/updateProjectById", async (id, data) => {
-    const response = updateProjectById(id, data);
+    const response = await updateProjectById(id, data);
     return response;
 });
 

@@ -22,7 +22,16 @@ const GoogleSignIn = () => {
         }
       })
       .catch((error) => {
-        toast.error(error.message);
+        toast.error(error.message, {
+          id: "singInError",
+          style: {
+            borderRadius: "0px",
+            background: "#0C0C0C",
+            color: "#fff",
+            fontSize: "30px",
+            padding: "10px 20px",
+          },
+        });
       });
   };
   return (

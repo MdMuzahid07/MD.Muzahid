@@ -1,11 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { addProject, deleteProjectById, fetchProjects } from "./projectAPI";
+import { addProject, deleteProjectById, fetchProjects, updateProjectById } from "./projectAPI";
 
 const initialState = {
     projects: [],
     isLoading: false,
     postSuccess: false,
     deleteSuccess: false,
+    projectUpdated: false,
     isError: false,
     error: ""
 };
@@ -23,8 +24,12 @@ export const postProjectData = createAsyncThunk("projects/postProject", async (p
 export const deleteAProject = createAsyncThunk("projects/deleteProjectById", async (id) => {
     const response = deleteProjectById(id);
     return response;
-})
+});
 
+export const updateAProject = createAsyncThunk("projects/updateProjectById", async (id, data) => {
+    const response = updateProjectById(id, data);
+    return response;
+});
 
 const projectSlice = createSlice({
     initialState,
@@ -72,6 +77,22 @@ const projectSlice = createSlice({
         builder.addCase(deleteAProject.rejected, (state, action) => {
             state.deleteSuccess = false,
                 state.isError = action.error.message
+        });
+        builder.addCase(updateAProject.pending, (state) => {
+            state.isLoading = true,
+                state.projectUpdated = false,
+                state.isError = false
+        });
+        builder.addCase(updateAProject.fulfilled, (state) => {
+            state.isLoading = false,
+                state.projectUpdated = true,
+                state.isError = false
+        });
+        builder.addCase(updateAProject.rejected, (state, action) => {
+            state.isLoading = false,
+                state.projectUpdated = false,
+                state.isError = true,
+                state.error = action.error.message
         });
     }
 });

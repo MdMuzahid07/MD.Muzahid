@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useSelector, useDispatch } from "react-redux";
-import { postProjectData } from "../../features/projects/projectSlice";
+import {
+  fetchProjectsData,
+  updateAProject,
+} from "../../features/projects/projectSlice";
 import useImgBBUpload from "../../hooks/useImgBBUpload";
 import { addProjectStyles } from "../../styles";
 import AddProductForm from "../../components/ui/dashboard/AddProductForm";
@@ -16,15 +19,19 @@ const UpdateProject = () => {
   const { getEvent: f_2, img: f_2_img } = useImgBBUpload();
   const { getEvent: f_3, img: f_3_img } = useImgBBUpload();
 
-  const { isLoading, postSuccess, isError, error } = useSelector(
+  const { isLoading, projectUpdated, isError, error, projects } = useSelector(
     (state) => state.projects
   );
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (isLoading && !postSuccess) {
-      toast.loading("Posting...", {
-        id: "project added",
+    dispatch(fetchProjectsData());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (isLoading && !projectUpdated && !projects) {
+      toast.loading("Updating...", {
+        id: "project update",
         style: {
           borderRadius: "0px",
           background: "#0C0C0C",
@@ -34,9 +41,9 @@ const UpdateProject = () => {
         },
       });
     }
-    if (!isLoading && postSuccess) {
+    if (!isLoading && projectUpdated) {
       toast.success("Success", {
-        id: "project added",
+        id: "project update",
         style: {
           borderRadius: "0px",
           background: "#0C0C0C",
@@ -46,9 +53,9 @@ const UpdateProject = () => {
         },
       });
     }
-    if (!postSuccess && isError) {
+    if (!projectUpdated && isError) {
       toast.error(error, {
-        id: "project added",
+        id: "project update",
         style: {
           borderRadius: "0px",
           background: "#0C0C0C",
@@ -58,7 +65,7 @@ const UpdateProject = () => {
         },
       });
     }
-  }, [isLoading, isError, postSuccess, error]);
+  }, [isLoading, isError, projectUpdated, error, projects]);
 
   const handleForm = (e) => {
     e.preventDefault();
@@ -90,7 +97,8 @@ const UpdateProject = () => {
         client: e.target.clientUrl.value,
       },
     };
-    dispatch(postProjectData(projectData));
+
+    dispatch(updateAProject(ID, projectData));
   };
 
   const handleOnChangeCoreTechs = (event) => {
@@ -103,12 +111,16 @@ const UpdateProject = () => {
     setAllUsedTechs(techs);
   };
 
+  const currentData = projects?.find((project) => project?._id === ID);
+  console.log(currentData);
+
   return (
     <>
       <h1 className={`${addProjectStyles.headingText} mt-14`}>
         Update Project
       </h1>
       <AddProductForm
+        currentData={currentData}
         handleForm={handleForm}
         handleOnChangeCoreTechs={handleOnChangeCoreTechs}
         handleOnChangeAllUsedTechs={handleOnChangeAllUsedTechs}

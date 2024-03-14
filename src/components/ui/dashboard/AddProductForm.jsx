@@ -13,6 +13,7 @@ const AddProductForm = ({
   f_1,
   f_2,
   f_3,
+  currentData,
 }) => {
   return (
     <form onSubmit={handleForm} className="mt-20 mb-[50vh] relative">
@@ -24,7 +25,7 @@ const AddProductForm = ({
           className={addProjectStyles.inputStyle}
           type="text"
           name="projectName"
-          placeholder="Add Project Name"
+          placeholder={currentData ? currentData?.name : "Add Project Name"}
           id="projectName"
           required
         />
@@ -36,6 +37,7 @@ const AddProductForm = ({
           htmlFor="projectThumbnail"
         >
           Project Thumbnail
+          {currentData ? <img src={currentData?.thumbnailImg} /> : ""}
         </label>
         <input
           onChange={getEvent}
@@ -54,7 +56,9 @@ const AddProductForm = ({
         <input
           className={`${addProjectStyles.inputStyle}`}
           type="text"
-          placeholder="Add project live url"
+          placeholder={
+            currentData ? currentData?.live_url : "Add project live url"
+          }
           id="liveUrl"
           name="liveUrl"
           required
@@ -68,7 +72,7 @@ const AddProductForm = ({
         <input
           className={`${addProjectStyles.inputStyle}`}
           type="number"
-          placeholder="Project Year"
+          placeholder={currentData ? currentData?.projectYear : "Project Year"}
           id="projectYear"
           name="projectYear"
           required
@@ -85,7 +89,9 @@ const AddProductForm = ({
             <input
               className={`${addProjectStyles.inputStyle}`}
               type="text"
-              placeholder="Client Github URL"
+              placeholder={
+                currentData ? currentData?.source?.client : "Client Github URL"
+              }
               id="clientUrl"
               name="clientUrl"
               required
@@ -98,7 +104,9 @@ const AddProductForm = ({
             <input
               className={`${addProjectStyles.inputStyle}`}
               type="text"
-              placeholder="Client Server URL"
+              placeholder={
+                currentData ? currentData?.source?.server : "Server Github URL"
+              }
               id="serverUrl"
               name="serverUrl"
               required
@@ -124,7 +132,11 @@ const AddProductForm = ({
             <input
               className={`${addProjectStyles.inputStyle}`}
               type="text"
-              placeholder="Feature heading"
+              placeholder={
+                currentData
+                  ? currentData?.feature_1?.heading
+                  : "Feature heading"
+              }
               id="f1"
               name="f1_heading"
               required
@@ -137,7 +149,9 @@ const AddProductForm = ({
             <input
               className={`${addProjectStyles.inputStyle}`}
               type="text"
-              placeholder="Feature Details"
+              placeholder={
+                currentData ? currentData?.feature_1?.detail : "Feature Details"
+              }
               id="f2"
               name="f1_details"
               required
@@ -147,6 +161,7 @@ const AddProductForm = ({
           <div>
             <label className={addProjectStyles.labelText} htmlFor="f3">
               Feature Thumbnail
+              {currentData ? <img src={currentData?.feature_1?.image} /> : ""}
             </label>
             <input
               onChange={f_1}
@@ -173,7 +188,11 @@ const AddProductForm = ({
               <input
                 className={`${addProjectStyles.inputStyle}`}
                 type="text"
-                placeholder="Feature heading"
+                placeholder={
+                  currentData
+                    ? currentData?.feature_2?.heading
+                    : "Feature Heading"
+                }
                 id="f4"
                 name="f2_heading"
                 required
@@ -186,7 +205,11 @@ const AddProductForm = ({
               <input
                 className={`${addProjectStyles.inputStyle}`}
                 type="text"
-                placeholder="Feature Details"
+                placeholder={
+                  currentData
+                    ? currentData?.feature_2?.detail
+                    : "Feature Details"
+                }
                 id="f5"
                 name="f2_details"
                 required
@@ -196,6 +219,7 @@ const AddProductForm = ({
             <div>
               <label className={addProjectStyles.labelText} htmlFor="f6">
                 Feature Thumbnail
+                {currentData ? <img src={currentData?.feature_2?.image} /> : ""}
               </label>
               <input
                 onChange={f_2}
@@ -223,7 +247,11 @@ const AddProductForm = ({
               <input
                 className={`${addProjectStyles.inputStyle}`}
                 type="text"
-                placeholder="Feature heading"
+                placeholder={
+                  currentData
+                    ? currentData?.feature_3?.heading
+                    : "Feature Heading"
+                }
                 id="f7"
                 name="f3_heading"
                 required
@@ -236,7 +264,11 @@ const AddProductForm = ({
               <input
                 className={`${addProjectStyles.inputStyle}`}
                 type="text"
-                placeholder="Feature Details"
+                placeholder={
+                  currentData
+                    ? currentData?.feature_3?.detail
+                    : "Feature Details"
+                }
                 id="f8"
                 name="f3_details"
                 required
@@ -246,6 +278,7 @@ const AddProductForm = ({
             <div>
               <label className={addProjectStyles.labelText} htmlFor="f9">
                 Feature Thumbnail
+                {currentData ? <img src={currentData?.feature_3?.image} /> : ""}
               </label>
               <input
                 onChange={f_3}
@@ -268,6 +301,20 @@ const AddProductForm = ({
           <div className="w-full">
             <label htmlFor="" className={addProjectStyles.labelText}>
               Core
+              {currentData ? (
+                <ul className="flex items-center gap-2">
+                  {currentData?.coreTechs?.map((tech, index) => (
+                    <li
+                      className="h-7 px-3 text-[14px] flex items-center justify-center rounded-full bg-slate-100 mb-3 text-xs"
+                      key={index}
+                    >
+                      {tech}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                ""
+              )}
             </label>
             <div className={`flex flex-wrap items-center gap-4`}>
               {coreTechs?.map((tech, index) => (
@@ -288,6 +335,20 @@ const AddProductForm = ({
           <div className="w-full">
             <label htmlFor="" className={addProjectStyles.labelText}>
               All Used
+              {currentData ? (
+                <ul className="flex items-center gap-2">
+                  {currentData?.usedTechnologies?.map((tech, index) => (
+                    <li
+                      className="h-7 px-3 text-[14px] flex items-center justify-center rounded-full bg-slate-100 mb-3 text-xs"
+                      key={index}
+                    >
+                      {tech}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                ""
+              )}
             </label>
             <div className={`flex flex-wrap items-center gap-4`}>
               {allUsedTechs?.map((tech, index) => (

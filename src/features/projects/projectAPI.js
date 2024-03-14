@@ -5,15 +5,18 @@ const fetchProjects = async () => {
     return data.data.data;
 };
 
-
 const addProject = async (projectData) => {
     await axios.post("/api/v1/projects", projectData);
-}
+};
+
+const updateProjectById = async (id, data) => {
+    await axios.patch(`/api/v1/projects/${id}`, data);
+};
 
 const deleteProjectById = async (id) => {
     await axios.delete(`/api/v1/projects/${id}`);
-}
+};
 
-export { fetchProjects, addProject, deleteProjectById };
+export { fetchProjects, addProject, deleteProjectById, updateProjectById };
 
 

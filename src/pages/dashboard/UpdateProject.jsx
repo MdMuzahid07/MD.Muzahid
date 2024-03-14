@@ -5,10 +5,12 @@ import { postProjectData } from "../../features/projects/projectSlice";
 import useImgBBUpload from "../../hooks/useImgBBUpload";
 import { addProjectStyles } from "../../styles";
 import AddProductForm from "../../components/ui/dashboard/AddProductForm";
+import { useParams } from "react-router-dom";
 
 const UpdateProject = () => {
   const [coreTechs, setCoreTechs] = useState([]);
   const [allUsedTechs, setAllUsedTechs] = useState([]);
+  const { ID } = useParams();
   const { getEvent, img } = useImgBBUpload();
   const { getEvent: f_1, img: f_1_img } = useImgBBUpload();
   const { getEvent: f_2, img: f_2_img } = useImgBBUpload();

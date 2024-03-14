@@ -30,6 +30,7 @@ const ManageProjects = () => {
       <header className="w-full gap-5 flex justify-center md:justify-between  items-center  mt-14">
         <div className="flex relative">
           <input
+            name="search"
             className="px-4 py-3 w-[300px] md:w-[400px] lg:w-[700px] focus:outline-none border"
             type="text"
             placeholder="Search By Name"

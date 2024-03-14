@@ -52,7 +52,7 @@ const routes = createBrowserRouter([
         element: <ManageProjects />,
       },
       {
-        path: "updateProject",
+        path: "updateProject/:ID",
         element: <UpdateProject />,
       },
       {

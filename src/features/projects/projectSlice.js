@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { asyncThunkCreator, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { addProject, deleteProjectById, fetchProjects, updateProjectById } from "./projectAPI";
 
 const initialState = {
@@ -17,8 +17,8 @@ export const fetchProjectsData = createAsyncThunk("projects/getProjects", async 
 });
 
 export const postProjectData = createAsyncThunk("projects/postProject", async (projectData) => {
-    const product = await addProject(projectData);
-    return product;
+    const project = await addProject(projectData);
+    return project;
 });
 
 export const deleteAProject = createAsyncThunk("projects/deleteProjectById", async (id) => {
@@ -26,8 +26,8 @@ export const deleteAProject = createAsyncThunk("projects/deleteProjectById", asy
     return response;
 });
 
-export const updateAProject = createAsyncThunk("projects/updateProjectById", async (id, data) => {
-    const response = await updateProjectById(id, data);
+export const updateAProject = createAsyncThunk("projects/updateProjectById", async (ID, data) => {
+    const response = await updateProjectById(ID, data);
     return response;
 });
 
@@ -79,19 +79,20 @@ const projectSlice = createSlice({
                 state.isError = action.error.message
         });
         builder.addCase(updateAProject.pending, (state) => {
-            state.isLoading = true,
-                state.projectUpdated = false,
+            state.projectUpdated = false,
                 state.isError = false
+            state.isLoading = asyncThunkCreator
+
         });
         builder.addCase(updateAProject.fulfilled, (state) => {
-            state.isLoading = false,
-                state.projectUpdated = true,
+            state.isLoading = false
+            state.projectUpdated = true,
                 state.isError = false
         });
         builder.addCase(updateAProject.rejected, (state, action) => {
-            state.isLoading = false,
-                state.projectUpdated = false,
+            state.projectUpdated = false,
                 state.isError = true,
+                state.isLoading = false,
                 state.error = action.error.message
         });
     }

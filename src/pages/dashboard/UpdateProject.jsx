@@ -70,7 +70,7 @@ const UpdateProject = () => {
   const handleForm = (e) => {
     e.preventDefault();
 
-    const projectData = {
+    const data = {
       name: e.target.projectName.value,
       coreTechs: coreTechs,
       usedTechnologies: allUsedTechs,
@@ -98,7 +98,7 @@ const UpdateProject = () => {
       },
     };
 
-    dispatch(updateAProject(ID, projectData));
+    dispatch(updateAProject(ID, data));
   };
 
   const handleOnChangeCoreTechs = (event) => {
@@ -112,7 +112,6 @@ const UpdateProject = () => {
   };
 
   const currentData = projects?.find((project) => project?._id === ID);
-  console.log(currentData);
 
   return (
     <>

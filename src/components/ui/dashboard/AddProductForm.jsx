@@ -45,6 +45,7 @@ const AddProductForm = ({
           type="file"
           placeholder="Select Project Thumbnail"
           id="projectThumbnail"
+          name="projectThumbnail"
           required
         />
       </div>
@@ -169,6 +170,7 @@ const AddProductForm = ({
               type="file"
               placeholder="Feature Thumbnail"
               id="f3"
+              name="f1_thumbnail"
               required
             />
           </div>
@@ -227,6 +229,7 @@ const AddProductForm = ({
                 type="file"
                 placeholder="Feature Thumbnail"
                 id="f6"
+                name="f2_thumbnail"
                 required
               />
             </div>
@@ -286,6 +289,7 @@ const AddProductForm = ({
                 type="file"
                 placeholder="Feature Thumbnail"
                 id="f9"
+                name="f3_thumbnail"
                 required
               />
             </div>
@@ -299,7 +303,7 @@ const AddProductForm = ({
         </h1>
         <div className="mt-5 grid lg:grid-cols-2  gap-10">
           <div className="w-full">
-            <label htmlFor="" className={addProjectStyles.labelText}>
+            <label htmlFor="Tech" className={addProjectStyles.labelText}>
               Core
               {currentData ? (
                 <ul className="flex items-center gap-2">
@@ -327,13 +331,14 @@ const AddProductForm = ({
               ))}
             </div>
             <MultiSelectDropdown
+              id={"Tech"}
               styles={addProjectStyles.inputStyle}
               options={options}
               handleOnChange={handleOnChangeCoreTechs}
             />
           </div>
           <div className="w-full">
-            <label htmlFor="" className={addProjectStyles.labelText}>
+            <label htmlFor="allUsedTech" className={addProjectStyles.labelText}>
               All Used
               {currentData ? (
                 <ul className="flex items-center gap-2">
@@ -361,6 +366,7 @@ const AddProductForm = ({
               ))}
             </div>
             <MultiSelectDropdown
+              id={"allUsedTech"}
               styles={addProjectStyles.inputStyle}
               options={options}
               handleOnChange={handleOnChangeAllUsedTechs}

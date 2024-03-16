@@ -17,9 +17,10 @@ const addProject = async (projectData) => {
     }
 };
 
-const updateProjectById = async (ID, data) => {
+const updateProjectById = async (id, data) => {
     try {
-        await axios.patch(`/api/v1/projects/${ID}`, data).then(res => console.log(res, "response of patch api")).catch(error => console.log(error, "error from patch api of updateProjectId,+++++++++++++++++++"));
+        const res = await axios.patch(`/api/v1/projects/${id}`, data);
+        console.log(res, "from project update");
     } catch (error) {
         console.log(error, "error message from updateProjectById API");
     }

@@ -13,7 +13,7 @@ import { useParams } from "react-router-dom";
 const UpdateProject = () => {
   const [coreTechs, setCoreTechs] = useState([]);
   const [allUsedTechs, setAllUsedTechs] = useState([]);
-  const { ID } = useParams();
+  const { updateId } = useParams();
   const { getEvent, img } = useImgBBUpload();
   const { getEvent: f_1, img: f_1_img } = useImgBBUpload();
   const { getEvent: f_2, img: f_2_img } = useImgBBUpload();
@@ -98,7 +98,7 @@ const UpdateProject = () => {
       },
     };
 
-    dispatch(updateAProject(ID, data));
+    dispatch(updateAProject(updateId, data));
   };
 
   const handleOnChangeCoreTechs = (event) => {
@@ -111,7 +111,7 @@ const UpdateProject = () => {
     setAllUsedTechs(techs);
   };
 
-  const currentData = projects?.find((project) => project?._id === ID);
+  const currentData = projects?.find((project) => project?._id === updateId);
 
   return (
     <>

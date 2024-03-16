@@ -26,8 +26,8 @@ export const deleteAProject = createAsyncThunk("projects/deleteProjectById", asy
     return response;
 });
 
-export const updateAProject = createAsyncThunk("projects/updateProjectById", async (ID, data) => {
-    const response = await updateProjectById(ID, data);
+export const updateAProject = createAsyncThunk("projects/updateProjectById", async (id, data) => {
+    const response = await updateProjectById(id, data);
     return response;
 });
 

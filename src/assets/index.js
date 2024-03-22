@@ -35,6 +35,12 @@ import jwt from "./technologies/JWT.png"
 import postman from "./technologies/PostMan.png"
 import postgreSQL from "./technologies/PostgreSQL.png"
 import styledComponents from "./technologies/StyledComponents.png"
+import facebook from "../assets/social/1.png";
+import pinterest from "../assets/social/2.png";
+import reddit from "../assets/social/3.png";
+import twitter from "../assets/social/4.png";
+import github from "../assets/social/5.png";
+import linkedIn from "../assets/social/linkedIn.png";
 
 export {
     MdMuzahid,
@@ -71,5 +77,13 @@ export {
     mui,
     postman,
     styledComponents,
-    postgreSQL
+    postgreSQL,
+
+    // social logos
+    facebook,
+    twitter,
+    pinterest,
+    github,
+    reddit,
+    linkedIn
 };

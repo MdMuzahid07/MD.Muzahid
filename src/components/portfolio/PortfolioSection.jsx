@@ -5,13 +5,18 @@ import ProjectCard from "./ProjectCard";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { fetchProjectsData } from "../../features/projects/projectSlice";
+import Spinner from "../preloader/Spinner";
 
 const PortfolioSection = () => {
-  const { projects } = useSelector((state) => state.projects);
+  const { projects, isLoading } = useSelector((state) => state.projects);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchProjectsData());
   }, [dispatch]);
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <section id="portfolio" className="w-full  min-h-screen bg-primary">

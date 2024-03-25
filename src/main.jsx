@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import store from "./app/store.js";
 import AuthProvider from "./context/provider/AuthProvider.jsx";
 import { Toaster } from "react-hot-toast";
+import AnimatedCursor from "react-animated-cursor";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -15,6 +16,31 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <RouterProvider router={routes} />
       </AuthProvider>
     </Provider>
+
+    {/* react hot toast  */}
     <Toaster position="bottom-right" reverseOrder={false} />
+
+    {/* react animated cursor */}
+    <AnimatedCursor
+      innerSize={10}
+      outerSize={40}
+      color="255, 59, 15"
+      outerAlpha={0.3}
+      innerScale={0.7}
+      outerScale={5}
+      clickables={[
+        "a",
+        'input[type="text"]',
+        'input[type="email"]',
+        'input[type="number"]',
+        'input[type="submit"]',
+        'input[type="image"]',
+        "label[for]",
+        "select",
+        "textarea",
+        "button",
+        ".link",
+      ]}
+    />
   </React.StrictMode>
 );

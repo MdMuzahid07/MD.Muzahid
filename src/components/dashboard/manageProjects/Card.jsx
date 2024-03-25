@@ -21,7 +21,16 @@ const Card = ({ project }) => {
     return <Spinner />;
   }
   if (deleteSuccess) {
-    toast.success("Deleted Successfully", { id: "projectDeleted" });
+    toast.success("Deleted Successfully", {
+      id: "projectDeleted",
+      style: {
+        borderRadius: "0px",
+        background: "#0C0C0C",
+        color: "#fff",
+        fontSize: "30px",
+        padding: "10px 20px",
+      },
+    });
   }
 
   const redirectUpdatePage = (id) => {

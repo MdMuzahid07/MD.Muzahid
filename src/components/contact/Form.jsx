@@ -154,7 +154,7 @@ const Form = () => {
             className="transition ease-in-out delay-50 text-white h-28 w-28 border justify-center items-center rounded-full  absolute -bottom-14 right-10 sm:right-16 md:right-32 bg-primary hover:bg-black"
           >
             <span className="relative">
-              <div className="absolute -left-20 -top-20">
+              <div className="absolute -left-20 -top-20 hidden lg:block">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"

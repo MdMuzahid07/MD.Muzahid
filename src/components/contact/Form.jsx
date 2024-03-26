@@ -130,7 +130,7 @@ const Form = () => {
 
           <div className="flex gap-8 md:gap-10 w-full">
             <h1 className="text-[18px] md:text-[25px] opacity-50">05.</h1>
-            <div>
+            <div className="w-full">
               <label
                 className="w-full text-[20px] md:text-[25px] lg:text-[32px] opacity-70"
                 htmlFor="message"
@@ -139,9 +139,8 @@ const Form = () => {
               </label>
               <textarea
                 rows={5}
-                cols={20}
                 name="message"
-                className="w-full focus:outline-none bg-primary placeholder:text-slate-700 font-bold text-[18px] md:text-[25px] "
+                className="w-full focus:outline-none bg-primary placeholder:text-slate-700 font-bold text-[18px] md:text-[25px]"
                 type="text"
                 placeholder="Hello Muzahid, I need a Business Website..."
                 id="message"

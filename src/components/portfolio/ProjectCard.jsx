@@ -61,7 +61,7 @@ const ProjectCard = ({ project, index }) => {
                     ? project?.thumbnailImg
                     : imageLoadingShadow
                 }
-                alt=""
+                alt="Project-Thumbnail"
               />
             </Tilt>
           </div>

@@ -42,7 +42,7 @@ const Form = () => {
         <div className="relative">
           <div className="flex gap-8 md:gap-10 w-full">
             <h1 className="text-[18px] md:text-[25px] opacity-50">01.</h1>
-            <div>
+            <div className="w-full">
               <label
                 className="w-full text-[20px] md:text-[25px] lg:text-[32px] opacity-70"
                 htmlFor="name"
@@ -64,7 +64,7 @@ const Form = () => {
 
           <div className="flex gap-8 md:gap-10 w-full">
             <h1 className="text-[18px] md:text-[25px] opacity-50">02.</h1>
-            <div>
+            <div className="w-full">
               <label
                 className="w-full text-[20px] md:text-[25px] lg:text-[32px] opacity-70"
                 htmlFor="email"
@@ -86,7 +86,7 @@ const Form = () => {
 
           <div className="flex gap-8 md:gap-10 w-full">
             <h1 className="text-[18px] md:text-[25px] opacity-50">03.</h1>
-            <div>
+            <div className="w-full">
               <label
                 className="w-full text-[20px] md:text-[25px] lg:text-[32px] opacity-70"
                 htmlFor="organization"
@@ -108,7 +108,7 @@ const Form = () => {
 
           <div className="flex gap-8 md:gap-10 w-full">
             <h1 className="text-[18px] md:text-[25px] opacity-50">04.</h1>
-            <div>
+            <div className="w-full">
               <label
                 className="w-full text-[20px] md:text-[25px] lg:text-[32px] opacity-70"
                 htmlFor="services"

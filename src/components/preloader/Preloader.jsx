@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { reactJS } from "../../assets";
 
 const slideUp = {
   initial: {
@@ -21,12 +20,7 @@ const Preloader = () => {
       className="w-full min-h-screen flex-col fixed top-0 left-0 z-50 bg-primary flex justify-center items-center"
     >
       <h1 className="text-white text-[40px] flex items-center gap-4">
-        <span>Thinking...</span>{" "}
-        <img
-          className="w-9 h-9 rounded-full animate-spin"
-          src={reactJS}
-          alt=""
-        />{" "}
+        <span>Thinking...</span>
       </h1>
     </motion.div>
   );

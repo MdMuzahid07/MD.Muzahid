@@ -12,7 +12,7 @@ const ProjectCard = ({ project, index }) => {
   };
 
   return (
-    <div className="stripeBG">
+    <div className="bg-transparent">
       <div className="max-w-screen-2xl mx-auto">
         <div className="flex flex-col gap-10 md:gap-0 md:flex-row md:justify-between">
           {/* heading start  */}
@@ -68,7 +68,9 @@ const ProjectCard = ({ project, index }) => {
           </div>
         </div>
       </div>
-      <HR style="bg-black border-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-[1px] my-20" />
+      <div className="py-20">
+        <HR style="bg-black border-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-[1px]" />
+      </div>
     </div>
   );
 };

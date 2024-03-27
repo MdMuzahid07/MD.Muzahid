@@ -75,7 +75,7 @@ const About = () => {
         <div className="flex flex-col sm:flex-row max-md:items-center gap-4 lg:gap-10 mt-10 md:mt-10">
           <figure className="max-w-[200px] min-w-[200px] max-h-[200px]">
             <img
-              className="w-full h-full object-cover object-center rounded-full opacity-50"
+              className="w-full h-full object-cover object-center rounded-full opacity-70 hover:opacity-100"
               src={MdMuzahid}
               alt=""
             />

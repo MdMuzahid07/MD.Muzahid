@@ -50,7 +50,7 @@ const Form = () => {
                 Your Name?
               </label>
               <input
-                className="w-full focus:outline-none bg-primary placeholder:text-slate-700 font-bold text-[18px] md:text-[25px] h-16 "
+                className="w-full focus:outline-none bg-transparent placeholder:text-slate-700 font-bold text-[18px] md:text-[25px] h-16 "
                 type="text"
                 name="name"
                 placeholder="Elon@mask"
@@ -72,7 +72,7 @@ const Form = () => {
                 Your Email Address?
               </label>
               <input
-                className="w-full focus:outline-none bg-primary placeholder:text-slate-700 font-bold text-[18px] md:text-[25px] h-16 "
+                className="w-full focus:outline-none bg-transparent placeholder:text-slate-700 font-bold text-[18px] md:text-[25px] h-16 "
                 type="email"
                 name="email"
                 placeholder="Elon@mask@gmail.com"
@@ -94,7 +94,7 @@ const Form = () => {
                 Do you have any Organization?, if yes what is the name?
               </label>
               <input
-                className="w-full focus:outline-none bg-primary placeholder:text-slate-700 font-bold text-[18px] md:text-[25px] h-16 "
+                className="w-full focus:outline-none bg-transparent placeholder:text-slate-700 font-bold text-[18px] md:text-[25px] h-16 "
                 type="text"
                 name="organization"
                 placeholder="SpaceX City Mars"
@@ -116,7 +116,7 @@ const Form = () => {
                 Which services you need?
               </label>
               <input
-                className="w-full focus:outline-none bg-primary placeholder:text-slate-700 font-bold text-[18px] md:text-[25px] h-16 "
+                className="w-full focus:outline-none bg-transparent placeholder:text-slate-700 font-bold text-[18px] md:text-[25px] h-16 "
                 type="text"
                 name="service"
                 placeholder="Web Development, Backend Development, MERN-Stack"
@@ -140,7 +140,7 @@ const Form = () => {
               <textarea
                 rows={5}
                 name="message"
-                className="w-full focus:outline-none bg-primary placeholder:text-slate-700 font-bold text-[18px] md:text-[25px]"
+                className="w-full focus:outline-none bg-transparent placeholder:text-slate-700 font-bold text-[18px] md:text-[25px]"
                 type="text"
                 placeholder="Hello Muzahid, I need a Business Website..."
                 id="message"
@@ -151,7 +151,7 @@ const Form = () => {
 
           <button
             type="submit"
-            className="transition ease-in-out delay-50 text-white h-28 w-28 border justify-center items-center rounded-full  absolute -bottom-14 right-10 sm:right-16 md:right-32 bg-primary hover:bg-black"
+            className="transition ease-in-out delay-50 text-white h-28 w-28 border justify-center items-center rounded-full  absolute -bottom-14 right-10 sm:right-16 md:right-32 bg-transparent hover:bg-black"
           >
             <span className="relative">
               <div className="absolute -left-20 -top-20 hidden lg:block">

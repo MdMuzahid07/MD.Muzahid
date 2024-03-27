@@ -19,7 +19,7 @@ const PortfolioSection = () => {
   }
 
   return (
-    <section id="portfolio" className="w-full  min-h-screen bg-primary">
+    <section id="portfolio" className="w-full  min-h-screen stripeBG">
       <div className={`${styles.paddingX}  text-white  relative`}>
         <HR style="bg-black border-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-[1px] mb-20" />
         {projects?.slice(0, 3)?.map((project, index) => (

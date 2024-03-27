@@ -7,7 +7,7 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className={`${styles.paddingX} ${styles.paddingY} w-full min-h-screen bg-primary`}
+      className={`${styles.paddingX} ${styles.paddingY} w-full min-h-screen stripeBG`}
     >
       <div className="max-w-screen-2xl mx-auto w-full">
         {/* heading start  */}

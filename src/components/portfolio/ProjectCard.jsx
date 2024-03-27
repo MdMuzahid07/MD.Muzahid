@@ -12,7 +12,7 @@ const ProjectCard = ({ project, index }) => {
   };
 
   return (
-    <div className="bg-primary">
+    <div className="stripeBG">
       <div className="max-w-screen-2xl mx-auto">
         <div className="flex flex-col gap-10 md:gap-0 md:flex-row md:justify-between">
           {/* heading start  */}

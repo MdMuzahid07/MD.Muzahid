@@ -68,7 +68,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className={`${styles.paddingX} ${styles.paddingY} bg-primary min-h-screen w-full`}
+      className={`${styles.paddingX} ${styles.paddingY} stripeBG min-h-screen w-full`}
     >
       <section className="max-w-screen-2xl mx-auto text-white">
         <ShadowFont>About Me</ShadowFont>
@@ -123,7 +123,7 @@ const About = () => {
                 {skills?.map(({ name, icon, id }) => (
                   <div
                     key={id}
-                    className="w-8 h-8 opacity-75 hover:opacity-100 hover:shadow-white hover:rotate-[360deg] transition-transform duration-400 rounded-full bg-white p-1 overflow-hidden hover:scale-[1.1]"
+                    className="w-8 h-8 opacity-75 hover:opacity-100 hover:shadow-white hover:rotate-[360deg] transition-transform ease-in-out duration-1000 rounded-full bg-white p-1 overflow-hidden hover:scale-[1.1]"
                   >
                     <img className="w-8" src={icon} alt={name} />
                   </div>

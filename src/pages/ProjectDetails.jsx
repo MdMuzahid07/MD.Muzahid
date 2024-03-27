@@ -81,7 +81,7 @@ const ProjectDetails = () => {
   return (
     <>
       <section
-        className={`sm:px-16 px-6 md:py-24  sm:py-16 py-24 min-h-screen bg-primary w-full`}
+        className={`sm:px-16 px-6 md:py-24  sm:py-16 py-24 min-h-screen stripeBG w-full`}
       >
         <div className={`max-w-screen-2xl mx-auto text-white`}>
           {/* header start  */}

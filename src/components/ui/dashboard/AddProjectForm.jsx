@@ -3,7 +3,7 @@ import { options } from "../../../constants";
 import { addProjectStyles } from "../../../styles";
 import MultiSelectDropdown from "../../common/MultiSelectDropdown";
 
-const AddProductForm = ({
+const AddProjectForm = ({
   handleForm,
   getEvent,
   handleOnChangeCoreTechs,
@@ -403,4 +403,4 @@ const AddProductForm = ({
   );
 };
 
-export default AddProductForm;
+export default AddProjectForm;

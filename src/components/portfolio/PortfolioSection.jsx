@@ -30,7 +30,7 @@ const PortfolioSection = () => {
           <Link
             to="/projects"
             type="button"
-            className="transition ease-in-out delay-50 absolute  bottom-[50vh] xs:bottom-[60vh] sm:bottom-[70vh] md:bottom-36 right-[10vw] md:left-[40vw] text-white h-24 w-24 border flex justify-center items-center rounded-full bg-black  md:bg-transparent hover:bg-black"
+            className="transition ease-in-out delay-50 absolute  bottom-[50vh] xs:bottom-[60vh] sm:bottom-[70vh] md:bottom-36 right-[10vw] md:left-[40vw] text-white h-24 w-24 border flex justify-center items-center rounded-full bg-primary   hover:bg-black"
           >
             {" "}
             VIEW All

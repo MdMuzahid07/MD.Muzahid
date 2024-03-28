@@ -61,7 +61,7 @@ const textWords = [
 ];
 
 const aboutStyles = {
-  btn: "px-4 py-1.5 text-xs md:text-md lg:text-xl bg-black rounded-full font-bold border px-4 py-1.5 text-xs md:text-md lg:text-xl bg-black rounded-md md:rounded-xl font-bold border",
+  btn: "px-4 py-1.5 text-xs md:text-md lg:text-xl bg-primary hover:bg-black rounded-full font-bold border px-4 py-1.5 text-xs md:text-md lg:text-xl bg-black rounded-md md:rounded-xl font-bold border",
 };
 
 const About = () => {

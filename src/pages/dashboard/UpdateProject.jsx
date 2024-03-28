@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  fetchProjectsData,
-  updateAProject,
-} from "../../features/projects/projectSlice";
+import { fetchProjectsData } from "../../features/projects/projectSlice";
 import useImgBBUpload from "../../hooks/useImgBBUpload";
 import { addProjectStyles } from "../../styles";
-import AddProductForm from "../../components/ui/dashboard/AddProductForm";
 import { useParams } from "react-router-dom";
+import UpdateProjectForm from "../../components/ui/dashboard/UpdateProjectForm";
+import { updateProjectById } from "../../features/projects/projectAPI";
 
 const UpdateProject = () => {
   const [coreTechs, setCoreTechs] = useState([]);
@@ -24,53 +22,14 @@ const UpdateProject = () => {
   );
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchProjectsData());
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (isLoading && !projectUpdated && !projects) {
-      toast.loading("Updating...", {
-        id: "project update",
-        style: {
-          borderRadius: "0px",
-          background: "#0C0C0C",
-          color: "#fff",
-          fontSize: "30px",
-          padding: "10px 20px",
-        },
-      });
-    }
-    if (!isLoading && projectUpdated) {
-      toast.success("Success", {
-        id: "project update",
-        style: {
-          borderRadius: "0px",
-          background: "#0C0C0C",
-          color: "#fff",
-          fontSize: "30px",
-          padding: "10px 20px",
-        },
-      });
-    }
-    if (!projectUpdated && isError) {
-      toast.error(error, {
-        id: "project update",
-        style: {
-          borderRadius: "0px",
-          background: "#0C0C0C",
-          color: "#fff",
-          fontSize: "30px",
-          padding: "10px 20px",
-        },
-      });
-    }
-  }, [isLoading, isError, projectUpdated, error, projects]);
+  if (projectUpdated) {
+    toast.success("updated", { id: "project updated" });
+  }
 
   const handleForm = (e) => {
     e.preventDefault();
 
-    const data = {
+    const updatedData = {
       name: e.target.projectName.value,
       coreTechs: coreTechs,
       usedTechnologies: allUsedTechs,
@@ -98,8 +57,12 @@ const UpdateProject = () => {
       },
     };
 
-    dispatch(updateAProject(updateId, data));
+    updateProjectById(updateId, updatedData);
   };
+
+  useEffect(() => {
+    dispatch(fetchProjectsData());
+  }, [dispatch]);
 
   const handleOnChangeCoreTechs = (event) => {
     const techs = [...coreTechs, event.target.value];
@@ -118,7 +81,7 @@ const UpdateProject = () => {
       <h1 className={`${addProjectStyles.headingText} mt-14`}>
         Update Project
       </h1>
-      <AddProductForm
+      <UpdateProjectForm
         currentData={currentData}
         handleForm={handleForm}
         handleOnChangeCoreTechs={handleOnChangeCoreTechs}

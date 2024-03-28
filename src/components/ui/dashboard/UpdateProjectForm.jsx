@@ -3,7 +3,7 @@ import { options } from "../../../constants";
 import { addProjectStyles } from "../../../styles";
 import MultiSelectDropdown from "../../common/MultiSelectDropdown";
 
-const AddProductForm = ({
+const UpdateProjectForm = ({
   handleForm,
   getEvent,
   handleOnChangeCoreTechs,
@@ -27,7 +27,6 @@ const AddProductForm = ({
           name="projectName"
           placeholder={currentData ? currentData?.name : "Add Project Name"}
           id="projectName"
-          required
         />
       </div>
 
@@ -46,7 +45,6 @@ const AddProductForm = ({
           placeholder="Select Project Thumbnail"
           id="projectThumbnail"
           name="projectThumbnail"
-          required
         />
       </div>
 
@@ -62,7 +60,6 @@ const AddProductForm = ({
           }
           id="liveUrl"
           name="liveUrl"
-          required
         />
       </div>
 
@@ -76,7 +73,6 @@ const AddProductForm = ({
           placeholder={currentData ? currentData?.projectYear : "Project Year"}
           id="projectYear"
           name="projectYear"
-          required
         />
       </div>
 
@@ -95,7 +91,6 @@ const AddProductForm = ({
               }
               id="clientUrl"
               name="clientUrl"
-              required
             />
           </div>
           <div>
@@ -110,7 +105,6 @@ const AddProductForm = ({
               }
               id="serverUrl"
               name="serverUrl"
-              required
             />
           </div>
         </div>
@@ -140,7 +134,6 @@ const AddProductForm = ({
               }
               id="f1"
               name="f1_heading"
-              required
             />
           </div>
           <div>
@@ -155,7 +148,6 @@ const AddProductForm = ({
               }
               id="f2"
               name="f1_details"
-              required
             />
           </div>
 
@@ -171,7 +163,6 @@ const AddProductForm = ({
               placeholder="Feature Thumbnail"
               id="f3"
               name="f1_thumbnail"
-              required
             />
           </div>
         </div>
@@ -197,7 +188,6 @@ const AddProductForm = ({
                 }
                 id="f4"
                 name="f2_heading"
-                required
               />
             </div>
             <div>
@@ -214,7 +204,6 @@ const AddProductForm = ({
                 }
                 id="f5"
                 name="f2_details"
-                required
               />
             </div>
 
@@ -230,7 +219,6 @@ const AddProductForm = ({
                 placeholder="Feature Thumbnail"
                 id="f6"
                 name="f2_thumbnail"
-                required
               />
             </div>
           </div>
@@ -257,7 +245,6 @@ const AddProductForm = ({
                 }
                 id="f7"
                 name="f3_heading"
-                required
               />
             </div>
             <div>
@@ -274,7 +261,6 @@ const AddProductForm = ({
                 }
                 id="f8"
                 name="f3_details"
-                required
               />
             </div>
 
@@ -290,7 +276,6 @@ const AddProductForm = ({
                 placeholder="Feature Thumbnail"
                 id="f9"
                 name="f3_thumbnail"
-                required
               />
             </div>
           </div>
@@ -403,4 +388,4 @@ const AddProductForm = ({
   );
 };
 
-export default AddProductForm;
+export default UpdateProjectForm;

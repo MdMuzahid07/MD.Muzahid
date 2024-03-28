@@ -42,7 +42,7 @@ const Form = () => {
         <div className="relative">
           <div className="flex gap-8 md:gap-10 w-full">
             <h1 className="text-[18px] md:text-[25px] opacity-50">01.</h1>
-            <div>
+            <div className="w-full">
               <label
                 className="w-full text-[20px] md:text-[25px] lg:text-[32px] opacity-70"
                 htmlFor="name"
@@ -50,7 +50,7 @@ const Form = () => {
                 Your Name?
               </label>
               <input
-                className="w-full focus:outline-none bg-primary placeholder:text-slate-700 font-bold text-[18px] md:text-[25px] h-16 "
+                className="w-full focus:outline-none bg-transparent placeholder:text-slate-700 font-bold text-[18px] md:text-[25px] h-16 "
                 type="text"
                 name="name"
                 placeholder="Elon@mask"
@@ -64,7 +64,7 @@ const Form = () => {
 
           <div className="flex gap-8 md:gap-10 w-full">
             <h1 className="text-[18px] md:text-[25px] opacity-50">02.</h1>
-            <div>
+            <div className="w-full">
               <label
                 className="w-full text-[20px] md:text-[25px] lg:text-[32px] opacity-70"
                 htmlFor="email"
@@ -72,7 +72,7 @@ const Form = () => {
                 Your Email Address?
               </label>
               <input
-                className="w-full focus:outline-none bg-primary placeholder:text-slate-700 font-bold text-[18px] md:text-[25px] h-16 "
+                className="w-full focus:outline-none bg-transparent placeholder:text-slate-700 font-bold text-[18px] md:text-[25px] h-16 "
                 type="email"
                 name="email"
                 placeholder="Elon@mask@gmail.com"
@@ -86,7 +86,7 @@ const Form = () => {
 
           <div className="flex gap-8 md:gap-10 w-full">
             <h1 className="text-[18px] md:text-[25px] opacity-50">03.</h1>
-            <div>
+            <div className="w-full">
               <label
                 className="w-full text-[20px] md:text-[25px] lg:text-[32px] opacity-70"
                 htmlFor="organization"
@@ -94,7 +94,7 @@ const Form = () => {
                 Do you have any Organization?, if yes what is the name?
               </label>
               <input
-                className="w-full focus:outline-none bg-primary placeholder:text-slate-700 font-bold text-[18px] md:text-[25px] h-16 "
+                className="w-full focus:outline-none bg-transparent placeholder:text-slate-700 font-bold text-[18px] md:text-[25px] h-16 "
                 type="text"
                 name="organization"
                 placeholder="SpaceX City Mars"
@@ -108,7 +108,7 @@ const Form = () => {
 
           <div className="flex gap-8 md:gap-10 w-full">
             <h1 className="text-[18px] md:text-[25px] opacity-50">04.</h1>
-            <div>
+            <div className="w-full">
               <label
                 className="w-full text-[20px] md:text-[25px] lg:text-[32px] opacity-70"
                 htmlFor="services"
@@ -116,7 +116,7 @@ const Form = () => {
                 Which services you need?
               </label>
               <input
-                className="w-full focus:outline-none bg-primary placeholder:text-slate-700 font-bold text-[18px] md:text-[25px] h-16 "
+                className="w-full focus:outline-none bg-transparent placeholder:text-slate-700 font-bold text-[18px] md:text-[25px] h-16 "
                 type="text"
                 name="service"
                 placeholder="Web Development, Backend Development, MERN-Stack"
@@ -130,7 +130,7 @@ const Form = () => {
 
           <div className="flex gap-8 md:gap-10 w-full">
             <h1 className="text-[18px] md:text-[25px] opacity-50">05.</h1>
-            <div>
+            <div className="w-full">
               <label
                 className="w-full text-[20px] md:text-[25px] lg:text-[32px] opacity-70"
                 htmlFor="message"
@@ -139,9 +139,8 @@ const Form = () => {
               </label>
               <textarea
                 rows={5}
-                cols={20}
                 name="message"
-                className="w-full focus:outline-none bg-primary placeholder:text-slate-700 font-bold text-[18px] md:text-[25px] "
+                className="w-full focus:outline-none bg-transparent placeholder:text-slate-700 font-bold text-[18px] md:text-[25px]"
                 type="text"
                 placeholder="Hello Muzahid, I need a Business Website..."
                 id="message"
@@ -152,9 +151,27 @@ const Form = () => {
 
           <button
             type="submit"
-            className=" transition ease-in-out delay-50 text-white h-28 w-28 border justify-center items-center rounded-full  absolute -bottom-14 right-10 sm:right-16 md:right-32 bg-primary hover:bg-black"
+            className="transition ease-in-out delay-50 text-white h-28 w-28 border justify-center items-center rounded-full  absolute -bottom-14 right-10 sm:right-16 md:right-32 bg-primary hover:bg-black"
           >
-            {isSended ? "Success" : "SEND"}
+            <span className="relative">
+              <div className="absolute -left-20 -top-20 hidden lg:block">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-7 h-7"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4.5 4.5l15 15m0 0V8.25m0 11.25H8.25"
+                  />
+                </svg>
+              </div>
+              {isSended ? "Success" : "SEND"}
+            </span>
           </button>
           <HR style="bg-black border-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-[1px] mt-20" />
         </div>

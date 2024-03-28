@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { postProjectData } from "../../features/projects/projectSlice";
 import useImgBBUpload from "../../hooks/useImgBBUpload";
 import { addProjectStyles } from "../../styles";
-import AddProductForm from "../../components/ui/dashboard/AddProductForm";
+import AddProjectForm from "../../components/ui/dashboard/AddProjectForm";
 
 const DashboardAddProject = () => {
   const [coreTechs, setCoreTechs] = useState([]);
@@ -104,7 +104,7 @@ const DashboardAddProject = () => {
   return (
     <>
       <h1 className={`${addProjectStyles.headingText} mt-14`}>Add Project</h1>
-      <AddProductForm
+      <AddProjectForm
         handleForm={handleForm}
         handleOnChangeCoreTechs={handleOnChangeCoreTechs}
         handleOnChangeAllUsedTechs={handleOnChangeAllUsedTechs}

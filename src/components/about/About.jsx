@@ -61,21 +61,21 @@ const textWords = [
 ];
 
 const aboutStyles = {
-  btn: "px-4 py-1.5 text-xs md:text-md lg:text-xl bg-black rounded-full font-bold border px-4 py-1.5 text-xs md:text-md lg:text-xl bg-black rounded-md md:rounded-xl font-bold border",
+  btn: "px-4 py-1.5 text-xs md:text-md lg:text-xl bg-primary hover:bg-black rounded-full font-bold border px-4 py-1.5 text-xs md:text-md lg:text-xl bg-black rounded-md md:rounded-xl font-bold border",
 };
 
 const About = () => {
   return (
     <section
       id="about"
-      className={`${styles.paddingX} ${styles.paddingY} bg-primary min-h-screen w-full`}
+      className={`${styles.paddingX} ${styles.paddingY} stripeBG min-h-screen w-full`}
     >
       <section className="max-w-screen-2xl mx-auto text-white">
         <ShadowFont>About Me</ShadowFont>
         <div className="flex flex-col sm:flex-row max-md:items-center gap-4 lg:gap-10 mt-10 md:mt-10">
           <figure className="max-w-[200px] min-w-[200px] max-h-[200px]">
             <img
-              className="w-full h-full object-cover object-center rounded-full opacity-50"
+              className="w-full h-full object-cover object-center rounded-full opacity-70 hover:opacity-100"
               src={MdMuzahid}
               alt=""
             />
@@ -89,7 +89,23 @@ const About = () => {
                   </span>
                 ))}
               </h1>
-              <div className="flex items-center gap-4 mt-4">
+              <div className="flex items-center gap-4 mt-4 relative">
+                <span className="absolute -left-24 -top-16 hidden lg:block">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-7 h-7"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M4.5 4.5l15 15m0 0V8.25m0 11.25H8.25"
+                    />
+                  </svg>
+                </span>
                 <a
                   href="mailto:mdmuzahid.dev@gmail.com"
                   className={aboutStyles.btn}
@@ -107,7 +123,7 @@ const About = () => {
                 {skills?.map(({ name, icon, id }) => (
                   <div
                     key={id}
-                    className="w-8 h-8 opacity-75 hover:opacity-100 hover:shadow-white hover:rotate-[360deg] transition-transform duration-400 rounded-full bg-white p-1 overflow-hidden hover:scale-[1.1]"
+                    className="w-8 h-8 opacity-75 hover:opacity-100 hover:shadow-white hover:rotate-[360deg] transition-transform ease-in-out duration-1000 rounded-full bg-white p-1 overflow-hidden hover:scale-[1.1]"
                   >
                     <img className="w-8" src={icon} alt={name} />
                   </div>

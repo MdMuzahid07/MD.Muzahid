@@ -1,8 +1,10 @@
 import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import {
+  createUserWithEmailAndPassword,
   GoogleAuthProvider,
   onAuthStateChanged,
+  signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
 } from "firebase/auth";
@@ -18,6 +20,37 @@ const AuthProvider = ({ children }) => {
   const googleSignIn = async () => {
     setLoading(true);
     return await signInWithPopup(auth, provider);
+  };
+
+  const createUserEmailAndPassword = async (email, password) => {
+    setLoading(true);
+    return await createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed up
+        const user = userCredential.user;
+        setUser(user);
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+      });
+  };
+
+  const loginEmailAndPassword = async (email, password) => {
+    setLoading(true);
+    return await signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        setUser(user);
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
   };
 
   const logOut = () => {
@@ -42,7 +75,14 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
-  const authValue = { user, loading, googleSignIn, logOut };
+  const authValue = {
+    user,
+    loading,
+    googleSignIn,
+    logOut,
+    createUserEmailAndPassword,
+    loginEmailAndPassword,
+  };
 
   return (
     <AuthContext.Provider value={authValue}>{children}</AuthContext.Provider>

@@ -1,14 +1,23 @@
 import { Link } from "react-router-dom";
 import { logo } from "../../assets";
 import GoogleSignIn from "./GoogleSignIn";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../context/provider/AuthProvider";
 
 const Login = () => {
-  const handleLogin = (e) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { loginEmailAndPassword, user } = useContext(AuthContext);
+
+  console.log(user);
+
+  const handleLogin = async (e) => {
     e.preventDefault();
+    await loginEmailAndPassword(email, password);
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen w-full stripeBG">
+    <div className="flex justify-center items-center min-h-screen w-full stripeBG z-0">
       <form
         className="w-[350px] min-h-[550px] bg-gradient-to-r hover:-translate-y-1 duration-300  hover:shadow-lg hover:shadow-red-500 from-indigo-500 via-purple-500 to-pink-500 font-bold text-white rounded-lg p-1"
         action=""
@@ -31,6 +40,7 @@ const Login = () => {
                   className="w-full px-3 bg-primary border-2 rounded-full mt-2 border-[#F221FF] focus:outline-none"
                   type="text"
                   id="email"
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </label>
             </div>
@@ -43,6 +53,7 @@ const Login = () => {
                   className="w-full px-3 bg-primary border-2 rounded-full mt-2 border-[#F221FF] focus:outline-none"
                   type="text"
                   id="password"
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </label>
             </div>

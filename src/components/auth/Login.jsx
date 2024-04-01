@@ -14,7 +14,7 @@ const Login = () => {
         action=""
         onSubmit={handleLogin}
       >
-        <div className="bg-black min-h-[546px] w-[346] rounded-lg/1 relative">
+        <div className="bg-black min-h-[546px] w-[346] rounded-lg relative">
           <div className="flex justify-center">
             <img className="w-14 mt-7" src={logo} alt="" />
           </div>

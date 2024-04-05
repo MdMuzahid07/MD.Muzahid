@@ -63,7 +63,12 @@ const SignUp = () => {
               </label>
             </div>
             <button
-              onClick={handleSignUp}
+              onKeyDown={(e) => {
+                if (e.key == "Enter") {
+                  handleSignUp();
+                }
+              }}
+              type="submit"
               className="w-full text-center h-8  bg-[#F221FF] text-slate-300 mt-7  rounded-full"
             >
               SignUp

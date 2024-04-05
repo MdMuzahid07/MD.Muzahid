@@ -45,7 +45,6 @@ const AuthProvider = ({ children }) => {
         });
 
         setUser(user);
-        // ...
       })
       .catch((error) => {
         const errorCode = error.code;

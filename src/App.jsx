@@ -6,7 +6,7 @@ import PortfolioSection from "./components/portfolio/PortfolioSection";
 
 const App = () => {
   return (
-    <main className="relative z-0 bg-primary">
+    <main className="relative z-0 bg-primary overflow-x-hidden">
       <header>
         <Hero />
       </header>

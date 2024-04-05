@@ -1,28 +1,38 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { logo } from "../../assets";
 import GoogleSignIn from "./GoogleSignIn";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/provider/AuthProvider";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { loginEmailAndPassword, user } = useContext(AuthContext);
+  const { loginEmailAndPassword, user, logOut } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-  console.log(user);
+  if (
+    user &&
+    user?.emailVerified &&
+    user?.email === "mdmuzahid.dev@gmail.com"
+  ) {
+    navigate("/dashboard/home");
+  } else if (
+    user &&
+    !user?.emailVerified &&
+    user?.email !== "mdmuzahid.dev@gmail.com"
+  ) {
+    toast.error("Please Enter Admin Email", { id: "login error" });
+    logOut();
+  }
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    await loginEmailAndPassword(email, password);
+  const handleLogin = () => {
+    loginEmailAndPassword(email, password);
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen w-full stripeBG z-0">
-      <form
-        className="w-[350px] min-h-[550px] bg-gradient-to-r hover:-translate-y-1 duration-300  hover:shadow-lg hover:shadow-red-500 from-indigo-500 via-purple-500 to-pink-500 font-bold text-white rounded-lg p-1"
-        action=""
-        onSubmit={handleLogin}
-      >
+    <section className="flex justify-center items-center min-h-screen w-full stripeBG z-0">
+      <div className="w-[350px] min-h-[550px] bg-gradient-to-r hover:-translate-y-1 duration-300  hover:shadow-lg hover:shadow-red-500 from-indigo-500 via-purple-500 to-pink-500 font-bold text-white rounded-lg p-1">
         <div className="bg-black min-h-[546px] w-[346] rounded-lg relative">
           <div className="flex justify-center">
             <img className="w-14 mt-7" src={logo} alt="" />
@@ -58,7 +68,7 @@ const Login = () => {
               </label>
             </div>
             <button
-              type="submit"
+              onClick={handleLogin}
               className="w-full text-md text-center h-8  bg-[#F221FF] text-slate-300 mt-7  rounded-full"
             >
               Login
@@ -69,15 +79,15 @@ const Login = () => {
           </div>
           <p className="absolute bottom-5 text-xs text-center w-full tracking-wider">
             <span>
-              Don't have an account ? Please{" "}
+              {`Don't`} have an account ? Please{" "}
               <Link to="/signUp" className="text-indigo-500">
                 Sign Up
               </Link>
             </span>
           </p>
         </div>
-      </form>
-    </div>
+      </div>
+    </section>
   );
 };
 

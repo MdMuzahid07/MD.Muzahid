@@ -1,9 +1,11 @@
 import { createContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import PropTypes from "prop-types";
 import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   onAuthStateChanged,
+  sendEmailVerification,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -15,6 +17,10 @@ export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState({
+    errorCode: "",
+    errorMessage: "",
+  });
   const provider = new GoogleAuthProvider();
 
   const googleSignIn = async () => {
@@ -28,13 +34,26 @@ const AuthProvider = ({ children }) => {
       .then((userCredential) => {
         // Signed up
         const user = userCredential.user;
+
+        sendEmailVerification(userCredential.user, {
+          handleCodeInApp: true,
+          url: "http://localhost:5173/dashboard",
+        }).then(() => {
+          toast.success("Please check your email and verify your account", {
+            id: "email verification",
+          });
+        });
+
         setUser(user);
         // ...
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        // ..
+        setError({
+          errorCode: errorCode,
+          errorMessage: errorMessage,
+        });
       });
   };
 
@@ -50,6 +69,10 @@ const AuthProvider = ({ children }) => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        setError({
+          errorCode: errorCode,
+          errorMessage: errorMessage,
+        });
       });
   };
 
@@ -77,6 +100,7 @@ const AuthProvider = ({ children }) => {
 
   const authValue = {
     user,
+    error,
     loading,
     googleSignIn,
     logOut,

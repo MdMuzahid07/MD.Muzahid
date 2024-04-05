@@ -37,7 +37,7 @@ const AuthProvider = ({ children }) => {
 
         sendEmailVerification(userCredential.user, {
           handleCodeInApp: true,
-          url: "http://localhost:5173/dashboard",
+          url: "https://mdmuzahid.dev/dashboard",
         }).then(() => {
           toast.success("Please check your email and verify your account", {
             id: "email verification",

@@ -12,7 +12,7 @@ const ProjectCard = ({ project, index }) => {
   };
 
   return (
-    <div className="bg-primary">
+    <div className="bg-transparent">
       <div className="max-w-screen-2xl mx-auto">
         <div className="flex flex-col gap-10 md:gap-0 md:flex-row md:justify-between">
           {/* heading start  */}
@@ -55,19 +55,22 @@ const ProjectCard = ({ project, index }) => {
           <div>
             <Tilt tiltAngleXInitial={20} tiltAngleYInitial={20}>
               <img
+                onClick={() => handleClick(project?._id)}
                 className="w-full h-full transition ease-in-out delay-100 object-cover  object-center  sm:w-[600px] md:h-[400px] xl:w-[800px] xl:h-[500px] brightness-50 hover:brightness-100"
                 src={
                   project?.thumbnailImg
                     ? project?.thumbnailImg
                     : imageLoadingShadow
                 }
-                alt=""
+                alt="Project-Thumbnail"
               />
             </Tilt>
           </div>
         </div>
       </div>
-      <HR style="bg-black border-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-[1px] my-20" />
+      <div className="py-20">
+        <HR style="bg-black border-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-[1px]" />
+      </div>
     </div>
   );
 };

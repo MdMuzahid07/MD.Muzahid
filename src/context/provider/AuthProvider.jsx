@@ -1,8 +1,12 @@
 import { createContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import PropTypes from "prop-types";
 import {
+  createUserWithEmailAndPassword,
   GoogleAuthProvider,
   onAuthStateChanged,
+  sendEmailVerification,
+  signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
 } from "firebase/auth";
@@ -13,11 +17,62 @@ export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState({
+    errorCode: "",
+    errorMessage: "",
+  });
   const provider = new GoogleAuthProvider();
 
   const googleSignIn = async () => {
     setLoading(true);
     return await signInWithPopup(auth, provider);
+  };
+
+  const createUserEmailAndPassword = async (email, password) => {
+    setLoading(true);
+    return await createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed up
+        const user = userCredential.user;
+
+        sendEmailVerification(userCredential.user, {
+          handleCodeInApp: true,
+          url: "https://mdmuzahid.dev/dashboard",
+        }).then(() => {
+          toast.success("Please check your email and verify your account", {
+            id: "email verification",
+          });
+        });
+
+        setUser(user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setError({
+          errorCode: errorCode,
+          errorMessage: errorMessage,
+        });
+      });
+  };
+
+  const loginEmailAndPassword = async (email, password) => {
+    setLoading(true);
+    return await signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        setUser(user);
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setError({
+          errorCode: errorCode,
+          errorMessage: errorMessage,
+        });
+      });
   };
 
   const logOut = () => {
@@ -42,7 +97,15 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
-  const authValue = { user, loading, googleSignIn, logOut };
+  const authValue = {
+    user,
+    error,
+    loading,
+    googleSignIn,
+    logOut,
+    createUserEmailAndPassword,
+    loginEmailAndPassword,
+  };
 
   return (
     <AuthContext.Provider value={authValue}>{children}</AuthContext.Provider>

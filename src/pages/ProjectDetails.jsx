@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProjectsData } from "../features/projects/projectSlice";
 import { imageLoadingShadow } from "../assets";
+import { Helmet } from "react-helmet-async";
 
 const styles = {
   headingTextBold:
@@ -80,8 +81,18 @@ const ProjectDetails = () => {
 
   return (
     <>
+      <Helmet>
+        <title>MD.MUZAHID | Details</title>
+        <meta
+          name="description"
+          content="Hi. Im Md.Muzahid, an Web Application Developer, Works with full stack development using MERN-Stack, and This is my portfolio website"
+        />
+        <meta name="robots" content="index, follow" />{" "}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="author" content="Md.Muzahid" />
+      </Helmet>
       <section
-        className={`sm:px-16 px-6 md:py-24  sm:py-16 py-24 min-h-screen bg-primary w-full`}
+        className={`sm:px-16 px-6 md:py-24  sm:py-16 py-24 min-h-screen stripeBG w-full`}
       >
         <div className={`max-w-screen-2xl mx-auto text-white`}>
           {/* header start  */}

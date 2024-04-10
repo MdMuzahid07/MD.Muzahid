@@ -19,13 +19,9 @@ const Preloader = () => {
       exit="enter"
       className="w-full min-h-screen flex-col fixed top-0 left-0 z-50 bg-primary flex justify-center items-center"
     >
-      <h1 className="text-white text-[40px]">Thinking...</h1>
-      {/* <button
-        className="w-44 h-14 mt-4 text-[20px] font-bold rounded-full border text-white flex justify-center items-center"
-        onClick={() => setIsLoading(false)}
-      >
-        START
-      </button> */}
+      <h1 className="text-white text-[40px] flex items-center gap-4">
+        <span>Thinking...</span>
+      </h1>
     </motion.div>
   );
 };

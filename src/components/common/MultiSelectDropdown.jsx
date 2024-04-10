@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
-const MultiSelectDropdown = ({ styles, options, handleOnChange }) => {
+const MultiSelectDropdown = ({ styles, options, handleOnChange, id }) => {
   return (
     <div className="relative w-full">
       <select
+        id={id}
         onChange={(event) => handleOnChange(event)}
         className={`${styles} appearance-none`}
       >

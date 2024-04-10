@@ -6,6 +6,7 @@ import { styles } from "../styles";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProjectsData } from "../features/projects/projectSlice";
 import Preloader from "../components/preloader/Preloader";
+import { Helmet } from "react-helmet-async";
 
 const Portfolio = () => {
   const { projects, isLoading } = useSelector((state) => state.projects);
@@ -25,6 +26,16 @@ const Portfolio = () => {
 
   return (
     <>
+      <Helmet>
+        <title>MD.MUZAHID | Projects</title>
+        <meta
+          name="description"
+          content="Hi. Im Md.Muzahid, an Web Application Developer, Works with full stack development using MERN-Stack, and This is my portfolio website"
+        />
+        <meta name="robots" content="index, follow" />{" "}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="author" content="Md.Muzahid" />
+      </Helmet>
       <section
         id="portfolio"
         className={`${styles.paddingY} w-full  min-h-screen stripeBG overflow-x-hidden`}

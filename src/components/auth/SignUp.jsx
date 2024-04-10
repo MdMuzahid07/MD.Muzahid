@@ -62,7 +62,7 @@ const SignUp = () => {
                     id="password"
                     onChange={(e) => setPassword(e.target.value)}
                   />
-                  <button
+                  <span
                     onClick={() => setIsPassVisible(!isPassVisible)}
                     className="absolute right-3 top-3.5"
                   >
@@ -102,7 +102,7 @@ const SignUp = () => {
                         />
                       </svg>
                     )}
-                  </button>
+                  </span>
                 </div>
               </label>
             </div>

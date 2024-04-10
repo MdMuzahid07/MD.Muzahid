@@ -8,13 +8,16 @@ import store from "./app/store.js";
 import AuthProvider from "./context/provider/AuthProvider.jsx";
 import { Toaster } from "react-hot-toast";
 import AnimatedCursor from "react-animated-cursor";
+import { HelmetProvider } from "react-helmet-async";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
-      <AuthProvider>
-        <RouterProvider router={routes} />
-      </AuthProvider>
+      <HelmetProvider>
+        <AuthProvider>
+          <RouterProvider router={routes} />
+        </AuthProvider>
+      </HelmetProvider>
     </Provider>
 
     {/* react hot toast  */}

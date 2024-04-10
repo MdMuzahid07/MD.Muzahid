@@ -42,7 +42,14 @@ const Login = () => {
           <h1 className="text-2xl text-slate-400 tracking-wider text-center pt-5">
             Please Login
           </h1>
-          <form onSubmit={handleLogin} className="mt-12 px-7">
+          <div
+            onKeyDown={(e) => {
+              if (e.key == "Enter") {
+                handleLogin();
+              }
+            }}
+            className="mt-12 px-7"
+          >
             <div>
               <label htmlFor="email">
                 <span className="text-xs text-slate-400 pl-1">
@@ -113,12 +120,7 @@ const Login = () => {
               </label>
             </div>
             <button
-              type="submit"
-              onKeyDown={(e) => {
-                if (e.key == "Enter") {
-                  handleLogin();
-                }
-              }}
+              onClick={handleLogin}
               className="w-full text-md text-center h-8  bg-[#F221FF] text-slate-300 mt-7  rounded-full"
             >
               Login
@@ -126,7 +128,7 @@ const Login = () => {
             <div className="mt-12">
               <GoogleSignIn />
             </div>
-          </form>
+          </div>
           <p className="absolute bottom-5 text-xs text-center w-full tracking-wider">
             <span>
               {`Don't`} have an account ? Please{" "}

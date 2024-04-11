@@ -82,7 +82,10 @@ const AuthProvider = ({ children }) => {
   };
 
   const passwordReset = (email) => {
-    sendPasswordResetEmail(auth, email)
+    sendPasswordResetEmail(auth, email, {
+      handleCodeInApp: true,
+      url: "https://mdmuzahid.dev/login",
+    })
       .then(() => {
         toast.success("Please check your inbox", { id: "password reset" });
       })

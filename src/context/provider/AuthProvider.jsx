@@ -6,6 +6,7 @@ import {
   GoogleAuthProvider,
   onAuthStateChanged,
   sendEmailVerification,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -80,6 +81,21 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
+  const passwordReset = (email) => {
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        toast.success("Please check your inbox", { id: "password reset" });
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setError({
+          errorCode: errorCode,
+          errorMessage: errorMessage,
+        });
+      });
+  };
+
   //   observer to get current user info
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -105,6 +121,7 @@ const AuthProvider = ({ children }) => {
     logOut,
     createUserEmailAndPassword,
     loginEmailAndPassword,
+    passwordReset,
   };
 
   return (

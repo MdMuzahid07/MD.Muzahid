@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { fetchProjectsData } from "../../features/projects/projectSlice";
 import Spinner from "../../components/preloader/Spinner";
+import toast from "react-hot-toast";
 
 const ManageProjects = () => {
   const { projects, isLoading } = useSelector((state) => state.projects);
@@ -30,6 +31,9 @@ const ManageProjects = () => {
       <header className="w-full gap-5 flex justify-center md:justify-between  items-center  mt-14">
         <div className="flex relative">
           <input
+            onChange={() =>
+              toast.error("its not functional", { id: "notapod87fypaodsf90ad" })
+            }
             name="search"
             className="px-4 py-3 w-[300px] md:w-[400px] lg:w-[700px] focus:outline-none border"
             type="text"

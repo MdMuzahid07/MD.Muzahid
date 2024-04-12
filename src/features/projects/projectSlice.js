@@ -1,4 +1,4 @@
-import { asyncThunkCreator, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { addProject, deleteProjectById, fetchProjects, updateProjectById } from "./projectAPI";
 
 const initialState = {
@@ -81,7 +81,7 @@ const projectSlice = createSlice({
         builder.addCase(updateAProject.pending, (state) => {
             state.projectUpdated = false,
                 state.isError = false
-            state.isLoading = asyncThunkCreator
+            state.isLoading = true
 
         });
         builder.addCase(updateAProject.fulfilled, (state) => {

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { toast } from "react-hot-toast";
 
 const useImgBBUpload = () => {
-  const [img, setImg] = useState();
+  const [img, setImg] = useState(" ");
   const [loaded, setLoaded] = useState(false);
 
   // this function for upload application snapshots in imgBB

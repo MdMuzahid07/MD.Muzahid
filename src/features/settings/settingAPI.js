@@ -1,6 +1,6 @@
 // import axios from "../../utils/axios.config";
 
-
+import toast from "react-hot-toast";
 import axios from "../../utils/axios.config";
 
 const fetchHomepageHeadingTitle = async () => {
@@ -23,7 +23,9 @@ const addHomepageHeadingTitle = async (data) => {
 const updateHomepageHeadingTitle = async (id, data) => {
     try {
         const res = await axios.patch(`/api/v1/homepage-heading-title/${id}`, data);
-        console.log(res, "from fetchHomepageHeadingTitle");
+        if (res?.data?.success) {
+            toast.success("Title saved", { id: "homepageheadingtitle saved" });
+        }
     } catch (error) {
         console.log(error, "error message from fetchHomepageHeadingTitle update by id API");
     }

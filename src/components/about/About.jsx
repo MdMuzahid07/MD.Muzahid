@@ -1,7 +1,9 @@
-import { MdMuzahid } from "../../assets";
 import { styles } from "../../styles";
 import ShadowFont from "../common/ShadowFont";
 import { skills } from "../../constants/index";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const textWords = [
   { text: "I", id: "ui1h43", style: "" },
@@ -65,6 +67,19 @@ const aboutStyles = {
 };
 
 const About = () => {
+  const [profileImg, setProfileImg] = useState(" ");
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/v1/profile-img")
+      .then((response) => {
+        setProfileImg(response?.data?.data[0]?.Img);
+      })
+      .catch((error) =>
+        toast.error(error.message, { id: "profile img fetch error" })
+      );
+  }, []);
+
   return (
     <section
       id="about"
@@ -73,10 +88,10 @@ const About = () => {
       <section className="max-w-screen-2xl mx-auto text-white">
         <ShadowFont>About Me</ShadowFont>
         <div className="flex flex-col sm:flex-row max-md:items-center gap-4 lg:gap-10 mt-10 md:mt-10">
-          <figure className="max-w-[200px] min-w-[200px] max-h-[200px]">
+          <figure className="max-w-[200px] min-w-[200px] max-h-[200px] overflow-hidden">
             <img
               className="w-full h-full object-cover object-center rounded-full opacity-70 hover:opacity-100"
-              src={MdMuzahid}
+              src={profileImg}
               alt=""
             />
           </figure>

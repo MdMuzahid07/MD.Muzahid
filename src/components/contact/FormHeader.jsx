@@ -1,7 +1,22 @@
-import { MdMuzahid } from "../../assets";
+import { useEffect, useState } from "react";
 import MagneticEffect from "../../utils/MagneticEffect";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const FormHeader = () => {
+  const [profileImg, setProfileImg] = useState(" ");
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/v1/profile-img")
+      .then((response) => {
+        setProfileImg(response?.data?.data[0]?.Img);
+      })
+      .catch((error) =>
+        toast.error(error.message, { id: "profile img fetch error" })
+      );
+  }, []);
+
   return (
     <div className="flex justify-end md:justify-start gap-4  md:gap-28 lg:56 items-center flex-row-reverse md:flex-row relative">
       {/* arrow svg start  */}
@@ -32,7 +47,7 @@ const FormHeader = () => {
         <figure className=" w-[50px] h-[50px] md:w-[100px] md:h-[100px] lg:w-[130px] lg:h-[130px]">
           <img
             className="w-full h-full object-cover object-center rounded-full"
-            src={MdMuzahid}
+            src={profileImg}
             alt=""
           />
         </figure>{" "}

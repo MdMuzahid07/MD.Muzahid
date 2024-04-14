@@ -2,6 +2,8 @@ import { useEffect, useRef } from "react";
 import { styles } from "../../styles";
 import heroStyles from "./heroStyles";
 import { motion, useAnimation, useInView } from "framer-motion";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchHeadingTitleData } from "../../features/settings/settingSlice";
 
 const Hero = () => {
   const ref1 = useRef();
@@ -13,6 +15,15 @@ const Hero = () => {
   const isInView1 = useInView(ref1);
   const isInView2 = useInView(ref2);
   const isInView3 = useInView(ref3);
+
+  const dispatch = useDispatch();
+  const { title } = useSelector((state) => state?.settings);
+
+  useEffect(() => {
+    dispatch(fetchHeadingTitleData());
+  }, [dispatch]);
+
+  const titleText = title[0]?.title;
 
   useEffect(() => {
     if (isInView1) {
@@ -70,8 +81,17 @@ const Hero = () => {
         transition={{ duration: 0.75, delay: 0.9, ease: [0.5, 0, 0.75, 0] }}
         className={heroStyles.headingNormal}
       >
-        I DEVELOP WEB WORLD, AND REACT NATIVE{" "}
-        <br className="hidden 3xl:block" /> APPLICATION
+        <span className="uppercase">
+          {titleText ? (
+            titleText
+          ) : (
+            <>
+              I DEVELOP WEB WORLD, AND REACT NATIVE
+              <br className="hidden 3xl:block" /> APPLICATION
+            </>
+          )}
+        </span>
+        {/* */}
         {/* hire me button start  */}
         <div className="text-[18px] mt-10 block xs:hidden">
           <a

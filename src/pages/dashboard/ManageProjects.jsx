@@ -51,7 +51,7 @@ const ManageProjects = () => {
           Add New
         </Link>
       </header>
-      <section className="mt-10 grid lg:grid-cols-2 gap-4 bg-slate-100 p-5">
+      <section className="mt-10 grid lg:grid-cols-2 gap-10 bg-slate-100 p-10">
         {projects?.map((project) => {
           return <Card key={project?._id} project={project} />;
         })}

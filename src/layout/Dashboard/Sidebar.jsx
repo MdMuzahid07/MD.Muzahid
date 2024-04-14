@@ -11,7 +11,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
     <div
       className={`${
         isSidebarOpen ? "flex" : "hidden"
-      } col-span-12 sm:col-span-3 lg:col-span-2 text-[18px] sm:text-[25px] md:text-[40px] font-bold bg-primary p-7 text-white min-h-screen w-full relative`}
+      } col-span-12 sm:col-span-3 lg:col-span-2 text-[18px] sm:text-[25px] 2xl:text-[40px] font-bold bg-primary p-7 text-white min-h-screen w-full relative`}
     >
       <button
         onClick={() => setIsSidebarOpen(false)}

@@ -52,7 +52,7 @@ const SocialLinks = () => {
         ))}
         <div className="relative">
           {socialLinkAdd && (
-            <div className="w-[300px] max-h-80 h-80 px-4 py-5 bg-white border absolute md:right-0 bottom-20 overflow-y-auto">
+            <div className="w-[300px] max-h-96 h-96 px-4 py-5 bg-white border absolute md:right-0 bottom-20 overflow-y-auto">
               {connectMe?.map(({ name, icon }, index) => {
                 return (
                   <div key={index} className="border hover:border-red-500 mb-4">
@@ -78,16 +78,6 @@ const SocialLinks = () => {
                           />
                         </svg>
                       </span>
-                    </div>
-                    <div className="relative">
-                      <input
-                        placeholder="Add Link Here"
-                        className="border-t w-full  pl-3 focus:outline-none"
-                        type="text"
-                      />
-                      <button className="bg-red-500 text-white absolute right-1 text-xs px-3 bottom-1 top-1">
-                        Add
-                      </button>
                     </div>
                   </div>
                 );

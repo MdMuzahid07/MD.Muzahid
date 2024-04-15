@@ -2,13 +2,16 @@ import {
     bootStrap5,
     css3,
     expressJS,
+    facebook,
     figma,
     front_end,
     git,
     gitHub,
+    github,
     html5,
     javaScript,
     jwt,
+    linkedIn,
     mern_stack,
     mongoDB,
     mongooseODM,
@@ -21,10 +24,12 @@ import {
     reactJS,
     reactRouterDom,
     react_native,
+    reddit,
     redux,
     server,
     styledComponents,
     tailwindCSS,
+    twitter,
     typeScript,
     yarn,
 } from "../assets";
@@ -227,5 +232,43 @@ const skills = [
     }
 ];
 
+const connectMe = [
+    {
+        name: "LinkedIn",
+        icon: linkedIn,
+        link: "mdmuzahid.dev",
+        active: true,
+        _id: "9aadf7f",
+    },
+    {
+        name: "Twitter",
+        icon: twitter,
+        link: "mdmuzahid.dev",
+        active: true,
+        _id: "a9d6fb",
+    },
+    {
+        name: "Reddit",
+        icon: reddit,
+        link: "mdmuzahid.dev",
+        active: true,
+        _id: "oaidhf0",
+    },
+    {
+        name: "Github",
+        icon: github,
+        link: "mdmuzahid.dev",
+        active: true,
+        _id: "po8ayf09",
+    },
+    {
+        name: "Facebook",
+        icon: facebook,
+        link: "mdmuzahid.dev",
+        active: false,
+        _id: "908a67dbf",
+    },
+];
 
-export { navLinks, services, options, socialLinks, skills };
+
+export { navLinks, services, options, socialLinks, skills, connectMe };

@@ -1,17 +1,11 @@
 import { useState } from "react";
-import { facebook, github, linkedIn, reddit, twitter } from "../../../assets";
+import { linkedIn } from "../../../assets";
+import { connectMe } from "../../../constants";
 
 const SocialLinks = () => {
   const [socialLinkAdd, setSocialLinkAdd] = useState(false);
   const [addNewSocialPlatform, setAddNewSocialPlatform] = useState(false);
-
-  const connectMe = [
-    { name: "LinkedIn", icon: linkedIn, link: "mdmuzahid.dev", active: true },
-    { name: "Twitter", icon: twitter, link: "mdmuzahid.dev", active: true },
-    { name: "Reddit", icon: reddit, link: "mdmuzahid.dev", active: true },
-    { name: "Github", icon: github, link: "mdmuzahid.dev", active: true },
-    { name: "Facebook", icon: facebook, link: "mdmuzahid.dev", active: false },
-  ];
+  const [selectedPlatform, setSelectedPlatform] = useState({});
 
   const handleSave = (e) => {
     e.preventDefault();
@@ -20,27 +14,33 @@ const SocialLinks = () => {
     setAddNewSocialPlatform(false);
   };
 
+  const handleActive = () => {};
+
+  const handleDelete = () => {};
+
   return (
     <div className="mt-10 w-full">
       <h1 className="text-xl md:text-4xl mb-5">Social links</h1>
       <div className="flex items-center gap-5 flex-wrap">
-        {connectMe?.map(({ name, icon, active }, index) => (
+        {connectMe?.map(({ name, icon, active, _id }) => (
           <div
-            key={index}
+            key={_id}
             className="w-full xs:w-40 h-16 bg-slate-50 border p-3 flex gap-3"
           >
             <img src={icon} className="w-10 h-10" alt="" />
             <div className="w-full">
               <p className="text-xs">{name}</p>
               <button
+                title={active ? "Click to inactive" : "Click to active"}
+                onClick={() => handleActive(_id)}
                 className={`${
                   active ? "bg-green-500" : "bg-red-500"
-                } px-1  text-white w-10 text-xs`}
+                } px-2  text-white text-xs`}
               >
-                Active
+                {active ? "active" : "inactive"}
               </button>
             </div>
-            <button>
+            <button onClick={() => handleDelete(_id)} title="Delete">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -62,16 +62,23 @@ const SocialLinks = () => {
           {socialLinkAdd && (
             <div className="w-[300px] max-h-96 h-96 px-4 py-5 bg-white border absolute md:right-0 bottom-20 overflow-y-auto">
               {!addNewSocialPlatform &&
-                connectMe?.map(({ name, icon }, index) => {
+                connectMe?.map((platform, index) => {
                   return (
                     <div
-                      onClick={() => setAddNewSocialPlatform(true)}
+                      onClick={() => {
+                        setSelectedPlatform(platform);
+                        setAddNewSocialPlatform(true);
+                      }}
                       key={index}
-                      className="border hover:border-red-500 mb-4"
+                      className="border hover:border-red-500 mb-4 cursor-pointer"
                     >
                       <div className="w-full h-20 px-4 py-2 bg-slate-50 flex items-center  gap-5 relative">
-                        <img className="w-10 h-10" src={icon} alt="" />
-                        <p className="text-xl">{name}</p>
+                        <img
+                          className="w-10 h-10"
+                          src={platform?.icon}
+                          alt=""
+                        />
+                        <p className="text-xl">{platform?.name}</p>
                         <span
                           title="Add Link"
                           className="absolute right-4 text-slate-400"
@@ -99,9 +106,15 @@ const SocialLinks = () => {
               {addNewSocialPlatform && (
                 <div>
                   <div className="flex justify-center mt-5">
-                    <img className="w-14 h-14" src={linkedIn} alt="" />
+                    <img
+                      className="w-14 h-14"
+                      src={selectedPlatform?.icon}
+                      alt=""
+                    />
                   </div>
-                  <p className="text-center mt-2 text-xl">LinkedIn</p>
+                  <p className="text-center mt-2 text-xl">
+                    {selectedPlatform?.name}
+                  </p>
                   <form onSubmit={handleSave} className="mt-10">
                     <input
                       className="border w-full bg-slate-50 px-3 py-1 rounded-full focus:outline-none focus:border-indigo-500"
@@ -120,10 +133,15 @@ const SocialLinks = () => {
               )}
             </div>
           )}
+
           <button
             title="Add New"
             onClick={() => setSocialLinkAdd(!socialLinkAdd)}
-            className="w-16 h-16 md:w-40 md:h-16 border hover:border-red-500 flex justify-center items-center text-slate-400 hover:text-red-500 bg-slate-50 rounded-full relative"
+            className={`w-16 h-16 md:w-40 md:h-16 border ${
+              socialLinkAdd
+                ? "border-red-500 text-red-500"
+                : "hover:border-red-500 hover:text-red-500 text-slate-400"
+            }  flex justify-center items-center  bg-slate-50 rounded-full relative`}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

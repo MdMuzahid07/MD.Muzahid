@@ -1,13 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { connectMe } from "../../../constants";
 // import { linkedIn, github, facebook, reddit, twitter } from "../../../assets";
 import toast from "react-hot-toast";
 import { toastStyle } from "../../../styles";
+import axios from "axios";
 
 const SocialLinks = () => {
   const [socialLinkAdd, setSocialLinkAdd] = useState(false);
   const [addNewSocialPlatform, setAddNewSocialPlatform] = useState(false);
   const [selectedPlatform, setSelectedPlatform] = useState({});
+  const [fetchSocial, setFetchSocial] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/v1/social-platforms")
+      .then((res) => setFetchSocial(res?.data?.data))
+      .catch((error) => console.log(error));
+  }, []);
 
   const handleSave = (e) => {
     e.preventDefault();
@@ -29,21 +38,47 @@ const SocialLinks = () => {
       active: true,
     };
 
+    axios
+      .post("http://localhost:5000/api/v1/social-platforms", saveData)
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error, "from social platform post"));
+
     console.log(saveData);
 
     setSocialLinkAdd(false);
     setAddNewSocialPlatform(false);
   };
 
-  const handleActive = () => {};
+  const handleActive = async (id) => {
+    const data = {
+      active: true,
+    };
 
-  const handleDelete = () => {};
+    await axios
+      .patch(`http://localhost:5000/api/v1/social-platforms/${id}`, data)
+      .then((res) => console.log(res))
+      .catch((error) => console.log(error));
+  };
+
+  const handleDelete = async (id) => {
+    await axios
+      .delete(`http://localhost:5000/api/v1/social-platforms/${id}`)
+      .then((res) => {
+        if (res?.data?.success) {
+          toast.error("Delete successfully", {
+            id: "delete platform",
+            style: toastStyle,
+          });
+        }
+      })
+      .catch((error) => console.log(error));
+  };
 
   return (
     <div className="mt-10 w-full">
       <h1 className="text-xl md:text-4xl mb-5">Social links</h1>
       <div className="flex items-center gap-5 flex-wrap">
-        {connectMe?.map(({ name, icon, active, _id }) => (
+        {fetchSocial?.map(({ name, icon, active, _id }) => (
           <div
             key={_id}
             className="w-full xs:w-40 h-16 bg-slate-50 border p-3 flex gap-3"
@@ -61,7 +96,7 @@ const SocialLinks = () => {
                 {active ? "active" : "inactive"}
               </button>
             </div>
-            <button onClick={() => handleDelete(_id)} title="Delete">
+            <button onClick={() => handleDelete(_id, active)} title="Delete">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"

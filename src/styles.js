@@ -21,4 +21,13 @@ const addProjectStyles = {
       file:bg-slate-50`,
 };
 
-export { styles, addProjectStyles };
+
+const toastStyle = {
+    borderRadius: "0px",
+    background: "#0C0C0C",
+    color: "#fff",
+    fontSize: "30px",
+    padding: "10px 20px",
+}
+
+export { styles, addProjectStyles, toastStyle };

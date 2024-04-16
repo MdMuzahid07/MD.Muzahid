@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { linkedIn } from "../../../assets";
 import { connectMe } from "../../../constants";
+// import { linkedIn, github, facebook, reddit, twitter } from "../../../assets";
+import toast from "react-hot-toast";
+import { toastStyle } from "../../../styles";
 
 const SocialLinks = () => {
   const [socialLinkAdd, setSocialLinkAdd] = useState(false);
@@ -9,6 +11,25 @@ const SocialLinks = () => {
 
   const handleSave = (e) => {
     e.preventDefault();
+
+    const link = e.target.socialLink.value;
+
+    if (link.length < 7) {
+      toast.error("Please enter the link first", {
+        id: "link error, social platform",
+        style: toastStyle,
+      });
+      return;
+    }
+
+    const saveData = {
+      name: selectedPlatform?.name,
+      icon: selectedPlatform?.icon,
+      link: link,
+      active: true,
+    };
+
+    console.log(saveData);
 
     setSocialLinkAdd(false);
     setAddNewSocialPlatform(false);
@@ -104,7 +125,30 @@ const SocialLinks = () => {
                 })}
 
               {addNewSocialPlatform && (
-                <div>
+                <div className="relative">
+                  <button
+                    onClick={() => {
+                      setAddNewSocialPlatform(false);
+                    }}
+                    className="absolute top-0"
+                    title="back to list"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-5 h-5 text-slate-400 hover:text-primary"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3"
+                      />
+                    </svg>
+                  </button>
+
                   <div className="flex justify-center mt-5">
                     <img
                       className="w-14 h-14"
@@ -119,12 +163,12 @@ const SocialLinks = () => {
                     <input
                       className="border w-full bg-slate-50 px-3 py-1 rounded-full focus:outline-none focus:border-indigo-500"
                       type="text"
-                      name=""
+                      name="socialLink"
                       placeholder="Please enter the link "
                       id=""
                     />
-                    <div className="flex justify-center">
-                      <button className="w-24 mt-7 text-white bg-indigo-500 rounded-full">
+                    <div className="flex gap-2 justify-center mt-7">
+                      <button className="w-24 text-white bg-indigo-500 rounded-full">
                         Save
                       </button>
                     </div>

@@ -9,7 +9,7 @@ const ProfileImage = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/v1/profile-img")
+      .get("https://md-muzahid-server.vercel.app/api/v1/profile-img")
       .then((response) => {
         setProfileImg(response?.data?.data[0]?.Img);
       })
@@ -22,7 +22,7 @@ const ProfileImage = () => {
     e.preventDefault();
     axios
       .patch(
-        "http://localhost:5000/api/v1/profile-img/66188ecbc9812c6df5c6cbb3",
+        "https://md-muzahid-server.vercel.app/api/v1/profile-img/66188ecbc9812c6df5c6cbb3",
         { Img: img }
       )
       .then((response) => {

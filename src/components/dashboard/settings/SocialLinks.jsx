@@ -4,19 +4,34 @@ import { connectMe } from "../../../constants";
 import toast from "react-hot-toast";
 import { toastStyle } from "../../../styles";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  myAllSocialPlatforms,
+  updateASocialPlatform,
+  deleteASocialPlatform,
+} from "../../../features/settings/settingSlice.js";
+import Spinner from "../../preloader/Spinner";
 
 const SocialLinks = () => {
   const [socialLinkAdd, setSocialLinkAdd] = useState(false);
   const [addNewSocialPlatform, setAddNewSocialPlatform] = useState(false);
   const [selectedPlatform, setSelectedPlatform] = useState({});
-  const [fetchSocial, setFetchSocial] = useState([]);
+  const dispatch = useDispatch();
+  const { platFormsData, isLoading, error, isError } = useSelector(
+    (state) => state.settings
+  );
 
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/v1/social-platforms")
-      .then((res) => setFetchSocial(res?.data?.data))
-      .catch((error) => console.log(error));
-  }, []);
+    dispatch(myAllSocialPlatforms());
+  }, [dispatch]);
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
+  if (isError) {
+    toast.error(error, { id: "sociali7d6sf", style: toastStyle });
+  }
 
   const handleSave = (e) => {
     e.preventDefault();
@@ -49,36 +64,23 @@ const SocialLinks = () => {
     setAddNewSocialPlatform(false);
   };
 
-  const handleActive = async (id) => {
+  const handleActive = (id) => {
     const data = {
       active: true,
     };
 
-    await axios
-      .patch(`http://localhost:5000/api/v1/social-platforms/${id}`, data)
-      .then((res) => console.log(res))
-      .catch((error) => console.log(error));
+    dispatch(updateASocialPlatform(id, data));
   };
 
   const handleDelete = async (id) => {
-    await axios
-      .delete(`http://localhost:5000/api/v1/social-platforms/${id}`)
-      .then((res) => {
-        if (res?.data?.success) {
-          toast.error("Delete successfully", {
-            id: "delete platform",
-            style: toastStyle,
-          });
-        }
-      })
-      .catch((error) => console.log(error));
+    dispatch(deleteASocialPlatform(id));
   };
 
   return (
     <div className="mt-10 w-full">
       <h1 className="text-xl md:text-4xl mb-5">Social links</h1>
       <div className="flex items-center gap-5 flex-wrap">
-        {fetchSocial?.map(({ name, icon, active, _id }) => (
+        {platFormsData?.map(({ name, icon, active, _id }) => (
           <div
             key={_id}
             className="w-full xs:w-40 h-16 bg-slate-50 border p-3 flex gap-3"

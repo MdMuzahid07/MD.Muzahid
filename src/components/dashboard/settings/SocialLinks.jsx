@@ -54,7 +54,10 @@ const SocialLinks = () => {
     };
 
     axios
-      .post("http://localhost:5000/api/v1/social-platforms", saveData)
+      .post(
+        "https://md-muzahid-server.vercel.app/api/v1/social-platforms",
+        saveData
+      )
       .then((response) => console.log(response))
       .catch((error) => console.log(error, "from social platform post"));
 

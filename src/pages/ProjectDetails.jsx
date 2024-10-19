@@ -94,7 +94,7 @@ const ProjectDetails = () => {
       <section
         className={`sm:px-16 px-6 md:py-24  sm:py-16 py-24 min-h-screen stripeBG w-full`}
       >
-        <div className={`max-w-screen-2xl mx-auto text-white`}>
+        <div className={`max-w-screen-2xl mx-auto text-slate-300`}>
           {/* header start  */}
           <motion.h1
             ref={ref1}
@@ -309,12 +309,14 @@ const ProjectDetails = () => {
             className="max-w-screen-2xl mx-auto w-full h-full"
           >
             <div className="w-full h-full sm:p-16 p-6 flex justify-center flex-col items-center bg-primary opacity-75">
-              <h1 className={`${styles.headingTextBold} uppercase text-white`}>
+              <h1
+                className={`${styles.headingTextBold} uppercase text-slate-300`}
+              >
                 {nextProject[0]?.name}
               </h1>
               <Link
                 to={`/projectDetails/${nextProject[0]?._id}`}
-                className="w-56 mt-20 flex items-center cursor-pointer justify-center text-[20px] md:text-[25px] font-bold rounded-xl h-16 border border-white relative text-white"
+                className="w-56 mt-20 flex items-center cursor-pointer justify-center text-[20px] md:text-[25px] font-bold rounded-xl h-16 border border-white relative text-slate-300"
               >
                 Next Project{" "}
                 <span className="absolute -right-5 -top-10">

@@ -47,7 +47,7 @@ const Card = ({ project }) => {
     >
       <div className="w-full h-44 bg-black bg-opacity-50 p-4">
         <header className="flex items-center justify-between">
-          <h1 className="text-3xl text-white">{project?.name}</h1>
+          <h1 className="text-3xl text-slate-300">{project?.name}</h1>
         </header>
         <section>
           <div className="flex items-center gap-3 my-3">
@@ -59,7 +59,7 @@ const Card = ({ project }) => {
             </p>
           </div>
           <label htmlFor="" className="flex items-center gap-2">
-            <span className="text-xs text-white">Active</span>
+            <span className="text-xs text-slate-300">Active</span>
             <Toggle />
           </label>
         </section>
@@ -73,7 +73,7 @@ const Card = ({ project }) => {
               {/* redirect update project */}
               <button
                 onClick={() => redirectUpdatePage(project?._id)}
-                className="w-6 h-6 border bg-white hover:bg-indigo-500 hover:text-white flex items-center justify-center rounded-full"
+                className="w-6 h-6 border bg-white hover:bg-indigo-500 hover:text-slate-300 flex items-center justify-center rounded-full"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -94,7 +94,7 @@ const Card = ({ project }) => {
               {/* handle delete */}
               <button
                 onClick={() => handleDelete(project?._id)}
-                className="w-6 h-6 border bg-white hover:bg-red-500 hover:text-white flex items-center justify-center rounded-full"
+                className="w-6 h-6 border bg-white hover:bg-red-500 hover:text-slate-300 flex items-center justify-center rounded-full"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

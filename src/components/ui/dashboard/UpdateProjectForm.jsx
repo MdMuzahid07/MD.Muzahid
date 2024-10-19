@@ -363,7 +363,7 @@ const UpdateProjectForm = ({
       <div className="absolute -bottom-[30vh] right-[10vw]">
         <button
           type="submit"
-          className="relative w-28 h-28 flex justify-center items-center border rounded-full hover:bg-black hover:text-white transition delay-200 ease-in text-[18px] active:text-[25px]"
+          className="relative w-28 h-28 flex justify-center items-center border rounded-full hover:bg-black hover:text-slate-300 transition delay-200 ease-in text-[18px] active:text-[25px]"
         >
           Add
           <span className="absolute -right-10 -top-10">

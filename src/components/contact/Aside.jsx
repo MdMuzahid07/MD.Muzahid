@@ -9,7 +9,7 @@ const styles = {
 
 const Aside = () => {
   return (
-    <aside className=" col-span-12 md:col-span-4 lg:col-span-3 text-white w-full relative">
+    <aside className=" col-span-12 md:col-span-4 lg:col-span-3 text-slate-300 w-full relative">
       <span className=" absolute -mt-24">
         <svg
           xmlns="http://www.w3.org/2000/svg"

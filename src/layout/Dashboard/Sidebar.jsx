@@ -11,7 +11,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
     <div
       className={`${
         isSidebarOpen ? "flex" : "hidden"
-      } col-span-12 sm:col-span-3 lg:col-span-2 text-[18px] sm:text-[25px] 2xl:text-[40px] font-bold bg-primary p-7 text-white min-h-screen w-full relative`}
+      } col-span-12 sm:col-span-3 lg:col-span-2 text-[18px] sm:text-[25px] 2xl:text-[40px] font-bold bg-primary p-7 text-slate-300 min-h-screen w-full relative`}
     >
       <button
         onClick={() => setIsSidebarOpen(false)}
@@ -42,7 +42,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
             className={`${
               pathname && active === "/dashboard/home"
                 ? "bg-clip-text text-transparent  bg-gradient-to-r from-pink-500 to-violet-500"
-                : "text-white"
+                : "text-slate-300"
             } flex items-center gap-3`}
           >
             <svg
@@ -76,7 +76,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
             className={`${
               pathname && active === "/dashboard/addProject"
                 ? "bg-clip-text text-transparent  bg-gradient-to-r from-pink-500 to-violet-500"
-                : "text-white"
+                : "text-slate-300"
             } flex items-center gap-3`}
           >
             <svg
@@ -105,7 +105,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
             className={`${
               pathname && active === "/dashboard/manageProjects"
                 ? "bg-clip-text text-transparent  bg-gradient-to-r from-pink-500 to-violet-500"
-                : "text-white"
+                : "text-slate-300"
             } flex items-center gap-3`}
           >
             <svg
@@ -134,7 +134,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
             className={`${
               pathname && active === "/dashboard/settings"
                 ? "bg-clip-text text-transparent  bg-gradient-to-r from-pink-500 to-violet-500"
-                : "text-white"
+                : "text-slate-300"
             } flex items-center gap-3`}
           >
             <svg

@@ -96,7 +96,7 @@ const SocialLinks = () => {
                 onClick={() => handleActive(_id)}
                 className={`${
                   active ? "bg-green-500" : "bg-red-500"
-                } px-2  text-white text-xs`}
+                } px-2  text-slate-300 text-xs`}
               >
                 {active ? "active" : "inactive"}
               </button>
@@ -208,7 +208,7 @@ const SocialLinks = () => {
                       id=""
                     />
                     <div className="flex gap-2 justify-center mt-7">
-                      <button className="w-24 text-white bg-indigo-500 rounded-full">
+                      <button className="w-24 text-slate-300 bg-indigo-500 rounded-full">
                         Save
                       </button>
                     </div>

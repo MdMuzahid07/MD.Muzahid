@@ -124,6 +124,12 @@ const skills = [
         id: "lkasdfoi87aaugf"
     },
     {
+        name: "TypeScript",
+        icon: typeScript,
+        id: "lkasdfoi8gf"
+    }
+    ,
+    {
         name: "ReactJS",
         icon: reactJS,
         id: "lkasdi87a5augf"
@@ -134,16 +140,17 @@ const skills = [
         id: "lkasdfo87a5augf"
     },
     {
-        name: "Redux",
+        name: "Redux Toolkit",
         icon: redux,
         id: "lka7a5augf"
     }
     ,
     {
-        name: "TypeScript",
-        icon: typeScript,
-        id: "lkasdfoi8gf"
+        name: "Redux RTK Query",
+        icon: redux,
+        id: "l0007a5aadsugf"
     }
+
     ,
     {
         name: "MongoDB",
@@ -196,6 +203,26 @@ const skills = [
         id: "lkasf"
     },
     {
+        name: "Cookies",
+        icon: "https://i.ibb.co.com/N1xZPmg/cookies.png",
+        id: "lkacookiessf"
+    },
+    {
+        name: "ViteJS",
+        icon: "https://i.ibb.co.com/P4V5DSz/vitejs.png",
+        id: "lkavites254a5augf"
+    },
+    {
+        name: "PNPM",
+        icon: "https://i.ibb.co.com/Th0JCmv/pnpm.png",
+        id: "lkapnpms254a5augf"
+    },
+    {
+        name: "Zod",
+        icon: "https://i.ibb.co.com/6FwTtD0/ZOD.png",
+        id: "lkzods254a5augf"
+    },
+    {
         name: "NPM",
         icon: npm,
         id: "lkas254a5augf"
@@ -216,9 +243,24 @@ const skills = [
         id: "lkasdff"
     },
     {
+        name: "Next Auth",
+        icon: "https://i.ibb.co.com/XZRcdWZ/next-auth.png",
+        id: "lka24433sdff"
+    },
+    {
         name: "MUI",
         icon: mui,
         id: "lkasdfugf"
+    },
+    {
+        name: "Next UI",
+        icon: "https://i.ibb.co.com/j3Z7tYQ/Next-UI.png",
+        id: "lkasdfdsfugf"
+    },
+    {
+        name: "Shadcn UI",
+        icon: "https://i.ibb.co.com/pRgDR8b/shadcnui.png",
+        id: "lkas06543dfugf"
     },
     // {
     //     name: "PostgreSQL",

@@ -97,9 +97,9 @@ const Hero = () => {
           <a
             href="#contact"
             type="button"
-            className="transition ease-in-out delay-50 w-56  h-10 bg-gradient-to-r hover:-translate-y-1 duration-300 hover:scale-110 hover:shadow-lg active:scale-75 hover:shadow-red-500 from-indigo-500 via-purple-500 to-pink-500 font-bold text-slate-300 rounded-lg p-1"
+            className="transition ease-in-out delay-50 w-56  h-10 bg-gradient-to-r hover:-translate-y-1 duration-300 hover:scale-110 hover:shadow-lg active:scale-75 hover:shadow-red-500 from-indigo-500 via-purple-500 to-pink-500 font-bold text-slate-300 rounded-full p-1"
           >
-            <div className="bg-black rounded-md w-full h-full flex items-center justify-center">
+            <div className="bg-black rounded-full w-full h-full flex items-center justify-center">
               <p>HIRE ME</p>
             </div>
           </a>

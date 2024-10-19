@@ -20,7 +20,7 @@ const Preloader = () => {
       className="w-full min-h-screen flex-col fixed top-0 left-0 z-50 bg-primary flex justify-center items-center"
     >
       <h1 className="text-slate-300 text-[40px] flex items-center gap-4">
-        <span>Thinking...</span>
+        <span>Loading...</span>
       </h1>
     </motion.div>
   );

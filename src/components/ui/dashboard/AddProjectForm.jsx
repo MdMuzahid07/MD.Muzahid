@@ -16,7 +16,7 @@ const AddProjectForm = ({
   currentData,
 }) => {
   return (
-    <form onSubmit={handleForm} className="mt-20 mb-[50vh] relative">
+    <form onSubmit={handleForm} className="pt-20 mb-[50vh] relative">
       <div className="mb-5">
         <label className={addProjectStyles.labelText} htmlFor="projectName">
           Project Name
@@ -298,7 +298,7 @@ const AddProjectForm = ({
       </div>
 
       <div>
-        <h1 className={`${addProjectStyles.headingText} mt-14`}>
+        <h1 className={`${addProjectStyles.headingText} pt-14`}>
           Technologies
         </h1>
         <div className="mt-5 grid lg:grid-cols-2  gap-10">

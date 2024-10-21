@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
-import { styles } from "../../styles";
 import Header from "./Header";
 
 const Dashboard = () => {
@@ -12,7 +11,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="grid grid-cols-8 h-full w-full">
+      <div className="grid grid-cols-12 h-full w-full relative">
         <Sidebar
           isSidebarOpen={isSidebarOpen}
           setIsSidebarOpen={setIsSidebarOpen}
@@ -20,7 +19,7 @@ const Dashboard = () => {
         <div
           className={`${
             isSidebarOpen
-              ? "col-span-12 sm:col-span-5 lg:col-span-6"
+              ? "col-span-12 lg:col-span-8 xl:col-span-10"
               : "col-span-12"
           }`}
         >
@@ -28,15 +27,18 @@ const Dashboard = () => {
             setIsSidebarOpen={setIsSidebarOpen}
             isSidebarOpen={isSidebarOpen}
           />
-          <div
-            className={`${styles.paddingX} ${
-              isSidebarOpen ? "max-w-7xl" : "max-w-screen-2xl"
-            } min-h-screen w-full mx-auto`}
-          >
-            <Outlet />
+          <div>
+            <div
+              className={`sm:px-16 px-6 ${
+                isSidebarOpen ? "max-w-7xl" : "max-w-screen-2xl"
+              } min-h-screen w-full mx-auto `}
+            >
+              <Outlet />
+            </div>
           </div>
         </div>
       </div>
+      ;
     </>
   );
 };

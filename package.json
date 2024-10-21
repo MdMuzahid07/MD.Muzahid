@@ -24,6 +24,7 @@
     "react-helmet-async": "^2.0.4",
     "react-hot-toast": "^2.4.1",
     "react-parallax-tilt": "^1.7.177",
+    "react-quill": "^2.0.0",
     "react-redux": "^9.0.4",
     "react-router-dom": "^6.20.1"
   },

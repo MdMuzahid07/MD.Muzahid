@@ -103,7 +103,7 @@ const DashboardAddProject = () => {
 
   return (
     <>
-      <h1 className={`${addProjectStyles.headingText} mt-14`}>Add Project</h1>
+      <h1 className={`${addProjectStyles.headingText} pt-14`}>Add Project</h1>
       <AddProjectForm
         handleForm={handleForm}
         handleOnChangeCoreTechs={handleOnChangeCoreTechs}

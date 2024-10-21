@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import Toggle from "../../ui/Toggle";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteAProject } from "../../../features/projects/projectSlice";
@@ -58,10 +57,6 @@ const Card = ({ project }) => {
               Updated: 09-03-2024
             </p>
           </div>
-          <label htmlFor="" className="flex items-center gap-2">
-            <span className="text-xs text-slate-300">Active</span>
-            <Toggle />
-          </label>
         </section>
 
         <div className="mt-4">

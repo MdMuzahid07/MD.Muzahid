@@ -31,7 +31,7 @@ const Navbar = () => {
             <figure className="w-9 h-9 object-contain">
               <img src={logo} alt="Md.Muzahid" />
             </figure>
-            <p className=" text-white text-[18px] font-bold cursor-pointer ">
+            <p className=" text-slate-300 text-[18px] font-bold cursor-pointer ">
               Md. Muzahid
             </p>
           </Link>
@@ -41,13 +41,13 @@ const Navbar = () => {
               <a
                 href="#contact"
                 type="button"
-                className="transition ease-in-out hidden xs:flex delay-50 w-28 h-9 bg-gradient-to-r hover:-translate-y-1 duration-300 hover:scale-110 hover:shadow-lg active:scale-75 hover:shadow-red-500 from-indigo-500 via-purple-500 to-pink-500 font-bold text-white rounded-lg p-1"
+                className="transition ease-in-out hidden xs:flex delay-50 w-28 h-9 bg-gradient-to-r hover:-translate-y-1 duration-300 hover:scale-110 hover:shadow-lg active:scale-75 hover:shadow-red-500 from-indigo-500 via-purple-500 to-pink-500 font-bold text-slate-300 rounded-full p-1"
                 onClick={() => {
                   navigate("/");
                   setToggle(false);
                 }}
               >
-                <div className="bg-black rounded-md w-full h-full flex items-center justify-center">
+                <div className="bg-black rounded-full w-full h-full flex items-center justify-center">
                   <p>HIRE ME</p>
                 </div>
               </a>

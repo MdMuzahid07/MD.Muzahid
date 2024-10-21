@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <footer className={`${styles.paddingX} stripeBG`}>
       <div className="max-w-screen-2xl mx-auto flex justify-end w-full  -bottom-20">
-        <button onClick={handleTop} className="text-white">
+        <button onClick={handleTop} className="text-slate-300">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -27,7 +27,7 @@ const Footer = () => {
           </svg>
         </button>
       </div>
-      <div className="max-w-screen-2xl mx-auto text-white py-5 flex flex-col md:flex-row md:justify-between ">
+      <div className="max-w-screen-2xl mx-auto text-slate-300 py-5 flex flex-col md:flex-row md:justify-between ">
         <p>Copyright &#169; {year} - All right reserved by Md.Muzahid</p>
         <p className="text-slate-500 text-xs">v 1.5.0 beta</p>
       </div>

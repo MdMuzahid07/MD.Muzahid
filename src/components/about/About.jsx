@@ -63,7 +63,7 @@ const textWords = [
 ];
 
 const aboutStyles = {
-  btn: "px-4 py-1.5 text-xs md:text-md lg:text-xl bg-primary hover:bg-black rounded-full font-bold border px-4 py-1.5 text-xs md:text-md lg:text-xl bg-black rounded-md md:rounded-xl font-bold border",
+  btn: "px-4 py-1.5 text-xs md:text-md lg:text-xl bg-black hover:bg-black rounded-full font-bold border px-4 py-1.5 text-xs md:text-md lg:text-xl bg-black rounded-full font-bold border-2 border-slate-600 bg-black",
 };
 
 const About = () => {
@@ -85,7 +85,7 @@ const About = () => {
       id="about"
       className={`${styles.paddingX} ${styles.paddingY} stripeBG min-h-screen w-full`}
     >
-      <section className="max-w-screen-2xl mx-auto text-white">
+      <section className="max-w-screen-2xl mx-auto text-slate-300">
         <ShadowFont>About Me</ShadowFont>
         <div className="flex flex-col sm:flex-row max-md:items-center gap-4 lg:gap-10 mt-10 md:mt-10">
           <figure className="max-w-[200px] min-w-[200px] max-h-[200px] overflow-hidden">
@@ -97,7 +97,7 @@ const About = () => {
           </figure>
           <div className="mt-5 md:mt-0">
             <section>
-              <h1 className="text-[14px] md:text-[20px] lg:text-[35px] xl:text-[45px] font-extrabold">
+              <h1 className="text-[14px] md:text-[20px] lg:text-[35px] xl:text-[45px] font-extrabold text-slate-300">
                 {textWords.map(({ text, id, style }) => (
                   <span key={id} className={style}>
                     {text}{" "}
@@ -133,15 +133,18 @@ const About = () => {
               </div>
             </section>
             <section className="mt-7 sm:mt-10 lg:mt-14">
-              <p className="text-slate-500">Skills</p>
+              <p className="text-slate-300">Skills</p>
               <div className="flex flex-wrap items-center gap-3 mt-3">
                 {skills?.map(({ name, icon, id }) => (
-                  <div
+                  <section
+                    className=" flex items-center gap-2 pl-2 pr-3 py-2 h-14 bg-black rounded-full border border-slate-800"
                     key={id}
-                    className="w-8 h-8 opacity-75 hover:opacity-100 hover:shadow-white hover:rotate-[360deg] transition-transform ease-in-out duration-1000 rounded-full bg-white p-1 overflow-hidden hover:scale-[1.1]"
                   >
-                    <img className="w-8" src={icon} alt={name} />
-                  </div>
+                    <div className="w-10 h-10  hover:shadow-white hover:rotate-[360deg] transition-transform ease-in-out rounded-full p-1 duration-1000 bg-white overflow-hidden hover:scale-[1.1]">
+                      <img className="w-8" src={icon} alt={name} />
+                    </div>
+                    <h3>{name}</h3>
+                  </section>
                 ))}
               </div>
             </section>

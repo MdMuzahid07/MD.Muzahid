@@ -24,7 +24,7 @@ const Header = ({ isSidebarOpen, setIsSidebarOpen }) => {
       <div className="flex items-center gap-4">
         <button
           className={`${
-            !isSidebarOpen ? "bg-slate-100" : "bg-red-500 text-white"
+            !isSidebarOpen ? "bg-slate-100" : "bg-red-500 text-slate-300"
           } px-4 py-1 rounded-full border tracking-wider flex items-center gap-2`}
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
         >

@@ -56,7 +56,7 @@ const ProjectCard = ({ project, index }) => {
             <Tilt tiltAngleXInitial={20} tiltAngleYInitial={20}>
               <img
                 onClick={() => handleClick(project?._id)}
-                className="w-full h-full transition ease-in-out delay-100 object-cover  object-center  sm:w-[600px] md:h-[400px] xl:w-[800px] xl:h-[500px] brightness-50 hover:brightness-100"
+                className="w-full h-full rounded-2xl transition ease-in-out delay-100 object-cover  object-center  sm:w-[600px] md:h-[400px] xl:w-[800px] xl:h-[500px] brightness-50 hover:brightness-75"
                 src={
                   project?.thumbnailImg
                     ? project?.thumbnailImg

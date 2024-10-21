@@ -20,7 +20,7 @@ const FormHeader = () => {
   return (
     <div className="flex justify-end md:justify-start gap-4  md:gap-28 lg:56 items-center flex-row-reverse md:flex-row relative">
       {/* arrow svg start  */}
-      <span className="text-white absolute right-0 -mt-24 block md:hidden">
+      <span className="text-slate-300 absolute right-0 -mt-24 block md:hidden">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -37,7 +37,7 @@ const FormHeader = () => {
         </svg>
       </span>
       {/* arrow svg end */}
-      <h1 className="capitalize text-[30px] xs:text-[40px] md:text-[50px] xl:text-[90px]  text-white inline font-bold">
+      <h1 className="capitalize text-[30px] xs:text-[40px] md:text-[50px] xl:text-[90px]  text-slate-300 inline font-bold">
         {`Let's`} Work{" "}
         <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
           Together

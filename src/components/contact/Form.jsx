@@ -36,7 +36,7 @@ const Form = () => {
       <form
         ref={form}
         onSubmit={handleContactForm}
-        className="col-span-12 md:col-span-8 lg:col-span-9 w-full text-white"
+        className="col-span-12 md:col-span-8 lg:col-span-9 w-full text-slate-300"
       >
         <HR style="bg-black border-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-[1px] mb-7" />
         <div className="relative">
@@ -151,7 +151,7 @@ const Form = () => {
 
           <button
             type="submit"
-            className="transition ease-in-out delay-50 text-white h-28 w-28 border justify-center items-center rounded-full  absolute -bottom-14 right-10 sm:right-16 md:right-32 bg-primary hover:bg-black"
+            className="transition ease-in-out delay-50 text-slate-300 h-28 w-28 border justify-center items-center rounded-full  absolute -bottom-14 right-10 sm:right-16 md:right-32 bg-primary hover:bg-black"
           >
             <span className="relative">
               <div className="absolute -left-20 -top-20 hidden lg:block">

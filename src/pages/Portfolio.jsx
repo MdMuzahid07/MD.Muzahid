@@ -40,7 +40,7 @@ const Portfolio = () => {
         id="portfolio"
         className={`${styles.paddingY} w-full  min-h-screen stripeBG overflow-x-hidden`}
       >
-        <div className={`${styles.paddingX}  text-white  relative`}>
+        <div className={`${styles.paddingX}  text-slate-300  relative`}>
           <HR style="bg-black border-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-[1px] mb-20" />
           {projects?.map((project, index) => (
             <ProjectCard key={project._id} project={project} index={index} />

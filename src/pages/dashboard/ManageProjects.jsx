@@ -40,7 +40,7 @@ const ManageProjects = () => {
             placeholder="Search By Name"
             id="Search"
           />
-          <button className="absolute top-0 right-0 bottom-0 px-4 py-3 bg-primary text-white">
+          <button className="absolute top-0 right-0 bottom-0 px-4 py-3 bg-primary text-slate-300">
             Enter
           </button>
         </div>

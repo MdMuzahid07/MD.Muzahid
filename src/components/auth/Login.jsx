@@ -44,7 +44,7 @@ const Login = () => {
   }
   return (
     <section className="flex justify-center items-center min-h-screen w-full stripeBG z-0">
-      <div className="w-[350px] min-h-[550px] bg-gradient-to-r hover:-translate-y-1 duration-300  hover:shadow-lg hover:shadow-red-500 from-indigo-500 via-purple-500 to-pink-500 font-bold text-white rounded-lg p-1">
+      <div className="w-[350px] min-h-[550px] bg-gradient-to-r hover:-translate-y-1 duration-300  hover:shadow-lg hover:shadow-red-500 from-indigo-500 via-purple-500 to-pink-500 font-bold text-slate-300 rounded-lg p-1">
         <div className="bg-black min-h-[546px] w-[346] rounded-lg relative">
           <div className="flex justify-center">
             <img className="w-14 mt-7" src={logo} alt="" />

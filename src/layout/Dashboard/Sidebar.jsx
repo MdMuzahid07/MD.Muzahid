@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Disclosure } from "@headlessui/react";
 import { NavLink } from "react-router-dom";
 

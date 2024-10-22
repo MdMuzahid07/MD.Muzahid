@@ -1,13 +1,13 @@
 import { addProjectStyles } from "../../../styles";
 
-const AboutMeText = () => {
+const Motivation = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
 
   return (
     <form onSubmit={handleSubmit} className="py-10 w-full">
-      <h1 className="text-xl md:text-4xl">About Me Text</h1>
+      <h1 className="text-xl md:text-4xl">My Motivation(Optional)</h1>
       <textarea
         className={`${addProjectStyles.inputStyle} mt-5 rounded-2xl`}
         name=""
@@ -22,4 +22,4 @@ const AboutMeText = () => {
   );
 };
 
-export default AboutMeText;
+export default Motivation;

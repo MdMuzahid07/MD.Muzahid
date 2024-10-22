@@ -36,13 +36,13 @@ const ProfileImage = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mt-10 w-full">
+    <form onSubmit={handleSubmit} className="py-10 w-full">
       <h1 className="text-xl md:text-4xl mb-5">Profile Image</h1>
       <div className="flex items-center gap-4">
         <label htmlFor="profileImage">
           <img
             src={img.length > 5 ? img : profileImg}
-            className="w-24 h-24"
+            className="w-28 h-28 border-4 border-slate-200 rounded-full overflow-hidden"
             alt=""
           />
           <input
@@ -56,7 +56,7 @@ const ProfileImage = () => {
 
         <button
           type="submit"
-          className="px-4 py-2 bg-slate-100 text-2xl border active:text-red-500"
+          className="px-7 rounded-full py-2 bg-slate-100 text-2xl border active:text-red-500"
         >
           Save
         </button>

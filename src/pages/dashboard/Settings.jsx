@@ -11,20 +11,22 @@ import { addProjectStyles } from "../../styles";
 
 const Settings = () => {
   return (
-    <main className="pb-32">
-      <h1 className={`${addProjectStyles.headingText} mt-14`}>Profile</h1>
-      <>
-        <ProfileImage />
-        <HomepageHeadingTitle />
-        <HomePageHeadingSubtitle />
-        <AboutMeText />
-        <Motivation />
-        <EmailUpdate />
-        <ResumeLinkUpdate />
-        <DashboardSkillAdd />
-        <DashboardHobby />
-        {/* <SocialLinks /> */}
-      </>
+    <main className="pb-32 pt-10">
+      <div className="bg-slate-100 px-8 lg:px-14 py-5 lg:py-20  border rounded-2xl bg-opacity-50 mt-14">
+        <h1 className={`${addProjectStyles.headingText}`}>My Profile</h1>
+        <>
+          <ProfileImage />
+          <HomepageHeadingTitle />
+          <HomePageHeadingSubtitle />
+          <AboutMeText />
+          <Motivation />
+          <EmailUpdate />
+          <ResumeLinkUpdate />
+          <DashboardSkillAdd />
+          <DashboardHobby />
+          {/* <SocialLinks /> */}
+        </>
+      </div>
     </main>
   );
 };

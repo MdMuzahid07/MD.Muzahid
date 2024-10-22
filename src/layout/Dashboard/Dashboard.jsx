@@ -11,7 +11,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="grid grid-cols-12 h-full w-full relative">
+      <div className="grid grid-cols-12 h-full w-full relative dashboardBG">
         <Sidebar
           isSidebarOpen={isSidebarOpen}
           setIsSidebarOpen={setIsSidebarOpen}
@@ -30,8 +30,8 @@ const Dashboard = () => {
           <div>
             <div
               className={`sm:px-16 px-6 ${
-                isSidebarOpen ? "max-w-7xl" : "max-w-screen-2xl"
-              } min-h-screen w-full mx-auto `}
+                isSidebarOpen ? "max-w-screen-2xl" : "max-w-screen-2xl"
+              } min-h-screen w-full mx-auto`}
             >
               <Outlet />
             </div>

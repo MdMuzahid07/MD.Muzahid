@@ -17,7 +17,7 @@ const AddProjectForm = ({
 }) => {
   return (
     <form onSubmit={handleForm} className="pt-20 mb-[50vh] relative">
-      <div className="mb-5">
+      <section className="mb-5">
         <label className={addProjectStyles.labelText} htmlFor="projectName">
           Project Name
         </label>
@@ -29,9 +29,9 @@ const AddProjectForm = ({
           id="projectName"
           required
         />
-      </div>
+      </section>
 
-      <div className="mb-5">
+      <section className="mb-5">
         <label
           className={addProjectStyles.labelText}
           htmlFor="projectThumbnail"
@@ -48,9 +48,9 @@ const AddProjectForm = ({
           name="projectThumbnail"
           required
         />
-      </div>
+      </section>
 
-      <div className="mb-5">
+      <section className="mb-5">
         <label className={addProjectStyles.labelText} htmlFor="liveUrl">
           Project Live Url
         </label>
@@ -64,9 +64,9 @@ const AddProjectForm = ({
           name="liveUrl"
           required
         />
-      </div>
+      </section>
 
-      <div className="mb-5">
+      <section className="mb-5">
         <label className={addProjectStyles.labelText} htmlFor="projectYear">
           Project Year
         </label>
@@ -78,12 +78,12 @@ const AddProjectForm = ({
           name="projectYear"
           required
         />
-      </div>
+      </section>
 
-      <div className="mb-5">
+      <section className="mb-5">
         <h1 className={`${addProjectStyles.headingText} mt-14`}>Source Code</h1>
-        <div className="grid lg:grid-cols-2 gap-5">
-          <div>
+        <section className="grid lg:grid-cols-2 gap-5">
+          <section>
             <label className={addProjectStyles.labelText} htmlFor="clientUrl">
               Client Github URL
             </label>
@@ -97,8 +97,8 @@ const AddProjectForm = ({
               name="clientUrl"
               required
             />
-          </div>
-          <div>
+          </section>
+          <section>
             <label className={addProjectStyles.labelText} htmlFor="serverUrl">
               Server Github URL
             </label>
@@ -112,21 +112,21 @@ const AddProjectForm = ({
               name="serverUrl"
               required
             />
-          </div>
-        </div>
-      </div>
+          </section>
+        </section>
+      </section>
 
-      <div className="mb-5">
+      <section className="mb-5">
         <h1 className={`${addProjectStyles.headingText} mt-14`}>
           Write features with Thumbnail
         </h1>
 
-        <div className="mt-5 mb-3 w-28 h-7 rounded-full flex items-center justify-center border">
+        <section className="mt-5 mb-3 w-28 h-7 rounded-full flex items-center justify-center border">
           <span>Feature_1</span>
-        </div>
+        </section>
 
-        <div className="grid lg:grid-cols-2 gap-10">
-          <div>
+        <section className="grid lg:grid-cols-2 gap-10">
+          <section>
             <label className={addProjectStyles.labelText} htmlFor="f1">
               Heading
             </label>
@@ -142,8 +142,8 @@ const AddProjectForm = ({
               name="f1_heading"
               required
             />
-          </div>
-          <div>
+          </section>
+          <section>
             <label className={addProjectStyles.labelText} htmlFor="f2">
               Details
             </label>
@@ -157,9 +157,9 @@ const AddProjectForm = ({
               name="f1_details"
               required
             />
-          </div>
+          </section>
 
-          <div>
+          <section>
             <label className={addProjectStyles.labelText} htmlFor="f3">
               Feature Thumbnail
               {currentData ? <img src={currentData?.feature_1?.image} /> : ""}
@@ -173,17 +173,17 @@ const AddProjectForm = ({
               name="f1_thumbnail"
               required
             />
-          </div>
-        </div>
+          </section>
+        </section>
 
         <hr className="my-10" />
 
-        <div className="mt-5">
-          <div className="mt-5 mb-3 w-28 h-7 rounded-full flex items-center justify-center border">
+        <section className="mt-5">
+          <section className="mt-5 mb-3 w-28 h-7 rounded-full flex items-center justify-center border">
             <span>Feature_2</span>
-          </div>
-          <div className="grid lg:grid-cols-2 gap-10">
-            <div>
+          </section>
+          <section className="grid lg:grid-cols-2 gap-10">
+            <section>
               <label className={addProjectStyles.labelText} htmlFor="f4">
                 Heading
               </label>
@@ -199,8 +199,8 @@ const AddProjectForm = ({
                 name="f2_heading"
                 required
               />
-            </div>
-            <div>
+            </section>
+            <section>
               <label className={addProjectStyles.labelText} htmlFor="f5">
                 Details
               </label>
@@ -216,9 +216,9 @@ const AddProjectForm = ({
                 name="f2_details"
                 required
               />
-            </div>
+            </section>
 
-            <div>
+            <section>
               <label className={addProjectStyles.labelText} htmlFor="f6">
                 Feature Thumbnail
                 {currentData ? <img src={currentData?.feature_2?.image} /> : ""}
@@ -232,18 +232,18 @@ const AddProjectForm = ({
                 name="f2_thumbnail"
                 required
               />
-            </div>
-          </div>
-        </div>
+            </section>
+          </section>
+        </section>
 
         <hr className="my-10" />
 
-        <div className="mt-5">
-          <div className="mt-5 mb-3 w-28 h-7 rounded-full flex items-center justify-center border">
+        <section className="mt-5">
+          <section className="mt-5 mb-3 w-28 h-7 rounded-full flex items-center justify-center border">
             <span>Feature_3</span>
-          </div>
-          <div className="grid lg:grid-cols-2 gap-10">
-            <div>
+          </section>
+          <section className="grid lg:grid-cols-2 gap-10">
+            <section>
               <label className={addProjectStyles.labelText} htmlFor="f7">
                 Heading
               </label>
@@ -259,8 +259,8 @@ const AddProjectForm = ({
                 name="f3_heading"
                 required
               />
-            </div>
-            <div>
+            </section>
+            <section>
               <label className={addProjectStyles.labelText} htmlFor="f8">
                 Details
               </label>
@@ -276,9 +276,9 @@ const AddProjectForm = ({
                 name="f3_details"
                 required
               />
-            </div>
+            </section>
 
-            <div>
+            <section>
               <label className={addProjectStyles.labelText} htmlFor="f9">
                 Feature Thumbnail
                 {currentData ? <img src={currentData?.feature_3?.image} /> : ""}
@@ -292,17 +292,17 @@ const AddProjectForm = ({
                 name="f3_thumbnail"
                 required
               />
-            </div>
-          </div>
-        </div>
-      </div>
+            </section>
+          </section>
+        </section>
+      </section>
 
-      <div>
+      <section>
         <h1 className={`${addProjectStyles.headingText} pt-14`}>
           Technologies
         </h1>
-        <div className="mt-5 grid lg:grid-cols-2  gap-10">
-          <div className="w-full">
+        <section className="mt-5 grid lg:grid-cols-2  gap-10">
+          <section className="w-full">
             <label htmlFor="Tech" className={addProjectStyles.labelText}>
               Core
               {currentData ? (
@@ -320,7 +320,7 @@ const AddProjectForm = ({
                 ""
               )}
             </label>
-            <div className={`flex flex-wrap items-center gap-4`}>
+            <section className={`flex flex-wrap items-center gap-4`}>
               {coreTechs?.map((tech, index) => (
                 <p
                   className="h-7 px-3 text-[12px] flex items-center justify-center rounded-full bg-slate-100 mb-3"
@@ -329,15 +329,15 @@ const AddProjectForm = ({
                   {tech}{" "}
                 </p>
               ))}
-            </div>
+            </section>
             <MultiSelectDropdown
               id={"Tech"}
               styles={addProjectStyles.inputStyle}
               options={options}
               handleOnChange={handleOnChangeCoreTechs}
             />
-          </div>
-          <div className="w-full">
+          </section>
+          <section className="w-full">
             <label htmlFor="allUsedTech" className={addProjectStyles.labelText}>
               All Used
               {currentData ? (
@@ -355,7 +355,7 @@ const AddProjectForm = ({
                 ""
               )}
             </label>
-            <div className={`flex flex-wrap items-center gap-4`}>
+            <section className={`flex flex-wrap items-center gap-4`}>
               {allUsedTechs?.map((tech, index) => (
                 <p
                   className="h-7 px-3 text-[14px] flex items-center justify-center rounded-full bg-slate-100 mb-3"
@@ -364,18 +364,18 @@ const AddProjectForm = ({
                   {tech}{" "}
                 </p>
               ))}
-            </div>
+            </section>
             <MultiSelectDropdown
               id={"allUsedTech"}
               styles={addProjectStyles.inputStyle}
               options={options}
               handleOnChange={handleOnChangeAllUsedTechs}
             />
-          </div>
-        </div>
-      </div>
+          </section>
+        </section>
+      </section>
 
-      <div className="absolute -bottom-[30vh] right-[10vw]">
+      <section className="absolute -bottom-[30vh] right-[10vw]">
         <button
           type="submit"
           className="relative w-28 h-28 flex justify-center items-center border rounded-full hover:bg-black hover:text-slate-300 transition delay-200 ease-in text-[18px] active:text-[25px]"
@@ -398,7 +398,7 @@ const AddProjectForm = ({
             </svg>
           </span>
         </button>
-      </div>
+      </section>
     </form>
   );
 };

@@ -1,3 +1,5 @@
+import { styles } from "../../styles";
+
 const homeStyles = {
   headingText:
     "text-[18px] xs:text-[25px] md:text-[40px] lg:text-[60px] font-bold",
@@ -13,10 +15,8 @@ const homeStyles = {
 
 const DashboardHome = () => {
   return (
-    <div className="bg-white">
-      <h1 className={`${homeStyles.headingText} mt-14`}>
-        Welcome To Dashboard
-      </h1>
+    <div className={styles.dashboardPageCardBgWhiteOpacity}>
+      <h1 className={`${homeStyles.headingText}`}>Welcome To Dashboard</h1>
     </div>
   );
 };

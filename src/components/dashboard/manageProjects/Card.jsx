@@ -42,18 +42,18 @@ const Card = ({ project }) => {
         backgroundImage: `url(${project?.thumbnailImg})`,
         backgroundSize: "cover",
       }}
-      className="w-full h-44 border relative hover:drop-shadow"
+      className="w-full border relative hover:drop-shadow rounded-2xl overflow-hidden"
     >
-      <div className="w-full h-44 bg-black bg-opacity-50 p-4">
+      <div className="w-full bg-black backdrop-blur-sm hover:backdrop-blur-0 bg-opacity-50 px-6 py-14">
         <header className="flex items-center justify-between">
-          <h1 className="text-3xl text-slate-300">{project?.name}</h1>
+          <h1 className="text-4xl text-white">{project?.name}</h1>
         </header>
         <section>
           <div className="flex items-center gap-3 my-3">
-            <p className="text-xs  border px-2 py-1 bg-white">
+            <p className="text-xs  border px-2 py-1 bg-white rounded-full font-bold">
               Posted: 09-03-2024
             </p>
-            <p className="text-xs border px-2 py-1 bg-white">
+            <p className="text-xs border px-2 py-1 bg-white rounded-full font-bold">
               Updated: 09-03-2024
             </p>
           </div>
@@ -61,7 +61,7 @@ const Card = ({ project }) => {
 
         <div className="mt-4">
           <div className="flex justify-between items-center ">
-            <p className="w-44 h-8 bg-white border flex justify-center items-center tracking-wider font-bold text-xl">
+            <p className="w-44 h-8 rounded-full bg-white border flex justify-center items-center tracking-wider font-bold text-xl">
               MERN-STACK
             </p>
             <div className="flex items-center gap-3 mr-2">

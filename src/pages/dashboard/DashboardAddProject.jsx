@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import { useSelector, useDispatch } from "react-redux";
 import { postProjectData } from "../../features/projects/projectSlice";
 import useImgBBUpload from "../../hooks/useImgBBUpload";
-import { addProjectStyles } from "../../styles";
+import { addProjectStyles, styles } from "../../styles";
 import AddProjectForm from "../../components/ui/dashboard/AddProjectForm";
 
 const DashboardAddProject = () => {
@@ -102,8 +102,8 @@ const DashboardAddProject = () => {
   };
 
   return (
-    <>
-      <h1 className={`${addProjectStyles.headingText} pt-14`}>Add Project</h1>
+    <section className={`${styles.dashboardPageCardBgWhiteOpacity} mb-32`}>
+      <h1 className={`${addProjectStyles.headingText}`}>Add Project</h1>
       <AddProjectForm
         handleForm={handleForm}
         handleOnChangeCoreTechs={handleOnChangeCoreTechs}
@@ -115,7 +115,7 @@ const DashboardAddProject = () => {
         f_2={f_2}
         f_3={f_3}
       />
-    </>
+    </section>
   );
 };
 

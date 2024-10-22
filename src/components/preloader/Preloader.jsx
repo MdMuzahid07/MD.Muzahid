@@ -62,7 +62,7 @@ const Preloader = () => {
         variants={textFade}
         className="text-white text-[36px] md:text-[40px] lg:text-[48px] flex items-center gap-4"
       >
-        <span className="animate-text-gradient">Welcome to My Portfolio</span>
+        <span className="font-bold">Welcome to My Portfolio</span>
       </motion.h1>
 
       <motion.p

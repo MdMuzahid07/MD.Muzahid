@@ -7,12 +7,13 @@ import HomepageHeadingTitle from "../../components/dashboard/settings/HomepageHe
 import Motivation from "../../components/dashboard/settings/Motivation";
 import ProfileImage from "../../components/dashboard/settings/ProfileImage";
 import ResumeLinkUpdate from "../../components/dashboard/settings/ResumeLinkUpdate";
+import SocialLinks from "../../components/dashboard/settings/SocialLinks";
 import { addProjectStyles } from "../../styles";
 
 const Settings = () => {
   return (
     <main className="pb-32 pt-10">
-      <div className="bg-slate-100 px-8 lg:px-14 py-5 lg:py-20  border rounded-2xl bg-opacity-50 mt-14">
+      <div className="bg-slate-100 px-8 lg:px-14 py-5 lg:py-20 border rounded-2xl bg-opacity-50 mt-14">
         <h1 className={`${addProjectStyles.headingText}`}>My Profile</h1>
         <>
           <ProfileImage />
@@ -24,7 +25,7 @@ const Settings = () => {
           <ResumeLinkUpdate />
           <DashboardSkillAdd />
           <DashboardHobby />
-          {/* <SocialLinks /> */}
+          <SocialLinks />
         </>
       </div>
     </main>

@@ -81,34 +81,40 @@ const SocialLinks = () => {
 
   return (
     <div className="mt-10 w-full">
-      <h1 className="text-xl md:text-4xl mb-5">Social links</h1>
+      <h1 className="text-xl md:text-4xl mb-5">Add Social links</h1>
       <div className="flex items-center gap-5 flex-wrap">
+        {/* // added platform card start ====================> */}
+
         {platFormsData?.map(({ name, icon, active, _id }) => (
           <div
             key={_id}
-            className="w-full xs:w-40 h-16 bg-slate-50 border p-3 flex gap-3"
+            className="rounded-full bg-white border pl-3 pr-7 py-3 flex items-center gap-5"
           >
-            <img src={icon} className="w-10 h-10" alt="" />
+            <img src={icon} className="w-16 h-16 rounded-full" alt="" />
             <div className="w-full">
-              <p className="text-xs">{name}</p>
+              <p className="text-2xl">{name}</p>
               <button
                 title={active ? "Click to inactive" : "Click to active"}
                 onClick={() => handleActive(_id)}
                 className={`${
                   active ? "bg-green-500" : "bg-red-500"
-                } px-2  text-slate-300 text-xs`}
+                } px-4  text-white font-bold text-md rounded-full mt-2`}
               >
                 {active ? "active" : "inactive"}
               </button>
             </div>
-            <button onClick={() => handleDelete(_id, active)} title="Delete">
+            <button
+              className="p-2 bg-red-500 rounded-full ml-7"
+              onClick={() => handleDelete(_id, active)}
+              title="Delete"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-4 h-4 text-slate-400 hover:text-red-500"
+                className="w-6 h-6 text-white"
               >
                 <path
                   strokeLinecap="round"
@@ -119,9 +125,12 @@ const SocialLinks = () => {
             </button>
           </div>
         ))}
+        {/* // added platform card end ====================> */}
+
+        {/* // drop start ====================> */}
         <div className="relative">
           {socialLinkAdd && (
-            <div className="w-[300px] max-h-96 h-96 px-4 py-5 bg-white border absolute md:right-0 bottom-20 overflow-y-auto">
+            <div className="w-[300px] md:w-[400px]  max-h-96 h-96 md:max-h-[500px] md:h-[500px] px-4 py-5 md:px-7 md:py-10 bg-white border absolute md:right-0 bottom-20 overflow-y-auto rounded-2xl mb-7">
               {!addNewSocialPlatform &&
                 connectMe?.map((platform, index) => {
                   return (
@@ -131,9 +140,9 @@ const SocialLinks = () => {
                         setAddNewSocialPlatform(true);
                       }}
                       key={index}
-                      className="border hover:border-red-500 mb-4 cursor-pointer"
+                      className="border rounded-2xl overflow-hidden hover:border-red-500 mb-4 cursor-pointer"
                     >
-                      <div className="w-full h-20 px-4 py-2 bg-slate-50 flex items-center  gap-5 relative">
+                      <div className="w-full h-20 px-4 py-2 bg-slate-50 flex items-center gap-5 relative">
                         <img
                           className="w-10 h-10"
                           src={platform?.icon}
@@ -201,14 +210,14 @@ const SocialLinks = () => {
                   </p>
                   <form onSubmit={handleSave} className="mt-10">
                     <input
-                      className="border w-full bg-slate-50 px-3 py-1 rounded-full focus:outline-none focus:border-indigo-500"
+                      className="border w-full h-14 bg-slate-50 px-3 py-1 rounded-2xl focus:outline-none focus:border-indigo-500"
                       type="text"
                       name="socialLink"
                       placeholder="Please enter the link "
                       id=""
                     />
                     <div className="flex gap-2 justify-center mt-7">
-                      <button className="w-24 text-slate-300 bg-indigo-500 rounded-full">
+                      <button className="w-44 h-10 text-2xl text-white bg-indigo-500 rounded-full">
                         Save
                       </button>
                     </div>
@@ -217,15 +226,18 @@ const SocialLinks = () => {
               )}
             </div>
           )}
+          {/* // drop end ====================> */}
+
+          {/* // add new social link button start ====================> */}
 
           <button
             title="Add New"
             onClick={() => setSocialLinkAdd(!socialLinkAdd)}
-            className={`w-16 h-16 md:w-40 md:h-16 border ${
+            className={`w-[87px] h-[87px] border ${
               socialLinkAdd
                 ? "border-red-500 text-red-500"
-                : "hover:border-red-500 hover:text-red-500 text-slate-400"
-            }  flex justify-center items-center  bg-slate-50 rounded-full relative`}
+                : "hover:border-red-500 hover:text-red-500 text-black"
+            }  flex justify-center items-center  bg-white rounded-full relative`}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -233,7 +245,7 @@ const SocialLinks = () => {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-6 h-6"
+              className="w-10 h-10"
             >
               <path
                 strokeLinecap="round"
@@ -242,6 +254,7 @@ const SocialLinks = () => {
               />
             </svg>
           </button>
+          {/* // add new social link button end ====================> */}
         </div>
       </div>
     </div>

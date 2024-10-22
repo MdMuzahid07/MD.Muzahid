@@ -90,15 +90,15 @@ const DashboardSkillAdd = () => {
   return (
     <section className="py-10 w-full">
       <h1 className="text-xl md:text-4xl">Add Skills</h1>
-      <div className="md:grid md:grid-cols-12 mt-5 gap-6">
-        <div className="col-span-12 md:col-span-7 bg-slate-100 rounded-2xl border py-3 max-h-[600px] overflow-y-auto">
+      <div className="grid md:grid-cols-12 mt-5 gap-6">
+        <div className="col-span-12 xl:col-span-7 bg-slate-100 rounded-2xl border py-3 max-h-[600px] overflow-y-auto">
           <AddSkillAndHobbyManageTable
             data={tableData}
             handleDelete={handleDelete}
             handleUpdate={handleUpdate}
           />
         </div>
-        <div className="col-span-12 md:col-span-5 bg-slate-100 p-7 rounded-2xl border ">
+        <div className="col-span-12 xl:col-span-5 bg-slate-100 p-7 rounded-2xl border ">
           <div>
             <h1 className="text-xl mb-5">Technology Image or Logo</h1>
             <label htmlFor="profileImage">

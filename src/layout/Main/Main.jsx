@@ -12,7 +12,7 @@ const Main = () => {
     setTimeout(() => {
       setIsLoading(false);
       document.body.style.cursor = "default";
-    }, 1000);
+    }, 2000);
   }, []);
 
   useEffect(() => {

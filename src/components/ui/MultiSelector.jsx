@@ -67,7 +67,7 @@ const MultiSelector = ({ options, selectedOptions, setSelectedOptions }) => {
       </section>
 
       {isDropdownOpen && (
-        <ul className="absolute border rounded-2xl w-full bg-white max-h-48 overflow-auto p-4">
+        <ul className="absolute border rounded-2xl w-full bg-white max-h-96 z-50 mt-5 overflow-auto p-4">
           {options?.map((option) => (
             <li
               key={option?._id}

@@ -4,6 +4,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
 import { addProjectStyles, styles } from "../../../styles";
 import MultiSelector from "../../../components/ui/MultiSelector";
+import { usePostCourseMutation } from "../../../redux/features/course/courseApi";
+import toast from "react-hot-toast";
 
 const fakeSkillsOptions = [
   { _id: "1", name: "JavaScript", icon: "🟨" },
@@ -16,6 +18,7 @@ const fakeSkillsOptions = [
 const DashboardAddCourse = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedSkills, setSelectedSkills] = useState([]);
+  const [postCourse, { data, error, isLoading }] = usePostCourseMutation();
 
   const {
     register,
@@ -32,13 +35,27 @@ const DashboardAddCourse = () => {
     },
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     data.completionDate = selectedDate;
-    console.log(data);
-    // You can submit this data to your backend API here
+    data.skillsLearned = [...selectedSkills];
+
+    try {
+      await postCourse(data);
+    } catch (error) {
+      toast.error(console.log(error), { id: "postCourseToastId" });
+    }
+
     reset();
     setSelectedDate(null);
   };
+
+  if (isLoading && !error) {
+    toast.loading("Posting...", { id: "postCourseToastId" });
+  }
+
+  if (data && data?.success) {
+    toast.success("Done...", { id: "postCourseToastId" });
+  }
 
   return (
     <section className={`${styles.dashboardPageCardBgWhiteOpacity} mb-20`}>

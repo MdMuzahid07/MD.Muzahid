@@ -1,29 +1,37 @@
+import toast from "react-hot-toast";
+import {
+  useDeleteCourseByIdMutation,
+  useGetCoursesQuery,
+} from "../../../redux/features/course/courseApi";
 import { addProjectStyles, styles } from "../../../styles";
-
-//! fake data for ui purpose only
-
-const courses = [
-  {
-    _id: "1",
-    courseName: "Full Stack Web Development",
-    institution: "Coursera",
-    completionDate: "2022-05-15",
-    certificateLink: "https://example.com/certificate1",
-    skillsLearned: ["JavaScript", "React", "Node.js"],
-  },
-  {
-    _id: "2",
-    courseName: "Data Science",
-    institution: "Udemy",
-    completionDate: "2023-01-10",
-    certificateLink: "",
-    skillsLearned: ["Python", "Machine Learning"],
-  },
-];
+import { useNavigate } from "react-router-dom";
 
 const DashboardManageCourses = () => {
-  const handleDelete = () => {};
-  const handleUpdate = () => {};
+  const navigate = useNavigate();
+  const { data: courses } = useGetCoursesQuery();
+  const [deleteCourseById, { data, isLoading }] = useDeleteCourseByIdMutation();
+
+  const handleDelete = async (id) => {
+    const proceed = window.confirm("delete course?");
+    if (proceed) {
+      try {
+        await deleteCourseById(id);
+      } catch (error) {
+        toast.error("Something went wrong!", { id: "courseDeleteToastId" });
+      }
+    }
+  };
+
+  if (isLoading) {
+    toast.loading("Deleting...", { id: "courseDeleteToastId" });
+  }
+  if (data) {
+    toast.success("Done", { id: "courseDeleteToastId" });
+  }
+
+  const handleUpdate = (id) => {
+    navigate(`/dashboard/updateCourse/${id}`);
+  };
 
   return (
     <section className={`${styles.dashboardPageCardBgWhiteOpacity} mb-20`}>
@@ -43,18 +51,18 @@ const DashboardManageCourses = () => {
             </tr>
           </thead>
           <tbody>
-            {courses?.length > 0 ? (
-              courses?.map((course) => (
-                <tr key={course._id} className="hover:bg-gray-100">
-                  <td className="px-4 py-7 border-b">{course.courseName}</td>
-                  <td className="px-4 py-7 border-b">{course.institution}</td>
+            {courses?.data?.length > 0 ? (
+              courses?.data?.map((course) => (
+                <tr key={course?._id} className="hover:bg-gray-100">
+                  <td className="px-4 py-7 border-b">{course?.courseName}</td>
+                  <td className="px-4 py-7 border-b">{course?.institution}</td>
                   <td className="px-4 py-7 border-b">
-                    {course.completionDate}
+                    {course?.completionDate}
                   </td>
                   <td className="px-4 py-7 border-b">
-                    {course.certificateLink ? (
+                    {course?.certificateLink ? (
                       <a
-                        href={course.certificateLink}
+                        href={course?.certificateLink}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="hover:text-blue-500 underline"
@@ -66,19 +74,21 @@ const DashboardManageCourses = () => {
                     )}
                   </td>
                   <td className="px-4 py-7 border-b">
-                    {course.skillsLearned.length > 0
-                      ? course.skillsLearned.join(", ")
+                    {course?.skillsLearned?.length > 0
+                      ? course?.skillsLearned?.map((skill) => (
+                          <p key={skill?._id}>{skill?.name}</p>
+                        ))
                       : "No skills"}
                   </td>
                   <td className="px-4 py-7 border-b">
                     <button
-                      onClick={() => handleUpdate(course)}
+                      onClick={() => handleUpdate(course?._id)}
                       className="mr-2 px-4 py-1 bg-black text-white rounded-full"
                     >
                       Update
                     </button>
                     <button
-                      onClick={() => handleDelete(course._id)}
+                      onClick={() => handleDelete(course?._id)}
                       className="px-4 py-1 bg-red-500 text-white rounded-full"
                     >
                       Delete

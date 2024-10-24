@@ -100,7 +100,7 @@ const DashboardSkillAdd = () => {
                 <img
                   title="Select Logo"
                   src={previewTechIcon}
-                  className="w-20 h-20 p-1 cursor-pointer border-4 border-dashed border-slate-200 rounded-full bg-white"
+                  className="w-20 h-20 p-1 object-cover object-center cursor-pointer border-4 border-dashed border-slate-200 rounded-full bg-white"
                   alt="select tech icon"
                 />
                 <input

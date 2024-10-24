@@ -109,7 +109,7 @@ const DashboardSkillAdd = () => {
                 <input
                   className={`${addProjectStyles.inputStyle} mt-5 rounded-2xl`}
                   {...register("name", { required: true })}
-                  placeholder="TypeScript"
+                  placeholder="Traveling"
                 />
               </div>
             </div>

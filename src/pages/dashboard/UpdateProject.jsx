@@ -93,12 +93,8 @@ const UpdateProject = () => {
     }
 
     try {
-      console.log(projectFormData.get("data"));
-      console.log(projectFormData.get("image"));
-
       await updateProject({ id: updateId, data: projectFormData }).unwrap();
     } catch (error) {
-      console.log(error);
       toast.error(error?.data?.message, { id: "8y0da986f09bf" });
     }
   };

@@ -13,7 +13,8 @@ export const baseApi = createApi({
         "courses",
         "hobby",
         "socialUrl",
-        "blogs"
+        "blogs",
+        "experience"
     ],
     endpoints: () => ({}),
 });

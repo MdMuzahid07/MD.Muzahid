@@ -1,34 +1,37 @@
+import { useNavigate } from "react-router-dom";
+import {
+  useDeleteEducationByIdMutation,
+  useGetEducationQuery,
+} from "../../../redux/features/education/educationApi";
 import { addProjectStyles, styles } from "../../../styles";
-
-//! fake data for UI purpose only
-const educationRecords = [
-  {
-    _id: "1",
-    institution: "Harvard University",
-    degree: "Bachelor of Computer Science",
-    fieldOfStudy: "Software Engineering",
-    startDate: "2015-08-10",
-    endDate: "2019-05-15",
-  },
-  {
-    _id: "2",
-    institution: "Stanford University",
-    degree: "Master of Data Science",
-    fieldOfStudy: "Data Science",
-    startDate: "2020-09-01",
-    endDate: "2022-06-20",
-  },
-];
+import toast from "react-hot-toast";
 
 const DashboardManageEducations = () => {
-  const handleDelete = (id) => {
-    console.log("Deleting education record with id:", id);
-    // Logic to delete the education record
+  const navigate = useNavigate();
+  const { data: educations } = useGetEducationQuery();
+  const [deleteEducationById, { data, isLoading }] =
+    useDeleteEducationByIdMutation();
+
+  const handleDelete = async (id) => {
+    const proceed = window.confirm("delete education?");
+    if (proceed) {
+      try {
+        await deleteEducationById(id);
+      } catch (error) {
+        toast.error("Something went wrong!", { id: "educationDeleteToastId" });
+      }
+    }
   };
 
-  const handleUpdate = (education) => {
-    console.log("Updating education record:", education);
-    // Logic to update the education record
+  if (isLoading) {
+    toast.loading("Deleting...", { id: "educationDeleteToastId" });
+  }
+  if (data) {
+    toast.success("Done", { id: "educationDeleteToastId" });
+  }
+
+  const handleUpdate = (id) => {
+    navigate(`/dashboard/updateEducation/${id}`);
   };
 
   return (
@@ -48,26 +51,26 @@ const DashboardManageEducations = () => {
             </tr>
           </thead>
           <tbody>
-            {educationRecords?.length > 0 ? (
-              educationRecords?.map((education, index) => (
-                <tr key={education._id} className="hover:bg-gray-100">
+            {educations?.data?.length > 0 ? (
+              educations?.data?.map((education, index) => (
+                <tr key={education?._id} className="hover:bg-gray-100">
                   <td className="px-4 py-7 border-b">{index + 1}</td>
                   <td className="px-4 py-7 border-b">
-                    {education.institution}
+                    {education?.institution}
                   </td>
-                  <td className="px-4 py-7 border-b">{education.degree}</td>
+                  <td className="px-4 py-7 border-b">{education?.degree}</td>
                   <td className="px-4 py-7 border-b">
-                    {education.fieldOfStudy}
+                    {education?.fieldOfStudy}
                   </td>
                   <td className="px-4 py-7 border-b">
                     <button
-                      onClick={() => handleUpdate(education)}
+                      onClick={() => handleUpdate(education?._id)}
                       className="mr-2 px-4 py-1 bg-black text-white rounded-full"
                     >
                       Update
                     </button>
                     <button
-                      onClick={() => handleDelete(education._id)}
+                      onClick={() => handleDelete(education?._id)}
                       className="px-4 py-1 bg-red-500 text-white rounded-full"
                     >
                       Delete

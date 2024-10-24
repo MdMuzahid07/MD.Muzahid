@@ -4,11 +4,22 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
 import { addProjectStyles, styles } from "../../../styles";
 import MultiSelector from "../../../components/ui/MultiSelector";
+import { useAddEducationMutation } from "../../../redux/features/education/educationApi";
+import toast from "react-hot-toast";
+
+const fakeSkillsOptions = [
+  { _id: "1", name: "JavaScript", icon: "🟨" },
+  { _id: "2", name: "React", icon: "⚛️" },
+  { _id: "3", name: "Node.js", icon: "🟩" },
+  { _id: "4", name: "MongoDB", icon: "🍃" },
+  { _id: "5", name: "TypeScript", icon: "🔷" },
+];
 
 const DashboardAddEducation = () => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [achievements, setAchievements] = useState([]);
+  const [addEducation, { data, error, isLoading }] = useAddEducationMutation();
 
   const {
     register,
@@ -29,16 +40,28 @@ const DashboardAddEducation = () => {
     },
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     data.startDate = startDate;
     data.endDate = endDate;
     data.achievements = achievements;
     console.log(data);
-    // Submit this data to your backend API here
+    try {
+      await addEducation(data);
+    } catch (error) {
+      toast.error(error?.message, { id: "addEducationToastId" });
+    }
     reset();
     setStartDate(null);
     setEndDate(null);
   };
+
+  if (isLoading && !error) {
+    toast.loading("Posting...", { id: "addEducationToastId" });
+  }
+
+  if (data && data?.success) {
+    toast.success("Done...", { id: "addEducationToastId" });
+  }
 
   return (
     <section className={`${styles.dashboardPageCardBgWhiteOpacity} mb-20`}>
@@ -190,7 +213,7 @@ const DashboardAddEducation = () => {
               Achievements (optional)
             </label>
             <MultiSelector
-              options={[]} // Adjust based on your data source for achievements
+              options={fakeSkillsOptions}
               selectedOptions={achievements}
               setSelectedOptions={setAchievements}
             />

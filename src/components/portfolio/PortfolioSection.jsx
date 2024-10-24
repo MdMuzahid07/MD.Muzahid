@@ -2,21 +2,25 @@ import { Link } from "react-router-dom";
 import { styles } from "../../styles";
 import { HR } from "../common/HR";
 import ProjectCard from "./ProjectCard";
-import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { fetchProjectsData } from "../../features/projects/projectSlice";
 import Spinner from "../preloader/Spinner";
+import { useGetAllProjectsQuery } from "../../redux/features/project/projectApi";
+import toast from "react-hot-toast";
+import { useEffect } from "react";
 
 const PortfolioSection = () => {
-  const { projects, isLoading } = useSelector((state) => state.projects);
-  const dispatch = useDispatch();
+  const { data, isLoading, error } = useGetAllProjectsQuery(undefined);
+
   useEffect(() => {
-    dispatch(fetchProjectsData());
-  }, [dispatch]);
+    if (error) {
+      console.log(error, "console log");
+      toast.error(error.message, { id: "projectsFetchErrorToastId" });
+    }
+  }, [error]);
 
   if (isLoading) {
     return <Spinner />;
   }
+  const projects = data?.data || [];
 
   return (
     <section id="portfolio" className="w-full  min-h-screen stripeBG">
@@ -32,7 +36,6 @@ const PortfolioSection = () => {
             type="button"
             className="transition ease-in-out delay-50 absolute  bottom-[50vh] xs:bottom-[60vh] sm:bottom-[70vh] md:bottom-36 right-[10vw] md:left-[40vw] text-slate-300 h-24 w-24 border flex justify-center items-center rounded-full bg-primary   hover:bg-black"
           >
-            {" "}
             VIEW All
           </Link>
         )}

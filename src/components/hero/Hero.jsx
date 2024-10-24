@@ -2,8 +2,6 @@ import { useEffect, useRef } from "react";
 import { styles } from "../../styles";
 import heroStyles from "./heroStyles";
 import { motion, useAnimation, useInView } from "framer-motion";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchHeadingTitleData } from "../../features/settings/settingSlice";
 
 const Hero = () => {
   const ref1 = useRef();
@@ -15,15 +13,7 @@ const Hero = () => {
   const isInView1 = useInView(ref1);
   const isInView2 = useInView(ref2);
   const isInView3 = useInView(ref3);
-
-  const dispatch = useDispatch();
-  const { title } = useSelector((state) => state?.settings);
-
-  useEffect(() => {
-    dispatch(fetchHeadingTitleData());
-  }, [dispatch]);
-
-  const titleText = title[0]?.title;
+  const titleText = "this title text will be dynamic";
 
   useEffect(() => {
     if (isInView1) {

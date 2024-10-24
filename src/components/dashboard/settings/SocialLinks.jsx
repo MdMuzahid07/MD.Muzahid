@@ -4,80 +4,19 @@ import { connectMe } from "../../../constants";
 import toast from "react-hot-toast";
 import { toastStyle } from "../../../styles";
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  myAllSocialPlatforms,
-  updateASocialPlatform,
-  deleteASocialPlatform,
-} from "../../../features/settings/settingSlice.js";
+
 import Spinner from "../../preloader/Spinner";
 
 const SocialLinks = () => {
   const [socialLinkAdd, setSocialLinkAdd] = useState(false);
   const [addNewSocialPlatform, setAddNewSocialPlatform] = useState(false);
   const [selectedPlatform, setSelectedPlatform] = useState({});
-  const dispatch = useDispatch();
-  const { platFormsData, isLoading, error, isError } = useSelector(
-    (state) => state.settings
-  );
-
-  useEffect(() => {
-    dispatch(myAllSocialPlatforms());
-  }, [dispatch]);
-
-  if (isLoading) {
-    return <Spinner />;
-  }
-
-  if (isError) {
-    toast.error(error, { id: "sociali7d6sf", style: toastStyle });
-  }
 
   const handleSave = (e) => {
     e.preventDefault();
-
-    const link = e.target.socialLink.value;
-
-    if (link.length < 7) {
-      toast.error("Please enter the link first", {
-        id: "link error, social platform",
-        style: toastStyle,
-      });
-      return;
-    }
-
-    const saveData = {
-      name: selectedPlatform?.name,
-      icon: selectedPlatform?.icon,
-      link: link,
-      active: true,
-    };
-
-    axios
-      .post(
-        "https://md-muzahid-server.vercel.app/api/v1/social-platforms",
-        saveData
-      )
-      .then((response) => console.log(response))
-      .catch((error) => console.log(error, "from social platform post"));
-
-    console.log(saveData);
-
-    setSocialLinkAdd(false);
-    setAddNewSocialPlatform(false);
   };
 
-  const handleActive = (id) => {
-    const data = {
-      active: true,
-    };
-
-    dispatch(updateASocialPlatform(id, data));
-  };
-
-  const handleDelete = async (id) => {
-    dispatch(deleteASocialPlatform(id));
-  };
+  const handleDelete = async (id) => {};
 
   return (
     <div className="mt-10 w-full">
@@ -85,7 +24,7 @@ const SocialLinks = () => {
       <div className="flex items-center gap-5 flex-wrap">
         {/* // added platform card start ====================> */}
 
-        {platFormsData?.map(({ name, icon, active, _id }) => (
+        {/* {platFormsData?.map(({ name, icon, active, _id }) => (
           <div
             key={_id}
             className="rounded-full bg-white border pl-3 pr-7 py-3 flex items-center gap-5"
@@ -124,7 +63,7 @@ const SocialLinks = () => {
               </svg>
             </button>
           </div>
-        ))}
+        ))} */}
         {/* // added platform card end ====================> */}
 
         {/* // drop start ====================> */}

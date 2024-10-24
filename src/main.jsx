@@ -4,12 +4,11 @@ import "./index.css";
 import { RouterProvider } from "react-router-dom";
 import routes from "./routes/routes.jsx";
 import { Provider } from "react-redux";
-import store from "./app/store.js";
 import AuthProvider from "./context/provider/AuthProvider.jsx";
 import { Toaster } from "react-hot-toast";
 import AnimatedCursor from "react-animated-cursor";
 import { HelmetProvider } from "react-helmet-async";
-
+import { store } from "./redux/store.js";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>

@@ -1,14 +1,7 @@
-import { useDispatch, useSelector } from "react-redux";
 import { addProjectStyles } from "../../../styles";
-import { fetchHeadingTitleData } from "../../../features/settings/settingSlice";
 import { useEffect } from "react";
-import { updateHomepageHeadingTitle } from "../../../features/settings/settingAPI";
 
 const HomePageHeadingSubtitle = () => {
-  const { title } = useSelector((state) => state.settings);
-  const dispatch = useDispatch();
-  const updateId = title[0]?._id;
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -18,12 +11,7 @@ const HomePageHeadingSubtitle = () => {
     // dispatch(updateTitle(updateId, data));
 
     // temporary solution
-    updateHomepageHeadingTitle(updateId, data);
   };
-
-  useEffect(() => {
-    dispatch(fetchHeadingTitleData());
-  }, [dispatch]);
 
   return (
     <form onSubmit={handleSubmit} className="py-10 w-full">

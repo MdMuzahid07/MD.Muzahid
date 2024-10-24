@@ -5,7 +5,6 @@ import MultiSelectDropdown from "../../common/MultiSelectDropdown";
 
 const AddProjectForm = ({
   handleForm,
-  getEvent,
   handleOnChangeCoreTechs,
   handleOnChangeAllUsedTechs,
   allUsedTechs,
@@ -14,6 +13,8 @@ const AddProjectForm = ({
   f_2,
   f_3,
   currentData,
+  handleFileChange,
+  isLoading,
 }) => {
   return (
     <form onSubmit={handleForm} className="pt-20 mb-[50vh] relative">
@@ -40,7 +41,7 @@ const AddProjectForm = ({
           {currentData ? <img src={currentData?.thumbnailImg} /> : ""}
         </label>
         <input
-          onChange={getEvent}
+          onChange={handleFileChange}
           className={` ${addProjectStyles.inputStyle} ${addProjectStyles.fileInput}`}
           type="file"
           placeholder="Select Project Thumbnail"
@@ -380,7 +381,7 @@ const AddProjectForm = ({
           type="submit"
           className="relative w-28 h-28 flex justify-center items-center border rounded-full hover:bg-black hover:text-slate-300 transition delay-200 ease-in text-[18px] active:text-[25px]"
         >
-          Add
+          {isLoading ? "Creating" : "Add"}
           <span className="absolute -right-10 -top-10">
             <svg
               xmlns="http://www.w3.org/2000/svg"

@@ -1,22 +1,10 @@
 import Card from "../../components/dashboard/manageProjects/Card";
 import { addProjectStyles, styles } from "../../styles";
-import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { fetchProjectsData } from "../../features/projects/projectSlice";
 import Spinner from "../../components/preloader/Spinner";
+import { useGetAllProjectsQuery } from "../../redux/features/project/projectApi";
 
 const ManageProjects = () => {
-  const { projects, isLoading } = useSelector((state) => state.projects);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchProjectsData());
-  }, [dispatch]);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [projects]);
-
+  const { data: projects, error, isLoading } = useGetAllProjectsQuery();
   if (isLoading) {
     return <Spinner />;
   }

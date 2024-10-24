@@ -2,10 +2,14 @@ import { useEffect, useRef } from "react";
 import Footer from "../components/footer/Footer";
 import { motion, useAnimation, useInView } from "framer-motion";
 import { Link, useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchProjectsData } from "../features/projects/projectSlice";
 import { imageLoadingShadow } from "../assets";
 import { Helmet } from "react-helmet-async";
+import {
+  useGetAllProjectsQuery,
+  useGetProjectByIdQuery,
+} from "../redux/features/project/projectApi";
+import toast from "react-hot-toast";
+import Spinner from "../components/preloader/Spinner";
 
 const styles = {
   headingTextBold:
@@ -29,19 +33,18 @@ const ProjectDetails = () => {
   const isInView4 = useInView(ref4);
 
   const { projectId } = useParams();
-  const dispatch = useDispatch();
-  const projects = useSelector((state) => state.projects.projects);
-  const project = projects?.find((project) => project._id === projectId);
+  const { data, error, isLoading } = useGetProjectByIdQuery(projectId);
+  const {
+    data: projects,
+    error: getAllError,
+    isLoading: getAllLoading,
+  } = useGetAllProjectsQuery();
 
-  const nextProject = projects
+  const nextProject = projects?.data
     ?.filter((project) => project._id !== projectId)
     .slice(0, 1);
 
-  // console.log(nextProject[0]?._id, "next project id");
-
-  useEffect(() => {
-    dispatch(fetchProjectsData());
-  }, [dispatch]);
+  const project = data?.data;
 
   useEffect(() => {
     if (isInView1) {
@@ -78,6 +81,24 @@ const ProjectDetails = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [projectId]);
+
+  if (error || getAllError) {
+    if (error) {
+      toast.error(error.message, { id: "8y0a986f09bf" });
+    }
+    if (getAllError) {
+      toast.error(getAllError.message, { id: "8y0aadf986f09bf" });
+    }
+  }
+
+  if (isLoading || getAllLoading) {
+    if (isLoading) {
+      return <Spinner />;
+    }
+    if (getAllLoading) {
+      return <Spinner />;
+    }
+  }
 
   return (
     <>

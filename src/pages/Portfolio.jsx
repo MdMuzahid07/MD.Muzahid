@@ -1,28 +1,24 @@
-import { useEffect } from "react";
 import { HR } from "../components/common/HR";
 import Footer from "../components/footer/Footer";
 import ProjectCard from "../components/portfolio/ProjectCard";
 import { styles } from "../styles";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchProjectsData } from "../features/projects/projectSlice";
 import Preloader from "../components/preloader/Preloader";
 import { Helmet } from "react-helmet-async";
+import { useGetAllProjectsQuery } from "../redux/features/project/projectApi";
+import toast from "react-hot-toast";
 
 const Portfolio = () => {
-  const { projects, isLoading } = useSelector((state) => state.projects);
-  const dispatch = useDispatch();
+  const { data, error, isLoading } = useGetAllProjectsQuery("");
 
-  useEffect(() => {
-    dispatch(fetchProjectsData());
-  }, [dispatch]);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [projects]);
+  if (error) {
+    toast.error(error?.message);
+  }
 
   if (isLoading) {
     return <Preloader />;
   }
+
+  const projects = data?.data || [];
 
   return (
     <>

@@ -1,36 +1,29 @@
 /* eslint-disable react/prop-types */
 import toast from "react-hot-toast";
-import { useDispatch, useSelector } from "react-redux";
-import { deleteAProject } from "../../../features/projects/projectSlice";
 import Spinner from "../../preloader/Spinner";
 import { useNavigate } from "react-router-dom";
 
 const Card = ({ project }) => {
-  const { deleteSuccess, isLoading } = useSelector((state) => state.projects);
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleDelete = (id) => {
     const confirm = window.confirm("Are you sure?");
-    if (confirm) {
-      dispatch(deleteAProject(id));
-    }
   };
-  if (isLoading) {
-    return <Spinner />;
-  }
-  if (deleteSuccess) {
-    toast.success("Deleted Successfully", {
-      id: "projectDeleted",
-      style: {
-        borderRadius: "0px",
-        background: "#0C0C0C",
-        color: "#fff",
-        fontSize: "30px",
-        padding: "10px 20px",
-      },
-    });
-  }
+  // if (isLoading) {
+  //   return <Spinner />;
+  // }
+  // if (deleteSuccess) {
+  //   toast.success("Deleted Successfully", {
+  //     id: "projectDeleted",
+  //     style: {
+  //       borderRadius: "0px",
+  //       background: "#0C0C0C",
+  //       color: "#fff",
+  //       fontSize: "30px",
+  //       padding: "10px 20px",
+  //     },
+  //   });
+  // }
 
   const redirectUpdatePage = (id) => {
     navigate(`/dashboard/updateProject/${id}`);

@@ -2,17 +2,27 @@
 import toast from "react-hot-toast";
 import Spinner from "../../preloader/Spinner";
 import { useNavigate } from "react-router-dom";
+import { useDeleteProjectByIdMutation } from "../../../redux/features/project/projectApi";
 
 const Card = ({ project }) => {
+  const [deleteProjectById, { isLoading }] = useDeleteProjectByIdMutation();
   const navigate = useNavigate();
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     const confirm = window.confirm("Are you sure?");
+    if (confirm) {
+      try {
+        await deleteProjectById(id).unwrap();
+      } catch (error) {
+        console.log(error, "form delete porject");
+        toast.error(error?.data?.message, { id: "8y0da986f09bf" });
+      }
+    }
   };
-  // if (isLoading) {
-  //   return <Spinner />;
-  // }
-  // if (deleteSuccess) {
+  if (isLoading) {
+    return <Spinner />;
+  }
+  // if (data) {
   //   toast.success("Deleted Successfully", {
   //     id: "projectDeleted",
   //     style: {

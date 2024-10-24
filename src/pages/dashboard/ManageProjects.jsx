@@ -4,10 +4,12 @@ import Spinner from "../../components/preloader/Spinner";
 import { useGetAllProjectsQuery } from "../../redux/features/project/projectApi";
 
 const ManageProjects = () => {
-  const { data: projects, error, isLoading } = useGetAllProjectsQuery();
+  const { data, isLoading } = useGetAllProjectsQuery();
   if (isLoading) {
     return <Spinner />;
   }
+
+  const projects = data?.data || [];
 
   return (
     <main className={`${styles.dashboardPageCardBgWhiteOpacity}`}>

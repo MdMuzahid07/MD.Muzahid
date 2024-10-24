@@ -14,8 +14,12 @@ const DashboardAddProject = () => {
   const [file, setFile] = useState(null > null);
   const [createProject, { isLoading, data }] = useCreateProjectMutation();
 
-  if (isLoading && !data) {
+  if (isLoading) {
     toast.loading("Working...", { id: "8y0da986f09bf" });
+  }
+
+  if (data && data?.success) {
+    toast.success("Done...", { id: "8y0da986f09bf" });
   }
 
   const handleForm = async (e) => {

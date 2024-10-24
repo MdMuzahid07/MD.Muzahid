@@ -1,84 +1,38 @@
+/* eslint-disable react/prop-types */
 import { styles } from "../../styles";
 import ShadowFont from "../common/ShadowFont";
 import { skills } from "../../constants/index";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import toast from "react-hot-toast";
-
-const textWords = [
-  { text: "I", id: "ui1h43", style: "" },
-  { text: "help", id: "u243", style: "" },
-  { text: "brands", id: "uiad143", style: "" },
-  { text: "shine", id: "uiad43", style: "" },
-  { text: "in", id: "uim143", style: "" },
-  { text: "digital", id: "usi143", style: "" },
-  { text: "age.", id: "ui14ty3", style: "" },
-  { text: "Together,", id: "ui1343", style: "" },
-  { text: "we", id: "ui1usdfr43", style: "" },
-  { text: "redefine", id: "uisf143", style: "" },
-  { text: "the", id: "ui1423", style: "" },
-  { text: "norm.", id: "u5i143", style: "" },
-  { text: "No", id: "ui1473", style: "" },
-  { text: "fluff,", id: "uibv143", style: "" },
-  { text: "only", id: "ui1ghn43", style: "" },
-  { text: "the", id: "ui1dn43", style: "" },
-  { text: "best.", id: "uidn43", style: "" },
-  { text: "I", id: "udfgi143", style: "" },
-  { text: "use", id: "urtyui143", style: "" },
-  { text: "modern", id: "ui1s43", style: "" },
-  { text: "technologies", id: "udhi143", style: "" },
-  { text: "like", id: "ui143jk", style: "" },
-  {
-    text: "MERN-Stack",
-    id: "ui14dgfh3",
-    style:
-      "bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500",
-  },
-  { text: "and", id: "ui14b3", style: "" },
-  {
-    text: "NextJS",
-    id: "ui142543",
-    style:
-      "bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500",
-  },
-  { text: "for", id: "ui135643", style: "" },
-  {
-    text: "full-stack web development.",
-    id: "ui14hj3",
-    style:
-      "bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500",
-  },
-  { text: "I", id: "uin143", style: "" },
-  { text: "also", id: "ui1v2543", style: "" },
-  { text: "have", id: "ujeri143", style: "" },
-  { text: "good", id: "ui62143", style: "" },
-  { text: "knowledge", id: "ui1uioy43", style: "" },
-  { text: "of", id: "ui14fj53", style: "" },
-  { text: "mobile", id: "uisgf143", style: "" },
-  { text: "app", id: "ui1sdgk43", style: "" },
-  { text: "development", id: "ui1sg43", style: "" },
-  { text: "using", id: "ui14wrt3", style: "" },
-  { text: "React", id: "ui145443", style: "" },
-  { text: "Native.", id: "uiw143", style: "" },
-];
 
 const aboutStyles = {
   btn: "px-4 py-1.5 text-xs md:text-md lg:text-xl bg-black hover:bg-black rounded-full font-bold border px-4 py-1.5 text-xs md:text-md lg:text-xl bg-black rounded-full font-bold border-2 border-slate-600 bg-black",
 };
 
-const About = () => {
-  const [profileImg, setProfileImg] = useState(" ");
+const About = ({ profile }) => {
+  const profileInfo = profile?.data?.[0];
 
-  useEffect(() => {
-    axios
-      .get("https://md-muzahid-server.vercel.app/api/v1/profile-img")
-      .then((response) => {
-        setProfileImg(response?.data?.data[0]?.Img);
-      })
-      .catch((error) =>
-        toast.error(error.message, { id: "profile img fetch error" })
-      );
-  }, []);
+  const applyHighlight = (content) => {
+    const keywords = {
+      "MERN-Stack":
+        "bg-clip-text text-transparent bg-gradient-to-r from-pink-500",
+      "React Native":
+        "bg-clip-text text-transparent bg-gradient-to-r from-purple-500 via-purple-500 to-pink-500",
+      "full-stack web development":
+        "bg-clip-text text-transparent bg-gradient-to-r from-purple-500 via-indigo-500 to-pink-500",
+    };
+
+    const regex = new RegExp(`(${Object.keys(keywords).join("|")})`, "gi");
+
+    return content.split(regex).map((part, i) => {
+      if (keywords[part]) {
+        return (
+          <span key={i} className={keywords[part]}>
+            {part}
+          </span>
+        );
+      }
+      return part;
+    });
+  };
 
   return (
     <section
@@ -90,20 +44,23 @@ const About = () => {
         <div className="flex flex-col sm:flex-row max-md:items-center gap-4 lg:gap-10 mt-10 md:mt-10">
           <figure className="max-w-[200px] min-w-[200px] max-h-[200px] overflow-hidden">
             <img
-              className="w-full h-full object-cover object-center rounded-full opacity-70 hover:opacity-100"
-              src={profileImg}
-              alt=""
+              className="w-full h-full object-cover object-center rounded-full border-4 border-secondary hover:shadow-xl shadow-secondary brightness-75 hover:brightness-100 transition duration-500"
+              src={profileInfo?.profileImage}
+              alt="Profile"
             />
           </figure>
           <div className="mt-5 md:mt-0">
             <section>
-              <h1 className="text-[14px] md:text-[20px] lg:text-[35px] xl:text-[45px] font-extrabold text-slate-300">
-                {textWords.map(({ text, id, style }) => (
-                  <span key={id} className={style}>
-                    {text}{" "}
-                  </span>
-                ))}
+              {/* <h1 className="text-[14px] md:text-[20px] lg:text-[35px] xl:text-[45px] 2xl:text-[55px] font-extrabold  bg-clip-text text-transparent bg-gradient-to-tl from-violet-700 from-30% via-purple-700 via-20% to-slate-300 to-75%">
+                {profileInfo?.aboutMe}
+              </h1> */}
+
+              <h1 className="text-[14px] md:text-[20px] lg:text-[35px] xl:text-[45px] 2xl:text-[55px] font-extrabold bg-clip-text text-transparent bg-gradient-to-tl from-violet-700 from-30% via-purple-700 via-20% to-slate-300 to-75%">
+                {profileInfo?.aboutMe
+                  ? applyHighlight(profileInfo?.aboutMe)
+                  : "Loading..."}
               </h1>
+
               <div className="flex items-center gap-4 mt-4 relative">
                 <span className="absolute -left-24 -top-16 hidden lg:block">
                   <svg

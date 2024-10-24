@@ -4,8 +4,16 @@ import Footer from "./components/footer/Footer";
 import PortfolioSection from "./components/portfolio/PortfolioSection";
 import { Helmet } from "react-helmet-async";
 import About from "./components/about/About";
+import { useGetProfileQuery } from "./redux/features/profile/profileApi";
+import Spinner from "./components/preloader/Spinner";
 
 const App = () => {
+  const { data: profile, isLoading } = useGetProfileQuery();
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
   return (
     <main className="relative z-0 bg-primary overflow-x-hidden">
       <Helmet>
@@ -19,9 +27,9 @@ const App = () => {
         <meta name="author" content="Md.Muzahid" />
       </Helmet>
       <header>
-        <Hero />
+        <Hero profile={profile} />
       </header>
-      <About />
+      <About profile={profile} />
       <PortfolioSection />
       <Contact />
       <Footer />

@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useRef } from "react";
 import { styles } from "../../styles";
 import heroStyles from "./heroStyles";
 import { motion, useAnimation, useInView } from "framer-motion";
 
-const Hero = () => {
+const Hero = ({ profile }) => {
   const ref1 = useRef();
   const ref2 = useRef();
   const ref3 = useRef();
@@ -13,7 +14,7 @@ const Hero = () => {
   const isInView1 = useInView(ref1);
   const isInView2 = useInView(ref2);
   const isInView3 = useInView(ref3);
-  const titleText = "this title text will be dynamic";
+  const profileInfo = profile?.data?.[0];
 
   useEffect(() => {
     if (isInView1) {
@@ -57,7 +58,9 @@ const Hero = () => {
       >
         HI, {`I'M`}{" "}
         <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
-          MD.MUZAHID
+          {profileInfo?.titleOfHomepageHeader
+            ? profileInfo?.titleOfHomepageHeader
+            : "MD.MUZAHID"}
         </span>
       </motion.h1>
       <motion.h1
@@ -72,8 +75,8 @@ const Hero = () => {
         className={heroStyles.headingNormal}
       >
         <span className="uppercase">
-          {titleText ? (
-            titleText
+          {profileInfo?.subtitleOfHomepageHeader ? (
+            profileInfo?.subtitleOfHomepageHeader
           ) : (
             <>
               I DEVELOP WEB WORLD, AND REACT NATIVE

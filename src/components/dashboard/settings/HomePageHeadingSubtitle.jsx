@@ -1,32 +1,58 @@
+import toast from "react-hot-toast";
 import { addProjectStyles } from "../../../styles";
-import { useEffect } from "react";
+import { useState } from "react";
+import {
+  useGetProfileQuery,
+  useUpdateProfileMutation,
+} from "../../../redux/features/profile/profileApi";
 
 const HomePageHeadingSubtitle = () => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const [titleText, setTitleText] = useState("");
+  const { data: profile } = useGetProfileQuery();
+  const [updateProfile, { data, isLoading }] = useUpdateProfileMutation();
+  const title = profile?.data[0];
 
-    const data = { title: e.target.title.value };
-
-    // it had some issue, its not updating data
-    // dispatch(updateTitle(updateId, data));
-
-    // temporary solution
+  const handleSave = async () => {
+    if (titleText) {
+      const titleFormData = new FormData();
+      titleFormData.append(
+        "data",
+        JSON.stringify({ subtitleOfHomepageHeader: titleText })
+      );
+      try {
+        await updateProfile({ id: title?._id, data: titleFormData });
+      } catch (error) {
+        console.log(error);
+        toast.error(error?.data?.message, { id: "profileImgToastId^098*)%" });
+      }
+    }
   };
 
+  if (isLoading) {
+    toast.loading("Saving...", { id: "profileImgToastId^098*)%" });
+  }
+  if (data) {
+    toast.success("Saved", { id: "profileImgToastId^098*)%" });
+  }
   return (
-    <form onSubmit={handleSubmit} className="py-10 w-full">
+    <section className="py-10 w-full">
       <h1 className="text-xl md:text-4xl">Homepage Heading Subtitle</h1>
       <textarea
+        onChange={(e) => setTitleText(e.target.value)}
         className={`${addProjectStyles.inputStyle} mt-5 rounded-2xl`}
         rows={3}
         name="title"
+        value={titleText}
         id=""
-        placeholder="I DEVELOP WEB WORLD, AND REACT NATIVE APPLICATION"
+        placeholder={title?.subtitleOfHomepageHeader}
       ></textarea>
-      <button className="px-7 py-2 bg-slate-100 mt-5 text-2xl border rounded-full">
+      <button
+        onClick={handleSave}
+        className="px-7 py-2 bg-slate-100 mt-5 text-2xl border rounded-full"
+      >
         Save
       </button>
-    </form>
+    </section>
   );
 };
 

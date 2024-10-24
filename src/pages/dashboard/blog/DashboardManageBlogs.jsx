@@ -1,48 +1,39 @@
+import toast from "react-hot-toast";
+import {
+  useDeleteBlogByIdMutation,
+  useGetBlogsQuery,
+} from "../../../redux/features/blog/blogApi";
 import { addProjectStyles, styles } from "../../../styles";
-
-const blogs = [
-  {
-    _id: "671939f4e33e35ea1051f2ce",
-    title: "The Wonders of Nature",
-    thumbnail:
-      "https://res.cloudinary.com/dymo0iyee/image/upload/v1729706484/xzjrilbhsezapfhp8cu0.png",
-    texts: `
-      <h1>The Wonders of Nature</h1>
-      <p>Nature is full of incredible phenomena that inspire awe and wonder. From towering mountains to vast oceans, every aspect of nature has its own story.</p>
-      <h2>Mountains</h2>
-      <p>Mountains are not only beautiful but also play a crucial role in the ecosystem. They affect weather patterns and house diverse flora and fauna.</p>
-      <h2>Oceans</h2>
-      <p>The oceans cover more than 70% of the Earth's surface and are essential for life. They regulate climate and are home to countless species.</p>
-      <h2>Forests</h2>
-      <p>Forests are often referred to as the lungs of the planet, producing oxygen and absorbing carbon dioxide. They are vital for biodiversity and the health of our planet.</p>
-      <p>In conclusion, exploring nature can lead to a greater appreciation for our environment and the need to protect it.</p>
-    `,
-  },
-  {
-    _id: "67193a1b47e33f3aa15023dc",
-    title: "Technological Innovations of 2024",
-    thumbnail:
-      "https://res.cloudinary.com/dymo0iyee/image/upload/v1729706484/xzjrilbhsezapfhp8cu1.png",
-    texts: `
-      <h1>Technological Innovations of 2024</h1>
-      <p>The year 2024 has witnessed some of the most groundbreaking advancements in technology. From AI-driven solutions to advancements in quantum computing, the tech landscape is rapidly evolving.</p>
-      <h2>Artificial Intelligence</h2>
-      <p>AI continues to be at the forefront of innovation, revolutionizing industries such as healthcare, education, and finance.</p>
-      <h2>Quantum Computing</h2>
-      <p>Quantum computing is pushing the boundaries of computational power, solving problems that were previously thought to be unsolvable.</p>
-    `,
-  },
-];
+import { useNavigate } from "react-router-dom";
 
 const DashboardManageBlogs = () => {
-  const handleDelete = (_id) => {
-    console.log(`Delete blog with id: ${_id}`);
+  const navigate = useNavigate();
+  const { data: blogs } = useGetBlogsQuery();
+  const [deleteBlogById, { data, error, isLoading }] =
+    useDeleteBlogByIdMutation();
+
+  const handleDelete = (id) => {
+    const proceed = window.confirm("delete blog?");
+    if (proceed) {
+      deleteBlogById(id);
+    }
   };
 
   const handleUpdate = (id) => {
-    console.log("Update blog: ", id);
+    navigate(`/dashboard/updateBlog/${id}`);
   };
 
+  if (isLoading) {
+    toast.loading("Deleting...", { id: "deleteBlogToastId" });
+  }
+  if (error) {
+    toast.error(error?.data?.message, { id: "deleteBlogToastId" });
+  }
+  if (data && data?.success) {
+    toast.success("Done", { id: "deleteBlogToastId" });
+  }
+
+  console.log(blogs);
   return (
     <section className={`${styles.dashboardPageCardBgWhiteOpacity} mb-20`}>
       <h1 className={`${addProjectStyles.headingText} mb-14`}>Manage Blogs</h1>
@@ -57,18 +48,18 @@ const DashboardManageBlogs = () => {
             </tr>
           </thead>
           <tbody>
-            {blogs?.length > 0 ? (
-              blogs?.map((blog, index) => (
+            {blogs?.data?.length > 0 ? (
+              blogs?.data?.map((blog, index) => (
                 <tr key={blog._id} className="hover:bg-gray-100">
                   <td className="px-4 py-7 border-b">{index + 1}</td>
                   <td className="px-4 py-7 border-b">
                     <img
-                      src={blog.thumbnail}
-                      alt={blog.title}
+                      src={blog?.thumbnail}
+                      alt={blog?.title}
                       className="w-16 h-16 object-cover rounded-md"
                     />
                   </td>
-                  <td className="px-4 py-7 border-b">{blog.title}</td>
+                  <td className="px-4 py-7 border-b">{blog?.title}</td>
                   <td className="px-4 py-7 border-b">
                     <button
                       onClick={() => handleUpdate(blog)}
@@ -77,7 +68,7 @@ const DashboardManageBlogs = () => {
                       Update
                     </button>
                     <button
-                      onClick={() => handleDelete(blog._id)}
+                      onClick={() => handleDelete(blog?._id)}
                       className="px-4 py-1 bg-red-500 text-white rounded-full"
                     >
                       Delete

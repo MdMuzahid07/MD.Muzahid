@@ -1,19 +1,17 @@
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { addProjectStyles } from "../../../styles";
-import axios from "axios";
+import toast from "react-hot-toast";
+import { usePostBlogMutation } from "../../../redux/features/blog/blogApi";
 
 const BlogRichTextEditorQuill = () => {
   const [value, setValue] = useState("");
   const [blogTitle, setBlogTitle] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(false);
+  const [postBlog, { data, error, isLoading: loading }] = usePostBlogMutation();
 
-  // Handle file selection and preview
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -25,21 +23,27 @@ const BlogRichTextEditorQuill = () => {
     }
   };
 
-  // Handle title input change
   const handleTitleChange = (e) => {
     setBlogTitle(e.target.value);
   };
 
-  // Save post with validation
-  const handleSave = useCallback(async () => {
+  if (loading) {
+    toast.loading("Saving...", { id: "postBlogToastId" });
+  }
+  if (error) {
+    toast.error(error?.data?.message, { id: "postBlogToastId" });
+  }
+  if (data && data?.success) {
+    toast.success("Saved", { id: "postBlogToastId" });
+  }
+
+  const handleSave = async () => {
     if (!blogTitle.trim() || !value.trim()) {
-      setError("Both title and content are required!");
+      toast.error("Both title and content are required!", {
+        id: "postBlogToastId",
+      });
       return;
     }
-
-    setError(null); // Clear previous errors
-    setLoading(true); // Set loading state
-    setSuccess(false); // Reset success state
 
     const blogData = new FormData();
     if (selectedFile) {
@@ -48,40 +52,18 @@ const BlogRichTextEditorQuill = () => {
     blogData.append("title", blogTitle);
     blogData.append("texts", value);
 
-    console.log(blogData.get("thumbnail")); // Logs the file object or null if no file is selected
-    console.log(blogData.get("title")); // Logs the title string
-    console.log(blogData.get("texts")); // Logs the editor content string
-
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/v1/blog/post-blog",
-        blogData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-
-      console.log("Success:", response.data);
-      setSuccess(true);
-      setValue("");
-      setBlogTitle("");
-      setSelectedFile(null);
-      setImagePreview(null);
+      await postBlog(blogData);
     } catch (err) {
-      console.log(err);
-      setError(
-        err.response?.data?.message || "An error occurred. Please try again."
+      toast.error(
+        err.response?.data?.message || "An error occurred. Please try again.",
+        { id: "postBlogToastId" }
       );
-    } finally {
-      setLoading(false); // Turn off loading state
     }
-  }, [blogTitle, value, selectedFile]);
+  };
 
   return (
     <section className="mt-10">
-      {/* Image preview */}
       {imagePreview && (
         <section className="mb-4">
           <img
@@ -92,7 +74,6 @@ const BlogRichTextEditorQuill = () => {
         </section>
       )}
 
-      {/* Blog Title Input */}
       <section className="mb-10">
         <label className={addProjectStyles.labelText} htmlFor="blogTitle">
           Write the title of your blog
@@ -109,7 +90,6 @@ const BlogRichTextEditorQuill = () => {
         />
       </section>
 
-      {/* File Input */}
       <section className="mb-10">
         <label className={addProjectStyles.labelText} htmlFor="blogThumbnail">
           Select Blog Thumbnail
@@ -126,7 +106,6 @@ const BlogRichTextEditorQuill = () => {
         )}
       </section>
 
-      {/* Rich Text Editor */}
       <ReactQuill
         theme="snow"
         value={value}
@@ -142,14 +121,6 @@ const BlogRichTextEditorQuill = () => {
           Character Count: {value.replace(/<\/?[^>]+(>|$)/g, "").length}
         </span>
       </div>
-
-      {/* Error Feedback */}
-      {error && <p className="text-red-600 mb-4">{error}</p>}
-
-      {/* Success Feedback */}
-      {success && (
-        <p className="text-green-600 mb-4">Blog post saved successfully!</p>
-      )}
 
       <section className="flex justify-end pr-20 pt-10">
         <button

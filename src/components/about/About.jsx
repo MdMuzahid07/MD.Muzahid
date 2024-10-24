@@ -55,7 +55,7 @@ const About = ({ profile }) => {
                 {profileInfo?.aboutMe}
               </h1> */}
 
-              <h1 className="text-[14px] md:text-[20px] lg:text-[35px] xl:text-[45px] 2xl:text-[55px] font-extrabold bg-clip-text text-transparent bg-gradient-to-tl from-violet-700 from-30% via-purple-700 via-20% to-slate-300 to-75%">
+              <h1 className="text-[14px] md:text-[20px] lg:text-[35px] xl:text-[45px] 2xl:text-[55px] text-slate-300 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-violet-300 via-neutral-200 to-slate-300">
                 {profileInfo?.aboutMe
                   ? applyHighlight(profileInfo?.aboutMe)
                   : "Loading..."}

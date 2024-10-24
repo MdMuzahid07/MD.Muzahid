@@ -1,6 +1,5 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import Footer from "../components/footer/Footer";
-import { motion, useAnimation, useInView } from "framer-motion";
 import { Link, useParams } from "react-router-dom";
 import { imageLoadingShadow } from "../assets";
 import { Helmet } from "react-helmet-async";
@@ -19,21 +18,8 @@ const styles = {
 };
 
 const ProjectDetails = () => {
-  const ref1 = useRef();
-  const ref2 = useRef();
-  const ref3 = useRef();
-  const ref4 = useRef();
-  const controls1 = useAnimation();
-  const controls2 = useAnimation();
-  const controls3 = useAnimation();
-  const controls4 = useAnimation();
-  const isInView1 = useInView(ref1);
-  const isInView2 = useInView(ref2);
-  const isInView3 = useInView(ref3);
-  const isInView4 = useInView(ref4);
-
   const { projectId } = useParams();
-  const { data, error, isLoading } = useGetProjectByIdQuery(projectId);
+  const { data: project, error, isLoading } = useGetProjectByIdQuery(projectId);
   const {
     data: projects,
     error: getAllError,
@@ -44,42 +30,8 @@ const ProjectDetails = () => {
     ?.filter((project) => project._id !== projectId)
     .slice(0, 1);
 
-  const project = data?.data;
-
   useEffect(() => {
-    if (isInView1) {
-      controls1.start("visible");
-    } else {
-      controls1.start("hidden");
-    }
-  }, [controls1, isInView1]);
-
-  useEffect(() => {
-    if (isInView2) {
-      controls2.start("visible");
-    } else {
-      controls2.start("hidden");
-    }
-  }, [controls2, isInView2]);
-
-  useEffect(() => {
-    if (isInView3) {
-      controls3.start("visible");
-    } else {
-      controls3.start("hidden");
-    }
-  }, [controls3, isInView3]);
-
-  useEffect(() => {
-    if (isInView4) {
-      controls4.start("visible");
-    } else {
-      controls4.start("hidden");
-    }
-  }, [controls4, isInView4]);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [projectId]);
 
   if (error || getAllError) {
@@ -100,6 +52,8 @@ const ProjectDetails = () => {
     }
   }
 
+  console.log(project);
+
   return (
     <>
       <Helmet>
@@ -117,37 +71,21 @@ const ProjectDetails = () => {
       >
         <div className={`max-w-screen-2xl mx-auto text-slate-300`}>
           {/* header start  */}
-          <motion.h1
-            ref={ref1}
-            initial="hidden"
-            animate={controls1}
-            variants={{
-              hidden: { opacity: 0, y: "50px" },
-              visible: { opacity: 1, y: 0 },
-            }}
-            transition={{
-              duration: 0.75,
-              delay: 0.5,
-              ease: [0.75, 0, 0.24, 1],
-            }}
-            className={styles.headingTextBold}
-          >
-            {project?.name}
-          </motion.h1>
+          <h1 className={styles.headingTextBold}>{project?.data?.name}</h1>
           <div className="flex justify-between items-start flex-wrap lg:flex-nowrap gap-24 mt-16 mb-28">
             <div>
               <ul className="flex items-center text-[18px] gap-5 flex-wrap">
                 <li>
                   <h1>Technologies :</h1>
                 </li>
-                {project?.usedTechnologies?.map((tech, index) => {
+                {project?.data?.usedTechnologies?.map((tech, index) => {
                   return <li key={tech + (index * 2) / 10}>{tech}</li>;
                 })}
               </ul>
               <div className="flex items-center flex-wrap gap-6 mt-5">
                 <h1 className="text-[18px]">Source Code :</h1>
                 <a
-                  href={project?.source?.client}
+                  href={project?.data?.source?.client}
                   target="_blank"
                   rel="noreferrer"
                   className="w-44 hover:bg-black text-[18px] h-10 border rounded-full flex items-center justify-center"
@@ -155,7 +93,7 @@ const ProjectDetails = () => {
                   Front-end
                 </a>
                 <a
-                  href={project?.source?.server}
+                  href={project?.data?.source?.server}
                   target="_blank"
                   rel="noreferrer"
                   className="w-44 hover:bg-black text-[18px] h-10 border rounded-full flex items-center justify-center"
@@ -166,7 +104,7 @@ const ProjectDetails = () => {
             </div>
             <ul className="flex items-center flex-wrap gap-4 md:gap-14">
               <a
-                href={project?.live_url}
+                href={project?.data?.live_url}
                 target="_blank"
                 rel="noreferrer"
                 className="w-56 flex items-center cursor-pointer justify-center text-[20px] font-bold rounded-full h-10 border border-white relative hover:bg-black"
@@ -191,7 +129,10 @@ const ProjectDetails = () => {
               </a>
               <li className="text-[20px]">
                 Year{" "}
-                <span className="text-[22px]"> {project?.projectYear}</span>
+                <span className="text-[22px]">
+                  {" "}
+                  {project?.data?.projectYear}
+                </span>
               </li>
             </ul>
           </div>
@@ -202,8 +143,8 @@ const ProjectDetails = () => {
               <img
                 className="w-full h-full object-cover object-center rounded-2xl"
                 src={
-                  project?.thumbnailImg
-                    ? project?.thumbnailImg
+                  project?.data?.thumbnailImg
+                    ? project?.data?.thumbnailImg
                     : imageLoadingShadow
                 }
                 alt=""
@@ -213,102 +154,66 @@ const ProjectDetails = () => {
             <div className="mt-32">
               <div>
                 <h1 className={styles.headingText}>
-                  {project?.feature_1?.heading}:
+                  {project?.data?.feature_1?.heading}:
                 </h1>
-                <p className="text-[20px]">{project?.feature_1?.detail}</p>
+                <p className="text-[20px]">
+                  {project?.data?.feature_1?.detail}
+                </p>
               </div>
               <div className=" flex justify-end">
-                <motion.div
-                  ref={ref2}
-                  initial="hidden"
-                  animate={controls2}
-                  variants={{
-                    hidden: { opacity: 0, y: "50px" },
-                    visible: { opacity: 1, y: 0 },
-                  }}
-                  transition={{
-                    duration: 0.75,
-                    delay: 0.3,
-                    ease: [0.5, 1, 0.89, 1],
-                  }}
-                  className="max-w-7xl mt-10 md:mt-24"
-                >
+                <div className="max-w-7xl mt-10 md:mt-24">
                   <figure className="w-full h-auto">
                     <img
                       className="w-full h-full rounded-2xl object-cover object-center"
-                      src={project?.feature_1?.image}
+                      src={project?.data?.feature_1?.image}
                       alt="project_screenshot"
                     />
                   </figure>
-                </motion.div>
+                </div>
               </div>
             </div>
 
             <div className="mt-32">
               <div>
                 <h1 className={styles.headingText}>
-                  {project?.feature_2?.heading}:
+                  {project?.data?.feature_2?.heading}:
                 </h1>
-                <p className="text-[20px]">{project?.feature_2?.detail}</p>
+                <p className="text-[20px]">
+                  {project?.data?.feature_2?.detail}
+                </p>
               </div>
               <div className="">
-                <motion.div
-                  ref={ref3}
-                  initial="hidden"
-                  animate={controls3}
-                  variants={{
-                    hidden: { opacity: 0, y: "50px" },
-                    visible: { opacity: 1, y: 0 },
-                  }}
-                  transition={{
-                    duration: 0.75,
-                    delay: 0.3,
-                    ease: [0.5, 1, 0.89, 1],
-                  }}
-                  className="max-w-7xl mt-10 md:mt-24"
-                >
+                <div className="max-w-7xl mt-10 md:mt-24">
                   <figure className="w-full h-auto">
                     <img
                       className="w-full h-full rounded-2xl object-cover object-center"
-                      src={project?.feature_2?.image}
+                      src={project?.data?.feature_2?.image}
                       alt="project_screenshot"
                     />
                   </figure>
-                </motion.div>
+                </div>
               </div>
             </div>
 
             <div className="mt-32">
               <div>
                 <h1 className={styles.headingText}>
-                  {project?.feature_3?.heading}:
+                  {project?.data?.feature_3?.heading}:
                 </h1>
-                <p className="text-[20px]">{project?.feature_3?.detail}</p>
+                <p className="text-[20px]">
+                  {project?.data?.feature_3?.detail}
+                </p>
               </div>
               <div className="flex justify-end">
-                <motion.div
-                  ref={ref4}
-                  initial="hidden"
-                  animate={controls4}
-                  variants={{
-                    hidden: { opacity: 0, y: "50px" },
-                    visible: { opacity: 1, y: 0 },
-                  }}
-                  transition={{
-                    duration: 0.75,
-                    delay: 0.3,
-                    ease: [0.5, 1, 0.89, 1],
-                  }}
-                  className="max-w-7xl mt-10 md:mt-24"
-                >
+                <div className="max-w-7xl mt-10 md:mt-24">
                   <figure className="w-full h-auto">
                     <img
                       className="w-full rounded-2xl h-full object-cover object-center"
-                      src={project?.feature_3?.image}
+                      src={project?.data?.feature_3?.image}
                       alt="project_screenshot"
                     />
                   </figure>
-                </motion.div>
+                </div>
               </div>
             </div>
           </section>
@@ -337,12 +242,12 @@ const ProjectDetails = () => {
               </h1>
               <Link
                 to={`/projectDetails/${nextProject[0]?._id}`}
-                className="w-56 mt-20 flex items-center cursor-pointer justify-center text-[20px] md:text-[25px] font-bold rounded-full h-16 border border-white relative text-slate-300"
+                className="w-72 mt-20 flex items-center cursor-pointer justify-center text-[20px] md:text-[25px] font-bold rounded-full h-20 border border-white relative text-slate-300"
               >
                 Next Project{" "}
                 <span className="absolute -right-5 -top-10">
                   <svg
-                    xmlns="https://i.ibb.co/f0NnPLD/Electro-Shop-Home-Page.png"
+                    xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}

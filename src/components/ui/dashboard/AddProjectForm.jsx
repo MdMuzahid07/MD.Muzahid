@@ -28,7 +28,7 @@ const AddProjectForm = ({
           name="projectName"
           placeholder={currentData ? currentData?.name : "Add Project Name"}
           id="projectName"
-          required
+          required={!currentData}
         />
       </section>
 
@@ -47,7 +47,7 @@ const AddProjectForm = ({
           placeholder="Select Project Thumbnail"
           id="projectThumbnail"
           name="projectThumbnail"
-          required
+          required={!currentData}
         />
       </section>
 
@@ -63,7 +63,7 @@ const AddProjectForm = ({
           }
           id="liveUrl"
           name="liveUrl"
-          required
+          required={!currentData}
         />
       </section>
 
@@ -77,7 +77,7 @@ const AddProjectForm = ({
           placeholder={currentData ? currentData?.projectYear : "Project Year"}
           id="projectYear"
           name="projectYear"
-          required
+          required={!currentData}
         />
       </section>
 
@@ -96,7 +96,7 @@ const AddProjectForm = ({
               }
               id="clientUrl"
               name="clientUrl"
-              required
+              required={!currentData}
             />
           </section>
           <section>
@@ -111,7 +111,7 @@ const AddProjectForm = ({
               }
               id="serverUrl"
               name="serverUrl"
-              required
+              required={!currentData}
             />
           </section>
         </section>
@@ -141,7 +141,7 @@ const AddProjectForm = ({
               }
               id="f1"
               name="f1_heading"
-              required
+              required={!currentData}
             />
           </section>
           <section>
@@ -156,7 +156,7 @@ const AddProjectForm = ({
               }
               id="f2"
               name="f1_details"
-              required
+              required={!currentData}
             />
           </section>
 
@@ -172,7 +172,7 @@ const AddProjectForm = ({
               placeholder="Feature Thumbnail"
               id="f3"
               name="f1_thumbnail"
-              required
+              required={!currentData}
             />
           </section>
         </section>
@@ -198,7 +198,7 @@ const AddProjectForm = ({
                 }
                 id="f4"
                 name="f2_heading"
-                required
+                required={!currentData}
               />
             </section>
             <section>
@@ -215,7 +215,7 @@ const AddProjectForm = ({
                 }
                 id="f5"
                 name="f2_details"
-                required
+                required={!currentData}
               />
             </section>
 
@@ -231,7 +231,7 @@ const AddProjectForm = ({
                 placeholder="Feature Thumbnail"
                 id="f6"
                 name="f2_thumbnail"
-                required
+                required={!currentData}
               />
             </section>
           </section>
@@ -258,7 +258,7 @@ const AddProjectForm = ({
                 }
                 id="f7"
                 name="f3_heading"
-                required
+                required={!currentData}
               />
             </section>
             <section>
@@ -275,7 +275,7 @@ const AddProjectForm = ({
                 }
                 id="f8"
                 name="f3_details"
-                required
+                required={!currentData}
               />
             </section>
 
@@ -291,7 +291,7 @@ const AddProjectForm = ({
                 placeholder="Feature Thumbnail"
                 id="f9"
                 name="f3_thumbnail"
-                required
+                required={!currentData}
               />
             </section>
           </section>

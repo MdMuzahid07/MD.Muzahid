@@ -44,7 +44,6 @@ const DashboardAddEducation = () => {
     data.startDate = startDate;
     data.endDate = endDate;
     data.achievements = achievements;
-    console.log(data);
     try {
       await addEducation(data);
     } catch (error) {

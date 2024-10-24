@@ -1,26 +1,42 @@
+import toast from "react-hot-toast";
 import { addProjectStyles, styles } from "../../../styles";
-
-//! fake data for UI purpose only
-const experiences = [
-  {
-    _id: "1",
-    companyName: "Tech Innovators Inc.",
-    position: "Software Engineer",
-    startDate: "2021-02-01",
-    endDate: "2023-08-15",
-  },
-  {
-    _id: "2",
-    companyName: "Data Solutions Ltd.",
-    position: "Data Analyst",
-    startDate: "2019-06-10",
-    endDate: "2021-01-25",
-  },
-];
+import {
+  useDeleteExperienceByIdMutation,
+  useGetExperienceQuery,
+} from "../../../redux/features/experience/experienceApi";
+import { useNavigate } from "react-router-dom";
 
 const DashboardManageExperience = () => {
-  const handleDelete = () => {};
-  const handleUpdate = () => {};
+  const navigate = useNavigate();
+  const { data: experiences } = useGetExperienceQuery();
+  const [deleteExperienceById, { data, error, isLoading }] =
+    useDeleteExperienceByIdMutation();
+
+  const handleDelete = async (id) => {
+    const proceed = window.confirm("delete education?");
+    if (proceed) {
+      try {
+        await deleteExperienceById(id);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  if (error) {
+    toast.error(error?.data?.message, { id: "experienceDeleteToastId" });
+  }
+
+  if (isLoading) {
+    toast.loading("Deleting...", { id: "experienceDeleteToastId" });
+  }
+  if (data) {
+    toast.success("Done", { id: "experienceDeleteToastId" });
+  }
+
+  const handleUpdate = (id) => {
+    navigate(`/dashboard/updateExperience/${id}`);
+  };
 
   return (
     <section className={`${styles.dashboardPageCardBgWhiteOpacity} mb-20`}>
@@ -40,19 +56,19 @@ const DashboardManageExperience = () => {
             </tr>
           </thead>
           <tbody>
-            {experiences?.length > 0 ? (
-              experiences?.map((experience, index) => (
+            {experiences?.data?.length > 0 ? (
+              experiences?.data?.map((experience, index) => (
                 <tr key={experience._id} className="hover:bg-gray-100">
                   <td className="px-4 py-7 border-b">{index + 1}</td>
+                  <td className="px-4 py-7 border-b">{experience?.company}</td>
+                  <td className="px-4 py-7 border-b">{experience?.position}</td>
                   <td className="px-4 py-7 border-b">
-                    {experience.companyName}
+                    {experience?.startDate}
                   </td>
-                  <td className="px-4 py-7 border-b">{experience.position}</td>
-                  <td className="px-4 py-7 border-b">{experience.startDate}</td>
-                  <td className="px-4 py-7 border-b">{experience.endDate}</td>
+                  <td className="px-4 py-7 border-b">{experience?.endDate}</td>
                   <td className="px-4 py-7 border-b">
                     <button
-                      onClick={() => handleUpdate(experience)}
+                      onClick={() => handleUpdate(experience?._id)}
                       className="mr-2 px-4 py-1 bg-black text-white rounded-full"
                     >
                       Update

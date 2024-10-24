@@ -4,12 +4,12 @@ import { NavLink } from "react-router-dom";
 
 const sidebarItems = [
   {
-    name: "Profile",
-    path: "/dashboard/settings",
-  },
-  {
     name: "Dashboard",
     path: "/dashboard/home",
+  },
+  {
+    name: "Profile",
+    path: "/dashboard/settings",
   },
   {
     name: "Project",

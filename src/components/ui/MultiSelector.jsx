@@ -34,7 +34,7 @@ const MultiSelector = ({ options, selectedOptions, setSelectedOptions }) => {
                 key={index}
                 className="px-4 h-10 flex justify-center items-center border font-bold rounded-full text-sm bg-slate-100"
               >
-                {option.name}
+                {option?.name}
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
@@ -72,11 +72,16 @@ const MultiSelector = ({ options, selectedOptions, setSelectedOptions }) => {
             <li
               key={option?._id}
               onClick={() => handleSelect(option)}
-              className={`px-4 mt-2 py-4 rounded-2xl border cursor-pointer ${
+              className={`px-4 mt-2 py-4 rounded-2xl border cursor-pointer  flex items-center gap-2 ${
                 isSelected(option) ? "bg-slate-300" : "bg-slate-100"
               }`}
             >
-              {option.icon} {option.name}
+              <img
+                className="w-16 h-16 p-1 rounded-full"
+                src={option?.icon}
+                alt=""
+              />{" "}
+              <span className="text-2xl">{option?.name}</span>
             </li>
           ))}
         </ul>

@@ -6,6 +6,8 @@ import { addProjectStyles, styles } from "../../../styles";
 import MultiSelector from "../../../components/ui/MultiSelector";
 import { useAddExperienceMutation } from "../../../redux/features/experience/experienceApi";
 import toast from "react-hot-toast";
+import { useGetAllSkillsQuery } from "../../../redux/features/skill/skillApi";
+import Spinner from "../../../components/preloader/Spinner";
 
 const employmentTypes = [
   "Full-time",
@@ -15,20 +17,13 @@ const employmentTypes = [
   "Internship",
 ];
 
-const fakeSkillsOptions = [
-  { _id: "1", name: "JavaScript", icon: "🟨" },
-  { _id: "2", name: "React", icon: "⚛️" },
-  { _id: "3", name: "Node.js", icon: "🟩" },
-  { _id: "4", name: "MongoDB", icon: "🍃" },
-  { _id: "5", name: "TypeScript", icon: "🔷" },
-];
-
 const DashboardAddExperience = () => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [selectedSkills, setSelectedSkills] = useState([]);
   const [addExperience, { data: experienceData, error, isLoading }] =
     useAddExperienceMutation();
+  const { data: skills, isLoading: isSkillLoading } = useGetAllSkillsQuery();
 
   const {
     register,
@@ -46,6 +41,10 @@ const DashboardAddExperience = () => {
       achievements: "",
     },
   });
+
+  if (isSkillLoading) {
+    return <Spinner />;
+  }
 
   const onSubmit = async (data) => {
     data.startDate = startDate;
@@ -222,7 +221,7 @@ const DashboardAddExperience = () => {
               Technologies Used <span className="text-red-500">*</span>
             </label>
             <MultiSelector
-              options={fakeSkillsOptions}
+              options={skills?.data}
               selectedOptions={selectedSkills}
               setSelectedOptions={setSelectedSkills}
             />

@@ -52,13 +52,17 @@ const ExperienceDetailsCard = ({ experience }) => {
           Technologies Used
         </h3>
         <section className="flex flex-wrap gap-3">
-          {experience?.technologiesUsed?.map((tech, index) => (
+          {experience?.technologiesUsed?.map((tech) => (
             <span
-              key={index}
-              className="bg-gradient-to-r  flex items-center gap-2 from-pink-500 to-purple-600 text-white text-sm px-4 py-2 rounded-full shadow-lg"
+              key={tech?._id}
+              className="bg-gradient-to-r from-pink-500 to-purple-600 flex items-center gap-2 text-white text-sm pl-2 pr-4 rounded-full shadow-lg"
             >
-              <p>{tech?.icon}</p>
-              <p>{tech?.name}</p>
+              <img
+                className="w-10 h-10 p-1 rounded-full"
+                src={tech?.icon}
+                alt=""
+              />{" "}
+              <span className="text-2xl">{tech?.name}</span>
             </span>
           ))}
         </section>

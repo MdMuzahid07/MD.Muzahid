@@ -44,10 +44,14 @@ const CourseCard = ({ course }) => {
           {course?.skillsLearned?.map((skill) => (
             <span
               key={skill?._id}
-              className="bg-gradient-to-r from-pink-500 to-purple-600 flex items-center gap-2 text-white text-sm px-4 py-2 rounded-full shadow-lg"
+              className="bg-gradient-to-r from-pink-500 to-purple-600 flex items-center gap-2 text-white text-sm pl-2 pr-4 rounded-full shadow-lg"
             >
-              <p>{skill.icon}</p>
-              <p>{skill.name}</p>
+              <img
+                className="w-10 h-10 p-1 rounded-full"
+                src={skill?.icon}
+                alt=""
+              />{" "}
+              <span className="text-2xl">{skill?.name}</span>
             </span>
           ))}
         </section>

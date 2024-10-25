@@ -7,6 +7,8 @@ import About from "./components/about/About";
 import { useGetProfileQuery } from "./redux/features/profile/profileApi";
 import Spinner from "./components/preloader/Spinner";
 import Blog from "./components/blog/Blog";
+import Experience from "./components/experience/Experience";
+import Courses from "./components/courses/Courses";
 
 const App = () => {
   const { data: profile, isLoading } = useGetProfileQuery();
@@ -31,6 +33,8 @@ const App = () => {
         <Hero profile={profile} />
       </header>
       <About profile={profile} />
+      <Experience />
+      <Courses />
       <PortfolioSection />
       <Blog />
       <Contact />

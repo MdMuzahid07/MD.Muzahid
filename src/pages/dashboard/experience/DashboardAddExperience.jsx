@@ -27,7 +27,7 @@ const DashboardAddExperience = () => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [selectedSkills, setSelectedSkills] = useState([]);
-  const [addExperience, { data, error, isLoading }] =
+  const [addExperience, { data: experienceData, error, isLoading }] =
     useAddExperienceMutation();
 
   const {
@@ -44,26 +44,22 @@ const DashboardAddExperience = () => {
       employmentType: "",
       companyWebsite: "",
       achievements: "",
-      technologiesUsed: [{}],
     },
   });
-
-  console.log(error);
 
   const onSubmit = async (data) => {
     data.startDate = startDate;
     data.endDate = endDate;
-    data.technologiesUsed = [...selectedSkills];
-    console.log({ data });
+    data.technologiesUsed = selectedSkills;
     try {
       await addExperience(data);
+      reset();
+      setStartDate(null);
+      setEndDate(null);
+      setSelectedSkills([]);
     } catch (error) {
       console.log(error);
     }
-    reset();
-    setStartDate(null);
-    setEndDate(null);
-    setSelectedSkills([]);
   };
 
   if (isLoading && !error) {
@@ -74,7 +70,7 @@ const DashboardAddExperience = () => {
     toast.error(error?.data?.message, { id: "addExperienceToastId" });
   }
 
-  if (data && data?.success) {
+  if (experienceData && experienceData?.success) {
     toast.success("Done...", { id: "addExperienceToastId" });
   }
 

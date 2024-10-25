@@ -24,6 +24,7 @@ import DashboardUpdateExperience from "../pages/dashboard/experience/DashboardUp
 import DashboardAddBlog from "../pages/dashboard/blog/DashboardAddBlog";
 import DashboardManageBlogs from "../pages/dashboard/blog/DashboardManageBlogs";
 import DashboardUpdateBlog from "../pages/dashboard/blog/DashboardUpdateBlog";
+import BlogDetails from "../pages/BlogDetails";
 
 const routes = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const routes = createBrowserRouter([
       {
         path: "/projectDetails/:projectId",
         element: <ProjectDetails />,
+      },
+      {
+        path: "/blogDetails/:id",
+        element: <BlogDetails />,
       },
     ],
   },

@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet-async";
 import About from "./components/about/About";
 import { useGetProfileQuery } from "./redux/features/profile/profileApi";
 import Spinner from "./components/preloader/Spinner";
+import Blog from "./components/blog/Blog";
 
 const App = () => {
   const { data: profile, isLoading } = useGetProfileQuery();
@@ -31,6 +32,7 @@ const App = () => {
       </header>
       <About profile={profile} />
       <PortfolioSection />
+      <Blog />
       <Contact />
       <Footer />
     </main>

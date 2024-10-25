@@ -19,10 +19,10 @@ const Preloader = () => {
       exit="enter"
       className="w-full min-h-screen flex-col fixed top-0 left-0 z-50 bg-primary flex justify-center items-center"
     >
-      <h1 className="text-white font-bold text-[40px] flex items-center gap-4">
+      <h1 className="text-white text-center font-bold text-2xl sm:text-[40px] flex items-center gap-4">
         <span>Welcome to my portfolio</span>
       </h1>
-      <div className="mt-7 text-white flex items-center gap-3">
+      <div className="mt-7 text-white flex items-center text-center gap-3">
         Loading ...
         <svg
           className="animate-spin h-5 w-5 mr-3 border rounded"

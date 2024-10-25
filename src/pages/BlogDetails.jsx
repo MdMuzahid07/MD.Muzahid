@@ -24,7 +24,7 @@ const BlogDetails = () => {
           className="w-full h-full object-cover opacity-80"
         />
         <div className="absolute inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-white text-center">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl bg-clip-text text-transparent bg-gradient-to-r from-white to-purple-500 font-bold text-center">
             {title || "Blog Title"}
           </h1>
         </div>
@@ -33,15 +33,21 @@ const BlogDetails = () => {
       <section
         className={`${styles.paddingX} stripeBG text-slate-300 pt-10 min-h-screen`}
       >
-        <section className="bg-primary h-screen p-8 rounded-full opacity-50 backdrop-blur-sm">
+        <section className="bg-primary min-h-screen p-8 rounded-full opacity-50 backdrop-blur-sm stripeBG">
           <section className="max-w-screen-lg mx-auto">
+            {/* //! test purpose only */}
             {/* {category && (
             <span className="inline-block bg-blue-200 text-blue-800 text-sm font-semibold px-4 py-2 rounded-full uppercase mb-6">
               {category}
             </span>
           )} */}
-            <article className="prose prose-lg prose-invert max-w-none text-xl">
-              <ReactQuill value={texts || ""} readOnly={true} theme="bubble" />
+            <article className="prose prose-lg prose-invert text-xl">
+              <ReactQuill
+                className=""
+                value={texts || ""}
+                readOnly={true}
+                theme="bubble"
+              />
             </article>
           </section>
         </section>

@@ -24,7 +24,7 @@ const BlogCard = ({ blog }) => {
         <span className="inline-block bg-slate-300 text-primary text-xs font-semibold px-2 py-1 rounded-full uppercase mb-2">
           MERN
         </span>
-        <h2 className="text-white font-bold text-xl mb-2">title</h2>
+        <h2 className="text-white font-bold text-xl mb-2">{blog?.title}</h2>
       </section>
 
       <section className="absolute bottom-6 left-6">

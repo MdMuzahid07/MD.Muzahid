@@ -1,7 +1,9 @@
 /* eslint-disable react/prop-types */
+import { useGetAllSkillsQuery } from "../../redux/features/skill/skillApi";
 import { styles } from "../../styles";
 import ShadowFont from "../common/ShadowFont";
-import { skills } from "../../constants/index";
+import Spinner from "../preloader/Spinner";
+// import { skills } from "../../constants/index";
 
 const aboutStyles = {
   btn: "px-4 py-1.5 text-xs md:text-md lg:text-xl bg-black hover:bg-black rounded-full font-bold border px-4 py-1.5 text-xs md:text-md lg:text-xl bg-black rounded-full font-bold border-2 border-slate-600 bg-black",
@@ -9,6 +11,7 @@ const aboutStyles = {
 
 const About = ({ profile }) => {
   const profileInfo = profile?.data?.[0];
+  const { data: skills, isLoading } = useGetAllSkillsQuery();
 
   const applyHighlight = (content) => {
     const keywords = {
@@ -34,6 +37,9 @@ const About = ({ profile }) => {
     });
   };
 
+  if (isLoading) {
+    return <Spinner />;
+  }
   return (
     <section
       id="about"
@@ -92,7 +98,7 @@ const About = ({ profile }) => {
             <section className="mt-7 sm:mt-10 lg:mt-14">
               <p className="text-slate-300">Skills</p>
               <div className="flex flex-wrap items-center gap-3 mt-3">
-                {skills?.map(({ name, icon, id }) => (
+                {skills?.data?.map(({ name, icon, id }) => (
                   <section
                     className=" flex items-center gap-2 pl-2 pr-3 py-2 h-14 bg-black rounded-full border border-slate-800"
                     key={id}
